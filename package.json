@@ -1,0 +1,14 @@
+{
+  "name": "@pwn/is",
+  "author": "Pwn <hi@pwn.buzz>",
+  "description": "a simple, extensible predicate library",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "lib/is.js",
+  "bugs": "https://github.com/pwnn/is.js/issues",
+  "repository": "https://github.com/pwnn/is.js",
+  "devDependencies": {
+    "eslint": "~2.10.2",
+    "eslint-config-pwn-es5": "~3.0.0"
+  }
+}
