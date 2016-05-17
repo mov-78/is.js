@@ -7,8 +7,18 @@
   "main": "lib/is.js",
   "bugs": "https://github.com/pwnn/is.js/issues",
   "repository": "https://github.com/pwnn/is.js",
+  "scripts": {
+    "test": "karma start"
+  },
   "devDependencies": {
+    "chai": "~3.5.0",
     "eslint": "~2.10.2",
-    "eslint-config-pwn-es5": "~3.0.0"
+    "eslint-config-pwn-es5": "~3.0.0",
+    "karma": "~0.13.22",
+    "karma-chai": "~0.1.0",
+    "karma-chrome-launcher": "~1.0.1",
+    "karma-mocha": "~1.0.1",
+    "karma-nyan-reporter": "~0.2.4",
+    "mocha": "~2.4.5"
   }
 }
