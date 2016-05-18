@@ -10,19 +10,19 @@ describe( 'bundle:number' , function () {
     expect( is.number( 0 / 0 ) ).to.be.true
     expect( is.number( +1 / 0 ) ).to.be.true
     expect( is.number( -1 / 0 ) ).to.be.true
-    expect( is.number( new Number( 0 ) ) ).to.be.true
-    expect( is.number( new Number( 0 / 0 ) ) ).to.be.true
-    expect( is.number( new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.number( new Number( -1 / 0 ) ) ).to.be.true
+    expect( is.number( new Number( 0 ) ) ).to.be.false
+    expect( is.number( new Number( 0 / 0 ) ) ).to.be.false
+    expect( is.number( new Number( +1 / 0 ) ) ).to.be.false
+    expect( is.number( new Number( -1 / 0 ) ) ).to.be.false
 
     expect( is.not.number( 0 ) ).to.be.false
     expect( is.not.number( 0 / 0 ) ).to.be.false
     expect( is.not.number( +1 / 0 ) ).to.be.false
     expect( is.not.number( -1 / 0 ) ).to.be.false
-    expect( is.not.number( new Number( 0 ) ) ).to.be.false
-    expect( is.not.number( new Number( 0 / 0 ) ) ).to.be.false
-    expect( is.not.number( new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.not.number( new Number( -1 / 0 ) ) ).to.be.false
+    expect( is.not.number( new Number( 0 ) ) ).to.be.true
+    expect( is.not.number( new Number( 0 / 0 ) ) ).to.be.true
+    expect( is.not.number( new Number( +1 / 0 ) ) ).to.be.true
+    expect( is.not.number( new Number( -1 / 0 ) ) ).to.be.true
 
   } )
 
