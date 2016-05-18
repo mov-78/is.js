@@ -1,6 +1,6 @@
 /* global expect, is */
 /* eslint-env mocha */
-/* eslint no-magic-numbers: 0, no-new-wrappers: 0, no-unused-expressions: 0 */
+/* eslint no-new-wrappers: 0, no-unused-expressions: 0 */
 
 describe( 'bundle:number' , function () {
 

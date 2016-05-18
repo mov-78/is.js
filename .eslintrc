@@ -1,1 +1,7 @@
+env:
+  amd: true
+  node: true
 extends: pwn-es5
+rules:
+  no-magic-numbers: 0
+  no-shadow: 0
