@@ -6,13 +6,6 @@ describe( 'bundle:number' , function () {
 
   it( 'is.number' , function () {
 
-    //
-    // is.number( value )
-    //
-
-    expect( is.number( null ) ).to.be.false
-    expect( is.number( void 0 ) ).to.be.false
-
     expect( is.number( 0 ) ).to.be.true
     expect( is.number( 0 / 0 ) ).to.be.true
     expect( is.number( +1 / 0 ) ).to.be.true
@@ -22,26 +15,6 @@ describe( 'bundle:number' , function () {
     expect( is.number( new Number( +1 / 0 ) ) ).to.be.true
     expect( is.number( new Number( -1 / 0 ) ) ).to.be.true
 
-    expect( is.number( '' ) ).to.be.false
-    expect( is.number( new String( '' ) ) ).to.be.false
-
-    expect( is.number( true ) ).to.be.false
-    expect( is.number( false ) ).to.be.false
-    expect( is.number( new Boolean( true ) ) ).to.be.false
-    expect( is.number( new Boolean( false ) ) ).to.be.false
-
-    expect( is.number( {} ) ).to.be.false
-    expect( is.number( [] ) ).to.be.false
-    expect( is.number( function () {} ) ).to.be.false // eslint-disable-line no-empty-function
-
-
-    //
-    // is.not.number( value )
-    //
-
-    expect( is.not.number( null ) ).to.be.true
-    expect( is.not.number( void 0 ) ).to.be.true
-
     expect( is.not.number( 0 ) ).to.be.false
     expect( is.not.number( 0 / 0 ) ).to.be.false
     expect( is.not.number( +1 / 0 ) ).to.be.false
@@ -50,18 +23,6 @@ describe( 'bundle:number' , function () {
     expect( is.not.number( new Number( 0 / 0 ) ) ).to.be.false
     expect( is.not.number( new Number( +1 / 0 ) ) ).to.be.false
     expect( is.not.number( new Number( -1 / 0 ) ) ).to.be.false
-
-    expect( is.not.number( '' ) ).to.be.true
-    expect( is.not.number( new String( '' ) ) ).to.be.true
-
-    expect( is.not.number( true ) ).to.be.true
-    expect( is.not.number( false ) ).to.be.true
-    expect( is.not.number( new Boolean( true ) ) ).to.be.true
-    expect( is.not.number( new Boolean( false ) ) ).to.be.true
-
-    expect( is.not.number( {} ) ).to.be.true
-    expect( is.not.number( [] ) ).to.be.true
-    expect( is.not.number( function () {} ) ).to.be.true // eslint-disable-line no-empty-function
 
   } )
 
