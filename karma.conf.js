@@ -4,6 +4,6 @@ module.exports = function ( config ) {
     files : [ 'lib/**/*.js' , 'test/**/*.js' ] ,
     frameworks : [ 'chai' , 'mocha' ] ,
     port : 9876 ,
-    reporters : [ 'nyan' ]
+    reporters : [ 'mocha' ]
   } )
 }
