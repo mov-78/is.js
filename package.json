@@ -17,7 +17,6 @@
     "eslint-config-pwn-es5": "~3.0.0",
     "grunt": "~1.0.1",
     "grunt-contrib-uglify": "~1.0.1",
-    "grunt-contrib-watch": "~1.0.0",
     "karma": "~0.13.22",
     "karma-chai": "~0.1.0",
     "karma-chrome-launcher": "~1.0.1",
