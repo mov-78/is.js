@@ -8,13 +8,13 @@ describe( 'bundle:boolean' , function () {
 
     expect( is.boolean( true ) ).to.be.true
     expect( is.boolean( false ) ).to.be.true
-    expect( is.boolean( new Boolean( true ) ) ).to.be.true
-    expect( is.boolean( new Boolean( false ) ) ).to.be.true
+    expect( is.boolean( new Boolean( true ) ) ).to.be.false
+    expect( is.boolean( new Boolean( false ) ) ).to.be.false
 
     expect( is.not.boolean( true ) ).to.be.false
     expect( is.not.boolean( false ) ).to.be.false
-    expect( is.not.boolean( new Boolean( true ) ) ).to.be.false
-    expect( is.not.boolean( new Boolean( false ) ) ).to.be.false
+    expect( is.not.boolean( new Boolean( true ) ) ).to.be.true
+    expect( is.not.boolean( new Boolean( false ) ) ).to.be.true
 
   } )
 
@@ -25,12 +25,14 @@ describe( 'bundle:boolean' , function () {
     expect( is.true( new Boolean( true ) ) ).to.be.false
     expect( is.true( new Boolean( false ) ) ).to.be.false
     expect( is.true( 1 ) ).to.be.false
+    expect( is.true( 0 ) ).to.be.false
 
     expect( is.not.true( true ) ).to.be.false
     expect( is.not.true( false ) ).to.be.true
     expect( is.not.true( new Boolean( true ) ) ).to.be.true
     expect( is.not.true( new Boolean( false ) ) ).to.be.true
     expect( is.not.true( 1 ) ).to.be.true
+    expect( is.not.true( 0 ) ).to.be.true
 
   } )
   it( 'is.false' , function () {
@@ -39,12 +41,14 @@ describe( 'bundle:boolean' , function () {
     expect( is.false( false ) ).to.be.true
     expect( is.false( new Boolean( true ) ) ).to.be.false
     expect( is.false( new Boolean( false ) ) ).to.be.false
+    expect( is.false( 1 ) ).to.be.false
     expect( is.false( 0 ) ).to.be.false
 
     expect( is.not.false( true ) ).to.be.true
     expect( is.not.false( false ) ).to.be.false
     expect( is.not.false( new Boolean( true ) ) ).to.be.true
     expect( is.not.false( new Boolean( false ) ) ).to.be.true
+    expect( is.not.false( 1 ) ).to.be.true
     expect( is.not.false( 0 ) ).to.be.true
 
   } )
