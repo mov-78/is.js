@@ -8,7 +8,7 @@
   "bugs": "https://github.com/pwnn/is.js/issues",
   "repository": "https://github.com/pwnn/is.js",
   "scripts": {
-    "dist" : "grunt" ,
+    "dist": "grunt",
     "test": "karma start"
   },
   "devDependencies": {
