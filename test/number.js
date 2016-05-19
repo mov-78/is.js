@@ -133,6 +133,42 @@ describe( 'bundle:number' , function () {
 
   } )
 
+  it( 'is.integer' , function () {
+
+    expect( is.integer( 0 ) ).to.be.true
+    expect( is.integer( 0.1 ) ).to.be.false
+    expect( is.integer( 0 / 0 ) ).to.be.false
+    expect( is.integer( +1 / 0 ) ).to.be.false
+    expect( is.integer( -1 / 0 ) ).to.be.false
+    expect( is.integer( '0' ) ).to.be.false
+    expect( is.integer( new Number( 0 ) ) ).to.be.false
+
+    expect( is.not.integer( 0 ) ).to.be.false
+    expect( is.not.integer( 0.1 ) ).to.be.true
+    expect( is.not.integer( 0 / 0 ) ).to.be.true
+    expect( is.not.integer( +1 / 0 ) ).to.be.true
+    expect( is.not.integer( -1 / 0 ) ).to.be.true
+    expect( is.not.integer( '0' ) ).to.be.true
+    expect( is.not.integer( new Number( 0 ) ) ).to.be.true
+
+  } )
+  it( 'is.safeInteger' , function () {
+
+    var MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || Math.pow( 2 , 53 ) - 1
+    var MIN_SAFE_INTEGER = -MAX_SAFE_INTEGER
+
+    expect( is.safeInteger( MAX_SAFE_INTEGER ) ).to.be.true
+    expect( is.safeInteger( MAX_SAFE_INTEGER + 1 ) ).to.be.false
+    expect( is.safeInteger( MIN_SAFE_INTEGER ) ).to.be.true
+    expect( is.safeInteger( MIN_SAFE_INTEGER - 1 ) ).to.be.false
+
+    expect( is.not.safeInteger( MAX_SAFE_INTEGER ) ).to.be.false
+    expect( is.not.safeInteger( MAX_SAFE_INTEGER + 1 ) ).to.be.true
+    expect( is.not.safeInteger( MIN_SAFE_INTEGER ) ).to.be.false
+    expect( is.not.safeInteger( MIN_SAFE_INTEGER - 1 ) ).to.be.true
+
+  } )
+
   it( 'is.gt' , function () {
 
     expect( is.gt( 1 , 2 ) ).to.be.false
