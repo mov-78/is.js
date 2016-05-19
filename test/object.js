@@ -24,7 +24,7 @@ describe( 'bundle:object' , function () {
     expect( is.object( new Boolean( false ) ) ).to.be.true
     expect( is.object( {} ) ).to.be.true
     expect( is.object( [] ) ).to.be.true
-    expect( is.object( function () {} ) ).to.be.false
+    expect( is.object( function () {} ) ).to.be.true
     expect( is.object( /^/ ) ).to.be.true
 
     expect( is.not.object( null ) ).to.be.true
@@ -45,8 +45,53 @@ describe( 'bundle:object' , function () {
     expect( is.not.object( new Boolean( false ) ) ).to.be.false
     expect( is.not.object( {} ) ).to.be.false
     expect( is.not.object( [] ) ).to.be.false
-    expect( is.not.object( function () {} ) ).to.be.true
+    expect( is.not.object( function () {} ) ).to.be.false
     expect( is.not.object( /^/ ) ).to.be.false
+
+  } )
+  it( 'is.objectLike' , function () {
+
+    expect( is.objectLike( null ) ).to.be.false
+    expect( is.objectLike( void 0 ) ).to.be.false
+    expect( is.objectLike( 0 ) ).to.be.false
+    expect( is.objectLike( 0 / 0 ) ).to.be.false
+    expect( is.objectLike( +1 / 0 ) ).to.be.false
+    expect( is.objectLike( -1 / 0 ) ).to.be.false
+    expect( is.objectLike( new Number( 0 ) ) ).to.be.true
+    expect( is.objectLike( new Number( 0 / 0 ) ) ).to.be.true
+    expect( is.objectLike( new Number( +1 / 0 ) ) ).to.be.true
+    expect( is.objectLike( new Number( -1 / 0 ) ) ).to.be.true
+    expect( is.objectLike( '' ) ).to.be.false
+    expect( is.objectLike( new String( '' ) ) ).to.be.true
+    expect( is.objectLike( true ) ).to.be.false
+    expect( is.objectLike( false ) ).to.be.false
+    expect( is.objectLike( new Boolean( true ) ) ).to.be.true
+    expect( is.objectLike( new Boolean( false ) ) ).to.be.true
+    expect( is.objectLike( {} ) ).to.be.true
+    expect( is.objectLike( [] ) ).to.be.true
+    expect( is.objectLike( function () {} ) ).to.be.false
+    expect( is.objectLike( /^/ ) ).to.be.true
+
+    expect( is.not.objectLike( null ) ).to.be.true
+    expect( is.not.objectLike( void 0 ) ).to.be.true
+    expect( is.not.objectLike( 0 ) ).to.be.true
+    expect( is.not.objectLike( 0 / 0 ) ).to.be.true
+    expect( is.not.objectLike( +1 / 0 ) ).to.be.true
+    expect( is.not.objectLike( -1 / 0 ) ).to.be.true
+    expect( is.not.objectLike( new Number( 0 ) ) ).to.be.false
+    expect( is.not.objectLike( new Number( 0 / 0 ) ) ).to.be.false
+    expect( is.not.objectLike( new Number( +1 / 0 ) ) ).to.be.false
+    expect( is.not.objectLike( new Number( -1 / 0 ) ) ).to.be.false
+    expect( is.not.objectLike( '' ) ).to.be.true
+    expect( is.not.objectLike( new String( '' ) ) ).to.be.false
+    expect( is.not.objectLike( true ) ).to.be.true
+    expect( is.not.objectLike( false ) ).to.be.true
+    expect( is.not.objectLike( new Boolean( true ) ) ).to.be.false
+    expect( is.not.objectLike( new Boolean( false ) ) ).to.be.false
+    expect( is.not.objectLike( {} ) ).to.be.false
+    expect( is.not.objectLike( [] ) ).to.be.false
+    expect( is.not.objectLike( function () {} ) ).to.be.true
+    expect( is.not.objectLike( /^/ ) ).to.be.false
 
   } )
 
