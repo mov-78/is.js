@@ -4,4 +4,5 @@ env:
 extends: pwn-es5
 rules:
   no-magic-numbers: 0
+  no-param-reassign: 0
   no-shadow: 0
