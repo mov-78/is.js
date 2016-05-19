@@ -1,6 +1,6 @@
 /* global expect, is */
 /* eslint-env mocha */
-/* eslint no-unused-expressions: 0 */
+/* eslint no-empty-function: 0, no-unused-expressions: 0 */
 
 describe( 'bundle:array' , function () {
 
@@ -25,11 +25,28 @@ describe( 'bundle:array' , function () {
     expect( is.arrayLike( [] ) ).to.be.true
     expect( is.arrayLike( arrayLikeObject ) ).to.be.true
     expect( is.arrayLike( argumentsObject ) ).to.be.true
+    expect( is.arrayLike( function () {} ) ).to.be.false
 
     expect( is.not.arrayLike( '' ) ).to.be.false
     expect( is.not.arrayLike( [] ) ).to.be.false
     expect( is.not.arrayLike( arrayLikeObject ) ).to.be.false
     expect( is.not.arrayLike( argumentsObject ) ).to.be.false
+    expect( is.not.arrayLike( function () {} ) ).to.be.true
+
+  } )
+  it( 'is.arrayLikeObject' , function () {
+
+    expect( is.arrayLikeObject( '' ) ).to.be.false
+    expect( is.arrayLikeObject( [] ) ).to.be.true
+    expect( is.arrayLikeObject( arrayLikeObject ) ).to.be.true
+    expect( is.arrayLikeObject( argumentsObject ) ).to.be.true
+    expect( is.arrayLikeObject( function () {} ) ).to.be.false
+
+    expect( is.not.arrayLikeObject( '' ) ).to.be.true
+    expect( is.not.arrayLikeObject( [] ) ).to.be.false
+    expect( is.not.arrayLikeObject( arrayLikeObject ) ).to.be.false
+    expect( is.not.arrayLikeObject( argumentsObject ) ).to.be.false
+    expect( is.not.arrayLikeObject( function () {} ) ).to.be.true
 
   } )
 
