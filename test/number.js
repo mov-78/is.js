@@ -102,6 +102,37 @@ describe( 'bundle:number' , function () {
 
   } )
 
+  it( 'is.finite' , function () {
+
+    expect( is.finite( 0 ) ).to.be.true
+    expect( is.finite( +1 / 0 ) ).to.be.false
+    expect( is.finite( -1 / 0 ) ).to.be.false
+    expect( is.finite( '0' ) ).to.be.false
+    expect( is.finite( new Number( 0 ) ) ).to.be.false
+
+    expect( is.not.finite( 0 ) ).to.be.false
+    expect( is.not.finite( +1 / 0 ) ).to.be.true
+    expect( is.not.finite( -1 / 0 ) ).to.be.true
+    expect( is.not.finite( '0' ) ).to.be.true
+    expect( is.not.finite( new Number( 0 ) ) ).to.be.true
+
+  } )
+  it( 'is.infinite' , function () {
+
+    expect( is.infinite( 0 ) ).to.be.false
+    expect( is.infinite( +1 / 0 ) ).to.be.true
+    expect( is.infinite( -1 / 0 ) ).to.be.true
+    expect( is.infinite( '0' ) ).to.be.false
+    expect( is.infinite( new Number( 0 ) ) ).to.be.false
+
+    expect( is.not.infinite( 0 ) ).to.be.true
+    expect( is.not.infinite( +1 / 0 ) ).to.be.false
+    expect( is.not.infinite( -1 / 0 ) ).to.be.false
+    expect( is.not.infinite( '0' ) ).to.be.true
+    expect( is.not.infinite( new Number( 0 ) ) ).to.be.true
+
+  } )
+
   it( 'is.gt' , function () {
 
     expect( is.gt( 1 , 2 ) ).to.be.false
