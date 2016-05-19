@@ -50,6 +50,61 @@ describe( 'bundle:object' , function () {
 
   } )
 
+  it( 'is.ownPropertyDefined' , function () {
+
+    var proto = { foo : { bar : 0 } }
+    var object = Object.create( proto )
+    object.baz = { qux : Object.create( { quux : 1 } ) }
+
+    expect( is.ownPropertyDefined( object , 'baz' ) ).to.be.true
+    expect( is.ownPropertyDefined( object , 'wibble' ) ).to.be.false
+    expect( is.ownPropertyDefined( object , 'baz.qux' ) ).to.be.true
+    expect( is.ownPropertyDefined( object , 'baz.wobble' ) ).to.be.false
+    expect( is.ownPropertyDefined( object , 'baz.qux.quux' ) ).to.be.false
+    expect( is.ownPropertyDefined( object , 'qux.baz' ) ).to.be.false
+    expect( is.ownPropertyDefined( object , 'foo' ) ).to.be.false
+    expect( is.ownPropertyDefined( object , 'foo.bar' ) ).to.be.false
+    expect( is.ownPropertyDefined( object , 'foo.wubble' ) ).to.be.false
+
+    expect( is.not.ownPropertyDefined( object , 'baz' ) ).to.be.false
+    expect( is.not.ownPropertyDefined( object , 'wibble' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( object , 'baz.qux' ) ).to.be.false
+    expect( is.not.ownPropertyDefined( object , 'baz.wobble' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( object , 'baz.qux.quux' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( object , 'qux.baz' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( object , 'foo' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( object , 'foo.bar' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( object , 'foo.wubble' ) ).to.be.true
+
+  } )
+  it( 'is.propertyDefined' , function () {
+
+    var proto = { foo : { bar : 0 } }
+    var object = Object.create( proto )
+    object.baz = { qux : Object.create( { quux : 1 } ) }
+
+    expect( is.propertyDefined( object , 'baz' ) ).to.be.true
+    expect( is.propertyDefined( object , 'wibble' ) ).to.be.false
+    expect( is.propertyDefined( object , 'baz.qux' ) ).to.be.true
+    expect( is.propertyDefined( object , 'baz.wobble' ) ).to.be.false
+    expect( is.propertyDefined( object , 'baz.qux.quux' ) ).to.be.true
+    expect( is.propertyDefined( object , 'qux.baz' ) ).to.be.false
+    expect( is.propertyDefined( object , 'foo' ) ).to.be.true
+    expect( is.propertyDefined( object , 'foo.bar' ) ).to.be.true
+    expect( is.propertyDefined( object , 'foo.wubble' ) ).to.be.false
+
+    expect( is.not.propertyDefined( object , 'baz' ) ).to.be.false
+    expect( is.not.propertyDefined( object , 'wibble' ) ).to.be.true
+    expect( is.not.propertyDefined( object , 'baz.qux' ) ).to.be.false
+    expect( is.not.propertyDefined( object , 'baz.wobble' ) ).to.be.true
+    expect( is.not.propertyDefined( object , 'baz.qux.quux' ) ).to.be.false
+    expect( is.not.propertyDefined( object , 'qux.baz' ) ).to.be.true
+    expect( is.not.propertyDefined( object , 'foo' ) ).to.be.false
+    expect( is.not.propertyDefined( object , 'foo.bar' ) ).to.be.false
+    expect( is.not.propertyDefined( object , 'foo.wubble' ) ).to.be.true
+
+  } )
+
   it( 'is.extensible , is.sealed , is.frozen' , function () {
 
     var object = { foo : 'bar' }
