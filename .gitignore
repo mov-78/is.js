@@ -2,13 +2,12 @@
 # Created by https://www.gitignore.io/api/osx,node
 
 ### OSX ###
-.DS_Store
+*.DS_Store
 .AppleDouble
 .LSOverride
 
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*
