@@ -3,7 +3,6 @@ module.exports = function ( config ) {
     browsers : [ 'Chrome' ] ,
     files : [ 'lib/**/*.js' , 'test/**/*.js' ] ,
     frameworks : [ 'chai' , 'mocha' ] ,
-    port : 9876 ,
     reporters : [ 'mocha' ]
   } )
 }
