@@ -62,4 +62,20 @@ describe( 'bundle:array' , function () {
 
   } )
 
+  it( 'is.emptyArray' , function () {
+
+    expect( is.emptyArray( [] ) ).to.be.true
+    expect( is.emptyArray( [ 0 ] ) ).to.be.false
+    expect( is.emptyArray( new Array( 5 ) ) ).to.be.false
+    expect( is.emptyArray( arrayLikeObject ) ).to.be.false
+    expect( is.emptyArray( argumentsObject ) ).to.be.false
+
+    expect( is.not.emptyArray( [] ) ).to.be.false
+    expect( is.not.emptyArray( [ 0 ] ) ).to.be.true
+    expect( is.not.emptyArray( new Array( 5 ) ) ).to.be.true
+    expect( is.not.emptyArray( arrayLikeObject ) ).to.be.true
+    expect( is.not.emptyArray( argumentsObject ) ).to.be.true
+
+  } )
+
 } )

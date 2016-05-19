@@ -14,6 +14,18 @@ describe( 'bundle:string' , function () {
 
   } )
 
+  it( 'is.emptyString' , function () {
+
+    expect( is.emptyString( '' ) ).to.be.true
+    expect( is.emptyString( ' ' ) ).to.be.true
+    expect( is.emptyString( '\t\f\n' ) ).to.be.true
+
+    expect( is.not.emptyString( '' ) ).to.be.false
+    expect( is.not.emptyString( ' ' ) ).to.be.false
+    expect( is.not.emptyString( '\t\f\n' ) ).to.be.false
+
+  } )
+
   it( 'is.startsWith' , function () {
 
     expect( is.startsWith( 'foobar' , 'foo' ) ).to.be.true

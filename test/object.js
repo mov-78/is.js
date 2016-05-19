@@ -95,6 +95,20 @@ describe( 'bundle:object' , function () {
 
   } )
 
+  it( 'is.emptyObject' , function () {
+
+    expect( is.emptyObject( {} ) ).to.be.true
+    expect( is.emptyObject( { foo : 0 } ) ).to.be.false
+    expect( is.emptyObject( Object.create( { foo : 0 } ) ) ).to.be.true
+    expect( is.emptyObject( function () {} ) ).to.be.false
+
+    expect( is.not.emptyObject( {} ) ).to.be.false
+    expect( is.not.emptyObject( { foo : 0 } ) ).to.be.true
+    expect( is.not.emptyObject( Object.create( { foo : 0 } ) ) ).to.be.false
+    expect( is.not.emptyObject( function () {} ) ).to.be.true
+
+  } )
+
   it( 'is.ownPropertyDefined' , function () {
 
     var proto = { foo : { bar : 0 } }
