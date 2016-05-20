@@ -21,7 +21,6 @@
     "karma-chai": "~0.1.0",
     "karma-chrome-launcher": "~1.0.1",
     "karma-mocha": "~1.0.1",
-    "karma-mocha-reporter": "~2.0.3",
     "load-grunt-tasks": "~3.5.0",
     "mocha": "~2.4.5"
   }
