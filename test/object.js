@@ -24,7 +24,10 @@ describe( 'bundle:object' , function () {
     expect( is.object( new Boolean( false ) ) ).to.be.true
     expect( is.object( {} ) ).to.be.true
     expect( is.object( [] ) ).to.be.true
+    expect( is.object( arguments ) ).to.be.true
     expect( is.object( function () {} ) ).to.be.true
+    expect( is.object( new Date() ) ).to.be.true
+    expect( is.object( new Error() ) ).to.be.true
     expect( is.object( /^/ ) ).to.be.true
 
     expect( is.not.object( null ) ).to.be.true
@@ -45,191 +48,204 @@ describe( 'bundle:object' , function () {
     expect( is.not.object( new Boolean( false ) ) ).to.be.false
     expect( is.not.object( {} ) ).to.be.false
     expect( is.not.object( [] ) ).to.be.false
+    expect( is.not.object( arguments ) ).to.be.false
     expect( is.not.object( function () {} ) ).to.be.false
+    expect( is.not.object( new Date() ) ).to.be.false
+    expect( is.not.object( new Error() ) ).to.be.false
     expect( is.not.object( /^/ ) ).to.be.false
-
-  } )
-  it( 'is.objectLike' , function () {
-
-    expect( is.objectLike( null ) ).to.be.false
-    expect( is.objectLike( void 0 ) ).to.be.false
-    expect( is.objectLike( 0 ) ).to.be.false
-    expect( is.objectLike( 0 / 0 ) ).to.be.false
-    expect( is.objectLike( +1 / 0 ) ).to.be.false
-    expect( is.objectLike( -1 / 0 ) ).to.be.false
-    expect( is.objectLike( new Number( 0 ) ) ).to.be.true
-    expect( is.objectLike( new Number( 0 / 0 ) ) ).to.be.true
-    expect( is.objectLike( new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.objectLike( new Number( -1 / 0 ) ) ).to.be.true
-    expect( is.objectLike( '' ) ).to.be.false
-    expect( is.objectLike( new String( '' ) ) ).to.be.true
-    expect( is.objectLike( true ) ).to.be.false
-    expect( is.objectLike( false ) ).to.be.false
-    expect( is.objectLike( new Boolean( true ) ) ).to.be.true
-    expect( is.objectLike( new Boolean( false ) ) ).to.be.true
-    expect( is.objectLike( {} ) ).to.be.true
-    expect( is.objectLike( [] ) ).to.be.true
-    expect( is.objectLike( function () {} ) ).to.be.false
-    expect( is.objectLike( /^/ ) ).to.be.true
-
-    expect( is.not.objectLike( null ) ).to.be.true
-    expect( is.not.objectLike( void 0 ) ).to.be.true
-    expect( is.not.objectLike( 0 ) ).to.be.true
-    expect( is.not.objectLike( 0 / 0 ) ).to.be.true
-    expect( is.not.objectLike( +1 / 0 ) ).to.be.true
-    expect( is.not.objectLike( -1 / 0 ) ).to.be.true
-    expect( is.not.objectLike( new Number( 0 ) ) ).to.be.false
-    expect( is.not.objectLike( new Number( 0 / 0 ) ) ).to.be.false
-    expect( is.not.objectLike( new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.not.objectLike( new Number( -1 / 0 ) ) ).to.be.false
-    expect( is.not.objectLike( '' ) ).to.be.true
-    expect( is.not.objectLike( new String( '' ) ) ).to.be.false
-    expect( is.not.objectLike( true ) ).to.be.true
-    expect( is.not.objectLike( false ) ).to.be.true
-    expect( is.not.objectLike( new Boolean( true ) ) ).to.be.false
-    expect( is.not.objectLike( new Boolean( false ) ) ).to.be.false
-    expect( is.not.objectLike( {} ) ).to.be.false
-    expect( is.not.objectLike( [] ) ).to.be.false
-    expect( is.not.objectLike( function () {} ) ).to.be.true
-    expect( is.not.objectLike( /^/ ) ).to.be.false
 
   } )
 
   it( 'is.emptyObject' , function () {
 
+    expect( is.emptyObject( null ) ).to.be.false
+    expect( is.emptyObject( void 0 ) ).to.be.false
+    expect( is.emptyObject( 0 ) ).to.be.false
+    expect( is.emptyObject( 0 / 0 ) ).to.be.false
+    expect( is.emptyObject( +1 / 0 ) ).to.be.false
+    expect( is.emptyObject( -1 / 0 ) ).to.be.false
+    expect( is.emptyObject( new Number( 0 ) ) ).to.be.true
+    expect( is.emptyObject( new Number( 0 / 0 ) ) ).to.be.true
+    expect( is.emptyObject( new Number( +1 / 0 ) ) ).to.be.true
+    expect( is.emptyObject( new Number( -1 / 0 ) ) ).to.be.true
+    expect( is.emptyObject( '' ) ).to.be.false
+    expect( is.emptyObject( new String( '' ) ) ).to.be.true
+    expect( is.emptyObject( true ) ).to.be.false
+    expect( is.emptyObject( false ) ).to.be.false
+    expect( is.emptyObject( new Boolean( true ) ) ).to.be.true
+    expect( is.emptyObject( new Boolean( false ) ) ).to.be.true
     expect( is.emptyObject( {} ) ).to.be.true
+    expect( is.emptyObject( Object.create( {} ) ) ).to.be.true
     expect( is.emptyObject( { foo : 0 } ) ).to.be.false
     expect( is.emptyObject( Object.create( { foo : 0 } ) ) ).to.be.true
-    expect( is.emptyObject( function () {} ) ).to.be.false
+    expect( is.emptyObject( [] ) ).to.be.true
+    expect( is.emptyObject( arguments ) ).to.be.true
+    expect( is.emptyObject( function () {} ) ).to.be.true
+    expect( is.emptyObject( new Date() ) ).to.be.true
+    expect( is.emptyObject( new Error() ) ).to.be.true
+    expect( is.emptyObject( /^/ ) ).to.be.true
 
+    expect( is.not.emptyObject( null ) ).to.be.true
+    expect( is.not.emptyObject( void 0 ) ).to.be.true
+    expect( is.not.emptyObject( 0 ) ).to.be.true
+    expect( is.not.emptyObject( 0 / 0 ) ).to.be.true
+    expect( is.not.emptyObject( +1 / 0 ) ).to.be.true
+    expect( is.not.emptyObject( -1 / 0 ) ).to.be.true
+    expect( is.not.emptyObject( new Number( 0 ) ) ).to.be.false
+    expect( is.not.emptyObject( new Number( 0 / 0 ) ) ).to.be.false
+    expect( is.not.emptyObject( new Number( +1 / 0 ) ) ).to.be.false
+    expect( is.not.emptyObject( new Number( -1 / 0 ) ) ).to.be.false
+    expect( is.not.emptyObject( '' ) ).to.be.true
+    expect( is.not.emptyObject( new String( '' ) ) ).to.be.false
+    expect( is.not.emptyObject( true ) ).to.be.true
+    expect( is.not.emptyObject( false ) ).to.be.true
+    expect( is.not.emptyObject( new Boolean( true ) ) ).to.be.false
+    expect( is.not.emptyObject( new Boolean( false ) ) ).to.be.false
     expect( is.not.emptyObject( {} ) ).to.be.false
+    expect( is.not.emptyObject( Object.create( {} ) ) ).to.be.false
     expect( is.not.emptyObject( { foo : 0 } ) ).to.be.true
     expect( is.not.emptyObject( Object.create( { foo : 0 } ) ) ).to.be.false
-    expect( is.not.emptyObject( function () {} ) ).to.be.true
+    expect( is.not.emptyObject( [] ) ).to.be.false
+    expect( is.not.emptyObject( arguments ) ).to.be.false
+    expect( is.not.emptyObject( function () {} ) ).to.be.false
+    expect( is.not.emptyObject( new Date() ) ).to.be.false
+    expect( is.not.emptyObject( new Error() ) ).to.be.false
+    expect( is.not.emptyObject( /^/ ) ).to.be.false
 
   } )
 
   it( 'is.ownPropertyDefined' , function () {
 
-    var proto = { foo : { bar : 0 } }
-    var object = Object.create( proto )
-    object.baz = { qux : Object.create( { quux : 1 } ) }
+    expect( is.ownPropertyDefined( null , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( void 0 , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( 0 , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( 0 / 0 , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( +1 / 0 , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( -1 / 0 , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( new Number( 0 ) , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( new Number( 0 / 0 ) , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( new Number( +1 / 0 ) , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( new Number( -1 / 0 ) , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( '' , 'length' ) ).to.be.true
+    expect( is.ownPropertyDefined( '' , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( new String( '' ) , 'length' ) ).to.be.true
+    expect( is.ownPropertyDefined( new String( '' ) , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( true , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( false , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( new Boolean( true ) , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( new Boolean( false ) , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( {} , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( { foo : 0 } , 'foo' ) ).to.be.true
+    expect( is.ownPropertyDefined( [] , 'length' ) ).to.be.true
+    expect( is.ownPropertyDefined( [] , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( arguments , 'length' ) ).to.be.true
+    expect( is.ownPropertyDefined( arguments , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( function () {} , 'length' ) ).to.be.true
+    expect( is.ownPropertyDefined( function () {} , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( new Date() , 'getDate' ) ).to.be.false
+    expect( is.ownPropertyDefined( new Error() , 'stack' ) ).to.be.true
+    expect( is.ownPropertyDefined( new Error() , 'valueOf' ) ).to.be.false
+    expect( is.ownPropertyDefined( /^/ , 'lastIndex' ) ).to.be.true
+    expect( is.ownPropertyDefined( /^/ , 'valueOf' ) ).to.be.false
 
-    expect( is.ownPropertyDefined( object , 'baz' ) ).to.be.true
-    expect( is.ownPropertyDefined( object , 'wibble' ) ).to.be.false
-    expect( is.ownPropertyDefined( object , 'baz.qux' ) ).to.be.true
-    expect( is.ownPropertyDefined( object , 'baz.wobble' ) ).to.be.false
-    expect( is.ownPropertyDefined( object , 'baz.qux.quux' ) ).to.be.false
-    expect( is.ownPropertyDefined( object , 'qux.baz' ) ).to.be.false
-    expect( is.ownPropertyDefined( object , 'foo' ) ).to.be.false
-    expect( is.ownPropertyDefined( object , 'foo.bar' ) ).to.be.false
-    expect( is.ownPropertyDefined( object , 'foo.wubble' ) ).to.be.false
-
-    expect( is.not.ownPropertyDefined( object , 'baz' ) ).to.be.false
-    expect( is.not.ownPropertyDefined( object , 'wibble' ) ).to.be.true
-    expect( is.not.ownPropertyDefined( object , 'baz.qux' ) ).to.be.false
-    expect( is.not.ownPropertyDefined( object , 'baz.wobble' ) ).to.be.true
-    expect( is.not.ownPropertyDefined( object , 'baz.qux.quux' ) ).to.be.true
-    expect( is.not.ownPropertyDefined( object , 'qux.baz' ) ).to.be.true
-    expect( is.not.ownPropertyDefined( object , 'foo' ) ).to.be.true
-    expect( is.not.ownPropertyDefined( object , 'foo.bar' ) ).to.be.true
-    expect( is.not.ownPropertyDefined( object , 'foo.wubble' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( null , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( void 0 , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( 0 , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( 0 / 0 , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( +1 / 0 , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( -1 / 0 , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( new Number( 0 ) , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( new Number( 0 / 0 ) , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( new Number( +1 / 0 ) , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( new Number( -1 / 0 ) , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( '' , 'length' ) ).to.be.false
+    expect( is.not.ownPropertyDefined( '' , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( new String( '' ) , 'length' ) ).to.be.false
+    expect( is.not.ownPropertyDefined( new String( '' ) , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( true , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( false , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( new Boolean( true ) , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( new Boolean( false ) , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( {} , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( { foo : 0 } , 'foo' ) ).to.be.false
+    expect( is.not.ownPropertyDefined( [] , 'length' ) ).to.be.false
+    expect( is.not.ownPropertyDefined( [] , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( arguments , 'length' ) ).to.be.false
+    expect( is.not.ownPropertyDefined( arguments , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( function () {} , 'length' ) ).to.be.false
+    expect( is.not.ownPropertyDefined( function () {} , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( new Date() , 'getDate' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( new Error() , 'stack' ) ).to.be.false
+    expect( is.not.ownPropertyDefined( new Error() , 'valueOf' ) ).to.be.true
+    expect( is.not.ownPropertyDefined( /^/ , 'lastIndex' ) ).to.be.false
+    expect( is.not.ownPropertyDefined( /^/ , 'valueOf' ) ).to.be.true
 
   } )
   it( 'is.propertyDefined' , function () {
 
-    var proto = { foo : { bar : 0 } }
-    var object = Object.create( proto )
-    object.baz = { qux : Object.create( { quux : 1 } ) }
+    expect( is.propertyDefined( null , 'valueOf' ) ).to.be.false
+    expect( is.propertyDefined( void 0 , 'valueOf' ) ).to.be.false
+    expect( is.propertyDefined( 0 , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( 0 / 0 , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( +1 / 0 , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( -1 / 0 , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( new Number( 0 ) , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( new Number( 0 / 0 ) , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( new Number( +1 / 0 ) , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( new Number( -1 / 0 ) , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( '' , 'length' ) ).to.be.true
+    expect( is.propertyDefined( '' , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( new String( '' ) , 'length' ) ).to.be.true
+    expect( is.propertyDefined( new String( '' ) , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( true , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( false , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( new Boolean( true ) , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( new Boolean( false ) , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( {} , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( { foo : 0 } , 'foo' ) ).to.be.true
+    expect( is.propertyDefined( [] , 'length' ) ).to.be.true
+    expect( is.propertyDefined( [] , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( arguments , 'length' ) ).to.be.true
+    expect( is.propertyDefined( arguments , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( function () {} , 'length' ) ).to.be.true
+    expect( is.propertyDefined( function () {} , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( new Date() , 'getDate' ) ).to.be.true
+    expect( is.propertyDefined( new Error() , 'stack' ) ).to.be.true
+    expect( is.propertyDefined( new Error() , 'valueOf' ) ).to.be.true
+    expect( is.propertyDefined( /^/ , 'lastIndex' ) ).to.be.true
+    expect( is.propertyDefined( /^/ , 'valueOf' ) ).to.be.true
 
-    expect( is.propertyDefined( object , 'baz' ) ).to.be.true
-    expect( is.propertyDefined( object , 'wibble' ) ).to.be.false
-    expect( is.propertyDefined( object , 'baz.qux' ) ).to.be.true
-    expect( is.propertyDefined( object , 'baz.wobble' ) ).to.be.false
-    expect( is.propertyDefined( object , 'baz.qux.quux' ) ).to.be.true
-    expect( is.propertyDefined( object , 'qux.baz' ) ).to.be.false
-    expect( is.propertyDefined( object , 'foo' ) ).to.be.true
-    expect( is.propertyDefined( object , 'foo.bar' ) ).to.be.true
-    expect( is.propertyDefined( object , 'foo.wubble' ) ).to.be.false
-
-    expect( is.not.propertyDefined( object , 'baz' ) ).to.be.false
-    expect( is.not.propertyDefined( object , 'wibble' ) ).to.be.true
-    expect( is.not.propertyDefined( object , 'baz.qux' ) ).to.be.false
-    expect( is.not.propertyDefined( object , 'baz.wobble' ) ).to.be.true
-    expect( is.not.propertyDefined( object , 'baz.qux.quux' ) ).to.be.false
-    expect( is.not.propertyDefined( object , 'qux.baz' ) ).to.be.true
-    expect( is.not.propertyDefined( object , 'foo' ) ).to.be.false
-    expect( is.not.propertyDefined( object , 'foo.bar' ) ).to.be.false
-    expect( is.not.propertyDefined( object , 'foo.wubble' ) ).to.be.true
-
-  } )
-
-  it( 'is.extensible , is.sealed , is.frozen' , function () {
-
-    var object = { foo : 'bar' }
-    var nonObject = null
-
-    expect( is.extensible( object ) ).to.be.true
-    expect( is.extensible( nonObject ) ).to.be.false
-    expect( is.sealed( object ) ).to.be.false
-    expect( is.sealed( nonObject ) ).to.be.false
-    expect( is.frozen( object ) ).to.be.false
-    expect( is.frozen( nonObject ) ).to.be.false
-
-    expect( is.not.extensible( object ) ).to.be.false
-    expect( is.not.extensible( nonObject ) ).to.be.true
-    expect( is.not.sealed( object ) ).to.be.true
-    expect( is.not.sealed( nonObject ) ).to.be.true
-    expect( is.not.frozen( object ) ).to.be.true
-    expect( is.not.frozen( nonObject ) ).to.be.true
-
-    Object.preventExtensions( object )
-
-    expect( is.extensible( object ) ).to.be.false
-    expect( is.extensible( nonObject ) ).to.be.false
-    expect( is.sealed( object ) ).to.be.false
-    expect( is.sealed( nonObject ) ).to.be.false
-    expect( is.frozen( object ) ).to.be.false
-    expect( is.frozen( nonObject ) ).to.be.false
-
-    expect( is.not.extensible( object ) ).to.be.true
-    expect( is.not.extensible( nonObject ) ).to.be.true
-    expect( is.not.sealed( object ) ).to.be.true
-    expect( is.not.sealed( nonObject ) ).to.be.true
-    expect( is.not.frozen( object ) ).to.be.true
-    expect( is.not.frozen( nonObject ) ).to.be.true
-
-    Object.seal( object )
-
-    expect( is.extensible( object ) ).to.be.false
-    expect( is.extensible( nonObject ) ).to.be.false
-    expect( is.sealed( object ) ).to.be.true
-    expect( is.sealed( nonObject ) ).to.be.false
-    expect( is.frozen( object ) ).to.be.false
-    expect( is.frozen( nonObject ) ).to.be.false
-
-    expect( is.not.extensible( object ) ).to.be.true
-    expect( is.not.extensible( nonObject ) ).to.be.true
-    expect( is.not.sealed( object ) ).to.be.false
-    expect( is.not.sealed( nonObject ) ).to.be.true
-    expect( is.not.frozen( object ) ).to.be.true
-    expect( is.not.frozen( nonObject ) ).to.be.true
-
-    Object.freeze( object )
-
-    expect( is.extensible( object ) ).to.be.false
-    expect( is.extensible( nonObject ) ).to.be.false
-    expect( is.sealed( object ) ).to.be.true
-    expect( is.sealed( nonObject ) ).to.be.false
-    expect( is.frozen( object ) ).to.be.true
-    expect( is.frozen( nonObject ) ).to.be.false
-
-    expect( is.not.extensible( object ) ).to.be.true
-    expect( is.not.extensible( nonObject ) ).to.be.true
-    expect( is.not.sealed( object ) ).to.be.false
-    expect( is.not.sealed( nonObject ) ).to.be.true
-    expect( is.not.frozen( object ) ).to.be.false
-    expect( is.not.frozen( nonObject ) ).to.be.true
+    expect( is.not.propertyDefined( null , 'valueOf' ) ).to.be.true
+    expect( is.not.propertyDefined( void 0 , 'valueOf' ) ).to.be.true
+    expect( is.not.propertyDefined( 0 , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( 0 / 0 , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( +1 / 0 , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( -1 / 0 , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( new Number( 0 ) , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( new Number( 0 / 0 ) , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( new Number( +1 / 0 ) , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( new Number( -1 / 0 ) , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( '' , 'length' ) ).to.be.false
+    expect( is.not.propertyDefined( '' , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( new String( '' ) , 'length' ) ).to.be.false
+    expect( is.not.propertyDefined( new String( '' ) , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( true , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( false , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( new Boolean( true ) , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( new Boolean( false ) , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( {} , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( { foo : 0 } , 'foo' ) ).to.be.false
+    expect( is.not.propertyDefined( [] , 'length' ) ).to.be.false
+    expect( is.not.propertyDefined( [] , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( arguments , 'length' ) ).to.be.false
+    expect( is.not.propertyDefined( arguments , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( function () {} , 'length' ) ).to.be.false
+    expect( is.not.propertyDefined( function () {} , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( new Date() , 'getDate' ) ).to.be.false
+    expect( is.not.propertyDefined( new Error() , 'stack' ) ).to.be.false
+    expect( is.not.propertyDefined( new Error() , 'valueOf' ) ).to.be.false
+    expect( is.not.propertyDefined( /^/ , 'lastIndex' ) ).to.be.false
+    expect( is.not.propertyDefined( /^/ , 'valueOf' ) ).to.be.false
 
   } )
 

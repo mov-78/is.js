@@ -133,26 +133,10 @@ describe( 'bundle:string' , function () {
   } )
 
   it( 'is.startsWith' , function () {
-
-    expect( is.startsWith( 'foobar' , 'foo' ) ).to.be.true
-    expect( is.startsWith( 'foobar' , 'bar' ) ).to.be.false
-    expect( is.startsWith( 'foobar' , 'foobarbaz' ) ).to.be.false
-
-    expect( is.not.startsWith( 'foobar' , 'foo' ) ).to.be.false
-    expect( is.not.startsWith( 'foobar' , 'bar' ) ).to.be.true
-    expect( is.not.startsWith( 'foobar' , 'foobarbaz' ) ).to.be.true
-
+    // TODO
   } )
   it( 'is.endsWith' , function () {
-
-    expect( is.endsWith( 'foobar' , 'bar' ) ).to.be.true
-    expect( is.endsWith( 'foobar' , 'foo' ) ).to.be.false
-    expect( is.endsWith( 'foobar' , 'foobarbaz' ) ).to.be.false
-
-    expect( is.not.endsWith( 'foobar' , 'bar' ) ).to.be.false
-    expect( is.not.endsWith( 'foobar' , 'foo' ) ).to.be.true
-    expect( is.not.endsWith( 'foobar' , 'foobarbaz' ) ).to.be.true
-
+    // TODO
   } )
 
 } )

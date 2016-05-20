@@ -1,6 +1,6 @@
 /* global expect, is */
 /* eslint-env mocha */
-/* eslint no-empty-function: 0, no-new-wrappers: 0, no-unused-expressions: 0 */
+/* eslint no-empty-function: 0, no-new-func: 0, no-new-wrappers: 0, no-unused-expressions: 0 */
 
 describe( 'bundle:function' , function () {
 
@@ -26,6 +26,7 @@ describe( 'bundle:function' , function () {
     expect( is.function( [] ) ).to.be.false
     expect( is.function( arguments ) ).to.be.false
     expect( is.function( function () {} ) ).to.be.true
+    expect( is.function( new Function() ) ).to.be.true
     expect( is.function( new Date() ) ).to.be.false
     expect( is.function( new Error() ) ).to.be.false
     expect( is.function( /^/ ) ).to.be.false
@@ -50,6 +51,7 @@ describe( 'bundle:function' , function () {
     expect( is.not.function( [] ) ).to.be.true
     expect( is.not.function( arguments ) ).to.be.true
     expect( is.not.function( function () {} ) ).to.be.false
+    expect( is.not.function( new Function() ) ).to.be.false
     expect( is.not.function( new Date() ) ).to.be.true
     expect( is.not.function( new Error() ) ).to.be.true
     expect( is.not.function( /^/ ) ).to.be.true
