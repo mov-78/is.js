@@ -36,49 +36,6 @@ describe( 'bundle:number' , function () {
 
   } )
 
-  it( 'is.positive' , function () {
-
-    expect( is.positive( +1 ) ).to.be.true
-    expect( is.positive( -1 ) ).to.be.false
-    expect( is.positive( 0 ) ).to.be.false
-    expect( is.positive( 0 / 0 ) ).to.be.false
-    expect( is.positive( +1 / 0 ) ).to.be.true
-    expect( is.positive( -1 / 0 ) ).to.be.false
-    expect( is.positive( '+1' ) ).to.be.false
-    expect( is.positive( '-1' ) ).to.be.false
-
-    expect( is.not.positive( +1 ) ).to.be.false
-    expect( is.not.positive( -1 ) ).to.be.true
-    expect( is.not.positive( 0 ) ).to.be.true
-    expect( is.not.positive( 0 / 0 ) ).to.be.true
-    expect( is.not.positive( +1 / 0 ) ).to.be.false
-    expect( is.not.positive( -1 / 0 ) ).to.be.true
-    expect( is.not.positive( '+1' ) ).to.be.true
-    expect( is.not.positive( '-1' ) ).to.be.true
-
-  } )
-  it( 'is.negative' , function () {
-
-    expect( is.negative( +1 ) ).to.be.false
-    expect( is.negative( -1 ) ).to.be.true
-    expect( is.negative( 0 ) ).to.be.false
-    expect( is.negative( 0 / 0 ) ).to.be.false
-    expect( is.negative( +1 / 0 ) ).to.be.false
-    expect( is.negative( -1 / 0 ) ).to.be.true
-    expect( is.negative( '+1' ) ).to.be.false
-    expect( is.negative( '-1' ) ).to.be.false
-
-    expect( is.not.negative( +1 ) ).to.be.true
-    expect( is.not.negative( -1 ) ).to.be.false
-    expect( is.not.negative( 0 ) ).to.be.true
-    expect( is.not.negative( 0 / 0 ) ).to.be.true
-    expect( is.not.negative( +1 / 0 ) ).to.be.true
-    expect( is.not.negative( -1 / 0 ) ).to.be.false
-    expect( is.not.negative( '+1' ) ).to.be.true
-    expect( is.not.negative( '-1' ) ).to.be.true
-
-  } )
-
   it( 'is.odd' , function () {
 
     expect( is.odd( 1 ) ).to.be.true
