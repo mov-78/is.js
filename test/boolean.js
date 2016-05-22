@@ -19,13 +19,13 @@ describe( 'bundle:boolean' , function () {
     expect( is.boolean( new Number( +1 / 0 ) ) ).to.be.false
     expect( is.boolean( new Number( -1 / 0 ) ) ).to.be.false
     expect( is.boolean( '' ) ).to.be.false
-    expect( is.boolean( '-' ) ).to.be.false
+    expect( is.boolean( 'lipsum' ) ).to.be.false
     expect( is.boolean( new String( '' ) ) ).to.be.false
-    expect( is.boolean( new String( '-' ) ) ).to.be.false
+    expect( is.boolean( new String( 'lipsum' ) ) ).to.be.false
     expect( is.boolean( true ) ).to.be.true
     expect( is.boolean( false ) ).to.be.true
-    expect( is.boolean( new Boolean( true ) ) ).to.be.false
-    expect( is.boolean( new Boolean( false ) ) ).to.be.false
+    expect( is.boolean( new Boolean( true ) ) ).to.be.true
+    expect( is.boolean( new Boolean( false ) ) ).to.be.true
     expect( is.boolean( {} ) ).to.be.false
     expect( is.boolean( [] ) ).to.be.false
     expect( is.boolean( arguments ) ).to.be.false
@@ -47,13 +47,13 @@ describe( 'bundle:boolean' , function () {
     expect( is.not.boolean( new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.boolean( new Number( -1 / 0 ) ) ).to.be.true
     expect( is.not.boolean( '' ) ).to.be.true
-    expect( is.not.boolean( '-' ) ).to.be.true
+    expect( is.not.boolean( 'lipsum' ) ).to.be.true
     expect( is.not.boolean( new String( '' ) ) ).to.be.true
-    expect( is.not.boolean( new String( '-' ) ) ).to.be.true
+    expect( is.not.boolean( new String( 'lipsum' ) ) ).to.be.true
     expect( is.not.boolean( true ) ).to.be.false
     expect( is.not.boolean( false ) ).to.be.false
-    expect( is.not.boolean( new Boolean( true ) ) ).to.be.true
-    expect( is.not.boolean( new Boolean( false ) ) ).to.be.true
+    expect( is.not.boolean( new Boolean( true ) ) ).to.be.false
+    expect( is.not.boolean( new Boolean( false ) ) ).to.be.false
     expect( is.not.boolean( {} ) ).to.be.true
     expect( is.not.boolean( [] ) ).to.be.true
     expect( is.not.boolean( arguments ) ).to.be.true
@@ -79,9 +79,9 @@ describe( 'bundle:boolean' , function () {
     expect( is.true( new Number( +1 / 0 ) ) ).to.be.false
     expect( is.true( new Number( -1 / 0 ) ) ).to.be.false
     expect( is.true( '' ) ).to.be.false
-    expect( is.true( '-' ) ).to.be.false
+    expect( is.true( 'lipsum' ) ).to.be.false
     expect( is.true( new String( '' ) ) ).to.be.false
-    expect( is.true( new String( '-' ) ) ).to.be.false
+    expect( is.true( new String( 'lipsum' ) ) ).to.be.false
     expect( is.true( true ) ).to.be.true
     expect( is.true( false ) ).to.be.false
     expect( is.true( new Boolean( true ) ) ).to.be.false
@@ -107,9 +107,9 @@ describe( 'bundle:boolean' , function () {
     expect( is.not.true( new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.true( new Number( -1 / 0 ) ) ).to.be.true
     expect( is.not.true( '' ) ).to.be.true
-    expect( is.not.true( '-' ) ).to.be.true
+    expect( is.not.true( 'lipsum' ) ).to.be.true
     expect( is.not.true( new String( '' ) ) ).to.be.true
-    expect( is.not.true( new String( '-' ) ) ).to.be.true
+    expect( is.not.true( new String( 'lipsum' ) ) ).to.be.true
     expect( is.not.true( true ) ).to.be.false
     expect( is.not.true( false ) ).to.be.true
     expect( is.not.true( new Boolean( true ) ) ).to.be.true
@@ -138,9 +138,9 @@ describe( 'bundle:boolean' , function () {
     expect( is.false( new Number( +1 / 0 ) ) ).to.be.false
     expect( is.false( new Number( -1 / 0 ) ) ).to.be.false
     expect( is.false( '' ) ).to.be.false
-    expect( is.false( '-' ) ).to.be.false
+    expect( is.false( 'lipsum' ) ).to.be.false
     expect( is.false( new String( '' ) ) ).to.be.false
-    expect( is.false( new String( '-' ) ) ).to.be.false
+    expect( is.false( new String( 'lipsum' ) ) ).to.be.false
     expect( is.false( true ) ).to.be.false
     expect( is.false( false ) ).to.be.true
     expect( is.false( new Boolean( true ) ) ).to.be.false
@@ -166,9 +166,9 @@ describe( 'bundle:boolean' , function () {
     expect( is.not.false( new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.false( new Number( -1 / 0 ) ) ).to.be.true
     expect( is.not.false( '' ) ).to.be.true
-    expect( is.not.false( '-' ) ).to.be.true
+    expect( is.not.false( 'lipsum' ) ).to.be.true
     expect( is.not.false( new String( '' ) ) ).to.be.true
-    expect( is.not.false( new String( '-' ) ) ).to.be.true
+    expect( is.not.false( new String( 'lipsum' ) ) ).to.be.true
     expect( is.not.false( true ) ).to.be.true
     expect( is.not.false( false ) ).to.be.false
     expect( is.not.false( new Boolean( true ) ) ).to.be.true
@@ -198,9 +198,9 @@ describe( 'bundle:boolean' , function () {
     expect( is.truthy( new Number( +1 / 0 ) ) ).to.be.true
     expect( is.truthy( new Number( -1 / 0 ) ) ).to.be.true
     expect( is.truthy( '' ) ).to.be.false
-    expect( is.truthy( '-' ) ).to.be.true
+    expect( is.truthy( 'lipsum' ) ).to.be.true
     expect( is.truthy( new String( '' ) ) ).to.be.true
-    expect( is.truthy( new String( '-' ) ) ).to.be.true
+    expect( is.truthy( new String( 'lipsum' ) ) ).to.be.true
     expect( is.truthy( true ) ).to.be.true
     expect( is.truthy( false ) ).to.be.false
     expect( is.truthy( new Boolean( true ) ) ).to.be.true
@@ -226,9 +226,9 @@ describe( 'bundle:boolean' , function () {
     expect( is.not.truthy( new Number( +1 / 0 ) ) ).to.be.false
     expect( is.not.truthy( new Number( -1 / 0 ) ) ).to.be.false
     expect( is.not.truthy( '' ) ).to.be.true
-    expect( is.not.truthy( '-' ) ).to.be.false
+    expect( is.not.truthy( 'lipsum' ) ).to.be.false
     expect( is.not.truthy( new String( '' ) ) ).to.be.false
-    expect( is.not.truthy( new String( '-' ) ) ).to.be.false
+    expect( is.not.truthy( new String( 'lipsum' ) ) ).to.be.false
     expect( is.not.truthy( true ) ).to.be.false
     expect( is.not.truthy( false ) ).to.be.true
     expect( is.not.truthy( new Boolean( true ) ) ).to.be.false
@@ -257,9 +257,9 @@ describe( 'bundle:boolean' , function () {
     expect( is.falsy( new Number( +1 / 0 ) ) ).to.be.false
     expect( is.falsy( new Number( -1 / 0 ) ) ).to.be.false
     expect( is.falsy( '' ) ).to.be.true
-    expect( is.falsy( '-' ) ).to.be.false
+    expect( is.falsy( 'lipsum' ) ).to.be.false
     expect( is.falsy( new String( '' ) ) ).to.be.false
-    expect( is.falsy( new String( '-' ) ) ).to.be.false
+    expect( is.falsy( new String( 'lipsum' ) ) ).to.be.false
     expect( is.falsy( true ) ).to.be.false
     expect( is.falsy( false ) ).to.be.true
     expect( is.falsy( new Boolean( true ) ) ).to.be.false
@@ -285,9 +285,9 @@ describe( 'bundle:boolean' , function () {
     expect( is.not.falsy( new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.falsy( new Number( -1 / 0 ) ) ).to.be.true
     expect( is.not.falsy( '' ) ).to.be.false
-    expect( is.not.falsy( '-' ) ).to.be.true
+    expect( is.not.falsy( 'lipsum' ) ).to.be.true
     expect( is.not.falsy( new String( '' ) ) ).to.be.true
-    expect( is.not.falsy( new String( '-' ) ) ).to.be.true
+    expect( is.not.falsy( new String( 'lipsum' ) ) ).to.be.true
     expect( is.not.falsy( true ) ).to.be.true
     expect( is.not.falsy( false ) ).to.be.false
     expect( is.not.falsy( new Boolean( true ) ) ).to.be.true

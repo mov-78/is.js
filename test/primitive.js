@@ -12,16 +12,16 @@ describe( 'bundle:primitive' , function () {
     expect( is.primitive( 0 / 0 ) ).to.be.true
     expect( is.primitive( +1 / 0 ) ).to.be.true
     expect( is.primitive( -1 / 0 ) ).to.be.true
-    expect( is.primitive( new Number( 0 ) ) ).to.be.false
-    expect( is.primitive( new Number( 0 / 0 ) ) ).to.be.false
-    expect( is.primitive( new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.primitive( new Number( -1 / 0 ) ) ).to.be.false
+    expect( is.primitive( new Number( 0 ) ) ).to.be.true
+    expect( is.primitive( new Number( 0 / 0 ) ) ).to.be.true
+    expect( is.primitive( new Number( +1 / 0 ) ) ).to.be.true
+    expect( is.primitive( new Number( -1 / 0 ) ) ).to.be.true
     expect( is.primitive( '' ) ).to.be.true
-    expect( is.primitive( new String( '' ) ) ).to.be.false
+    expect( is.primitive( new String( '' ) ) ).to.be.true
     expect( is.primitive( true ) ).to.be.true
     expect( is.primitive( false ) ).to.be.true
-    expect( is.primitive( new Boolean( true ) ) ).to.be.false
-    expect( is.primitive( new Boolean( false ) ) ).to.be.false
+    expect( is.primitive( new Boolean( true ) ) ).to.be.true
+    expect( is.primitive( new Boolean( false ) ) ).to.be.true
     expect( is.primitive( {} ) ).to.be.false
     expect( is.primitive( [] ) ).to.be.false
     expect( is.primitive( arguments ) ).to.be.false
@@ -36,16 +36,16 @@ describe( 'bundle:primitive' , function () {
     expect( is.not.primitive( 0 / 0 ) ).to.be.false
     expect( is.not.primitive( +1 / 0 ) ).to.be.false
     expect( is.not.primitive( -1 / 0 ) ).to.be.false
-    expect( is.not.primitive( new Number( 0 ) ) ).to.be.true
-    expect( is.not.primitive( new Number( 0 / 0 ) ) ).to.be.true
-    expect( is.not.primitive( new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.not.primitive( new Number( -1 / 0 ) ) ).to.be.true
+    expect( is.not.primitive( new Number( 0 ) ) ).to.be.false
+    expect( is.not.primitive( new Number( 0 / 0 ) ) ).to.be.false
+    expect( is.not.primitive( new Number( +1 / 0 ) ) ).to.be.false
+    expect( is.not.primitive( new Number( -1 / 0 ) ) ).to.be.false
     expect( is.not.primitive( '' ) ).to.be.false
-    expect( is.not.primitive( new String( '' ) ) ).to.be.true
+    expect( is.not.primitive( new String( '' ) ) ).to.be.false
     expect( is.not.primitive( true ) ).to.be.false
     expect( is.not.primitive( false ) ).to.be.false
-    expect( is.not.primitive( new Boolean( true ) ) ).to.be.true
-    expect( is.not.primitive( new Boolean( false ) ) ).to.be.true
+    expect( is.not.primitive( new Boolean( true ) ) ).to.be.false
+    expect( is.not.primitive( new Boolean( false ) ) ).to.be.false
     expect( is.not.primitive( {} ) ).to.be.true
     expect( is.not.primitive( [] ) ).to.be.true
     expect( is.not.primitive( arguments ) ).to.be.true
