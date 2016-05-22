@@ -143,7 +143,6 @@ describe( 'bundle:object' , function () {
     expect( is.ownPropertyDefined( function () {} , 'length' ) ).to.be.true
     expect( is.ownPropertyDefined( function () {} , 'valueOf' ) ).to.be.false
     expect( is.ownPropertyDefined( new Date() , 'getDate' ) ).to.be.false
-    expect( is.ownPropertyDefined( new Error() , 'stack' ) ).to.be.true
     expect( is.ownPropertyDefined( new Error() , 'valueOf' ) ).to.be.false
     expect( is.ownPropertyDefined( /^/ , 'lastIndex' ) ).to.be.true
     expect( is.ownPropertyDefined( /^/ , 'valueOf' ) ).to.be.false
@@ -175,7 +174,6 @@ describe( 'bundle:object' , function () {
     expect( is.not.ownPropertyDefined( function () {} , 'length' ) ).to.be.false
     expect( is.not.ownPropertyDefined( function () {} , 'valueOf' ) ).to.be.true
     expect( is.not.ownPropertyDefined( new Date() , 'getDate' ) ).to.be.true
-    expect( is.not.ownPropertyDefined( new Error() , 'stack' ) ).to.be.false
     expect( is.not.ownPropertyDefined( new Error() , 'valueOf' ) ).to.be.true
     expect( is.not.ownPropertyDefined( /^/ , 'lastIndex' ) ).to.be.false
     expect( is.not.ownPropertyDefined( /^/ , 'valueOf' ) ).to.be.true
@@ -210,7 +208,6 @@ describe( 'bundle:object' , function () {
     expect( is.propertyDefined( function () {} , 'length' ) ).to.be.true
     expect( is.propertyDefined( function () {} , 'valueOf' ) ).to.be.true
     expect( is.propertyDefined( new Date() , 'getDate' ) ).to.be.true
-    expect( is.propertyDefined( new Error() , 'stack' ) ).to.be.true
     expect( is.propertyDefined( new Error() , 'valueOf' ) ).to.be.true
     expect( is.propertyDefined( /^/ , 'lastIndex' ) ).to.be.true
     expect( is.propertyDefined( /^/ , 'valueOf' ) ).to.be.true
@@ -242,7 +239,6 @@ describe( 'bundle:object' , function () {
     expect( is.not.propertyDefined( function () {} , 'length' ) ).to.be.false
     expect( is.not.propertyDefined( function () {} , 'valueOf' ) ).to.be.false
     expect( is.not.propertyDefined( new Date() , 'getDate' ) ).to.be.false
-    expect( is.not.propertyDefined( new Error() , 'stack' ) ).to.be.false
     expect( is.not.propertyDefined( new Error() , 'valueOf' ) ).to.be.false
     expect( is.not.propertyDefined( /^/ , 'lastIndex' ) ).to.be.false
     expect( is.not.propertyDefined( /^/ , 'valueOf' ) ).to.be.false
