@@ -82,7 +82,6 @@ describe( 'bundle:object' , function () {
     expect( is.emptyObject( arguments ) ).to.be.true
     expect( is.emptyObject( function () {} ) ).to.be.true
     expect( is.emptyObject( new Date() ) ).to.be.true
-    expect( is.emptyObject( new Error() ) ).to.be.true
     expect( is.emptyObject( /^/ ) ).to.be.true
 
     expect( is.not.emptyObject( null ) ).to.be.true
@@ -109,7 +108,6 @@ describe( 'bundle:object' , function () {
     expect( is.not.emptyObject( arguments ) ).to.be.false
     expect( is.not.emptyObject( function () {} ) ).to.be.false
     expect( is.not.emptyObject( new Date() ) ).to.be.false
-    expect( is.not.emptyObject( new Error() ) ).to.be.false
     expect( is.not.emptyObject( /^/ ) ).to.be.false
 
   } )
