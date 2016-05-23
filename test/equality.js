@@ -68,7 +68,7 @@ describe( 'bundle:equality' , function () {
     expect( is.equal( 0 , 0 / 0 ) ).to.be.false
     expect( is.equal( 0 , +1 / 0 ) ).to.be.false
     expect( is.equal( 0 , -1 / 0 ) ).to.be.false
-    expect( is.equal( 0 , new Number( 0 ) ) ).to.be.true
+    expect( is.equal( 0 , new Number( 0 ) ) ).to.be.false
     expect( is.equal( 0 , new Number( 0 / 0 ) ) ).to.be.false
     expect( is.equal( 0 , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( 0 , new Number( +1 / 0 ) ) ).to.be.false
@@ -97,7 +97,7 @@ describe( 'bundle:equality' , function () {
     expect( is.equal( 0 / 0 , +1 / 0 ) ).to.be.false
     expect( is.equal( 0 / 0 , -1 / 0 ) ).to.be.false
     expect( is.equal( 0 / 0 , new Number( 0 ) ) ).to.be.false
-    expect( is.equal( 0 / 0 , new Number( 0 / 0 ) ) ).to.be.true
+    expect( is.equal( 0 / 0 , new Number( 0 / 0 ) ) ).to.be.false
     expect( is.equal( 0 / 0 , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( 0 / 0 , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( 0 / 0 , '' ) ).to.be.false
@@ -120,12 +120,12 @@ describe( 'bundle:equality' , function () {
 
     expect( is.equal( new Number( 0 ) , null ) ).to.be.false
     expect( is.equal( new Number( 0 ) , void 0 ) ).to.be.false
-    expect( is.equal( new Number( 0 ) , 0 ) ).to.be.true
+    expect( is.equal( new Number( 0 ) , 0 ) ).to.be.false
     expect( is.equal( new Number( 0 ) , 0 / 0 ) ).to.be.false
     expect( is.equal( new Number( 0 ) , +1 / 0 ) ).to.be.false
     expect( is.equal( new Number( 0 ) , -1 / 0 ) ).to.be.false
-    expect( is.equal( new Number( 0 ) , new Number( new Number( 0 ) ) ) ).to.be.true
-    expect( is.equal( new Number( 0 ) , new Number( new Number( 0 ) / 0 ) ) ).to.be.false
+    expect( is.equal( new Number( 0 ) , new Number( 0 ) ) ).to.be.false
+    expect( is.equal( new Number( 0 ) , new Number( 0 / 0 ) ) ).to.be.false
     expect( is.equal( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( new Number( 0 ) , '' ) ).to.be.false
@@ -149,11 +149,11 @@ describe( 'bundle:equality' , function () {
     expect( is.equal( new Number( 0 / 0 ) , null ) ).to.be.false
     expect( is.equal( new Number( 0 / 0 ) , void 0 ) ).to.be.false
     expect( is.equal( new Number( 0 / 0 ) , 0 ) ).to.be.false
-    expect( is.equal( new Number( 0 / 0 ) , 0 / 0 ) ).to.be.true
+    expect( is.equal( new Number( 0 / 0 ) , 0 / 0 ) ).to.be.false
     expect( is.equal( new Number( 0 / 0 ) , +1 / 0 ) ).to.be.false
     expect( is.equal( new Number( 0 / 0 ) , -1 / 0 ) ).to.be.false
     expect( is.equal( new Number( 0 / 0 ) , new Number( 0 ) ) ).to.be.false
-    expect( is.equal( new Number( 0 / 0 ) , new Number( 0 / 0 ) ) ).to.be.true
+    expect( is.equal( new Number( 0 / 0 ) , new Number( 0 / 0 ) ) ).to.be.false
     expect( is.equal( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( new Number( 0 / 0 ) , '' ) ).to.be.false
@@ -185,7 +185,7 @@ describe( 'bundle:equality' , function () {
     expect( is.equal( '' , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( '' , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( '' , '' ) ).to.be.true
-    expect( is.equal( '' , new String( '' ) ) ).to.be.true
+    expect( is.equal( '' , new String( '' ) ) ).to.be.false
     expect( is.equal( '' , true ) ).to.be.false
     expect( is.equal( '' , false ) ).to.be.false
     expect( is.equal( '' , new Boolean( true ) ) ).to.be.false
@@ -212,8 +212,8 @@ describe( 'bundle:equality' , function () {
     expect( is.equal( new String( '' ) , new Number( 0 / 0 ) ) ).to.be.false
     expect( is.equal( new String( '' ) , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( new String( '' ) , new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.equal( new String( '' ) , '' ) ).to.be.true
-    expect( is.equal( new String( '' ) , new String( '' ) ) ).to.be.true
+    expect( is.equal( new String( '' ) , '' ) ).to.be.false
+    expect( is.equal( new String( '' ) , new String( '' ) ) ).to.be.false
     expect( is.equal( new String( '' ) , true ) ).to.be.false
     expect( is.equal( new String( '' ) , false ) ).to.be.false
     expect( is.equal( new String( '' ) , new Boolean( true ) ) ).to.be.false
@@ -244,7 +244,7 @@ describe( 'bundle:equality' , function () {
     expect( is.equal( true , new String( '' ) ) ).to.be.false
     expect( is.equal( true , true ) ).to.be.true
     expect( is.equal( true , false ) ).to.be.false
-    expect( is.equal( true , new Boolean( true ) ) ).to.be.true
+    expect( is.equal( true , new Boolean( true ) ) ).to.be.false
     expect( is.equal( true , new Boolean( false ) ) ).to.be.false
     expect( is.equal( true , {} ) ).to.be.false
     expect( is.equal( true , { foo : 0 } ) ).to.be.false
@@ -273,7 +273,7 @@ describe( 'bundle:equality' , function () {
     expect( is.equal( false , true ) ).to.be.false
     expect( is.equal( false , false ) ).to.be.true
     expect( is.equal( false , new Boolean( true ) ) ).to.be.false
-    expect( is.equal( false , new Boolean( false ) ) ).to.be.true
+    expect( is.equal( false , new Boolean( false ) ) ).to.be.false
     expect( is.equal( false , {} ) ).to.be.false
     expect( is.equal( false , { foo : 0 } ) ).to.be.false
     expect( is.equal( false , { foo : [ 0 , { bar : { baz : 1 } } ] , qux : 2 } ) ).to.be.false
@@ -298,9 +298,9 @@ describe( 'bundle:equality' , function () {
     expect( is.equal( new Boolean( true ) , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.equal( new Boolean( true ) , '' ) ).to.be.false
     expect( is.equal( new Boolean( true ) , new String( '' ) ) ).to.be.false
-    expect( is.equal( new Boolean( true ) , true ) ).to.be.true
+    expect( is.equal( new Boolean( true ) , true ) ).to.be.false
     expect( is.equal( new Boolean( true ) , false ) ).to.be.false
-    expect( is.equal( new Boolean( true ) , new Boolean( true ) ) ).to.be.true
+    expect( is.equal( new Boolean( true ) , new Boolean( true ) ) ).to.be.false
     expect( is.equal( new Boolean( true ) , new Boolean( false ) ) ).to.be.false
     expect( is.equal( new Boolean( true ) , {} ) ).to.be.false
     expect( is.equal( new Boolean( true ) , { foo : 0 } ) ).to.be.false
@@ -327,9 +327,9 @@ describe( 'bundle:equality' , function () {
     expect( is.equal( new Boolean( false ) , '' ) ).to.be.false
     expect( is.equal( new Boolean( false ) , new String( '' ) ) ).to.be.false
     expect( is.equal( new Boolean( false ) , true ) ).to.be.false
-    expect( is.equal( new Boolean( false ) , false ) ).to.be.true
+    expect( is.equal( new Boolean( false ) , false ) ).to.be.false
     expect( is.equal( new Boolean( false ) , new Boolean( true ) ) ).to.be.false
-    expect( is.equal( new Boolean( false ) , new Boolean( false ) ) ).to.be.true
+    expect( is.equal( new Boolean( false ) , new Boolean( false ) ) ).to.be.false
     expect( is.equal( new Boolean( false ) , {} ) ).to.be.false
     expect( is.equal( new Boolean( false ) , { foo : 0 } ) ).to.be.false
     expect( is.equal( new Boolean( false ) , { foo : [ 0 , { bar : { baz : 1 } } ] , qux : 2 } ) ).to.be.false
@@ -712,7 +712,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.equal( 0 , 0 / 0 ) ).to.be.true
     expect( is.not.equal( 0 , +1 / 0 ) ).to.be.true
     expect( is.not.equal( 0 , -1 / 0 ) ).to.be.true
-    expect( is.not.equal( 0 , new Number( 0 ) ) ).to.be.false
+    expect( is.not.equal( 0 , new Number( 0 ) ) ).to.be.true
     expect( is.not.equal( 0 , new Number( 0 / 0 ) ) ).to.be.true
     expect( is.not.equal( 0 , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( 0 , new Number( +1 / 0 ) ) ).to.be.true
@@ -741,7 +741,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.equal( 0 / 0 , +1 / 0 ) ).to.be.true
     expect( is.not.equal( 0 / 0 , -1 / 0 ) ).to.be.true
     expect( is.not.equal( 0 / 0 , new Number( 0 ) ) ).to.be.true
-    expect( is.not.equal( 0 / 0 , new Number( 0 / 0 ) ) ).to.be.false
+    expect( is.not.equal( 0 / 0 , new Number( 0 / 0 ) ) ).to.be.true
     expect( is.not.equal( 0 / 0 , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( 0 / 0 , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( 0 / 0 , '' ) ).to.be.true
@@ -764,12 +764,12 @@ describe( 'bundle:equality' , function () {
 
     expect( is.not.equal( new Number( 0 ) , null ) ).to.be.true
     expect( is.not.equal( new Number( 0 ) , void 0 ) ).to.be.true
-    expect( is.not.equal( new Number( 0 ) , 0 ) ).to.be.false
+    expect( is.not.equal( new Number( 0 ) , 0 ) ).to.be.true
     expect( is.not.equal( new Number( 0 ) , 0 / 0 ) ).to.be.true
     expect( is.not.equal( new Number( 0 ) , +1 / 0 ) ).to.be.true
     expect( is.not.equal( new Number( 0 ) , -1 / 0 ) ).to.be.true
-    expect( is.not.equal( new Number( 0 ) , new Number( new Number( 0 ) ) ) ).to.be.false
-    expect( is.not.equal( new Number( 0 ) , new Number( new Number( 0 ) / 0 ) ) ).to.be.true
+    expect( is.not.equal( new Number( 0 ) , new Number( 0 ) ) ).to.be.true
+    expect( is.not.equal( new Number( 0 ) , new Number( 0 ) / 0 ) ).to.be.true
     expect( is.not.equal( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( new Number( 0 ) , '' ) ).to.be.true
@@ -793,11 +793,11 @@ describe( 'bundle:equality' , function () {
     expect( is.not.equal( new Number( 0 / 0 ) , null ) ).to.be.true
     expect( is.not.equal( new Number( 0 / 0 ) , void 0 ) ).to.be.true
     expect( is.not.equal( new Number( 0 / 0 ) , 0 ) ).to.be.true
-    expect( is.not.equal( new Number( 0 / 0 ) , 0 / 0 ) ).to.be.false
+    expect( is.not.equal( new Number( 0 / 0 ) , 0 / 0 ) ).to.be.true
     expect( is.not.equal( new Number( 0 / 0 ) , +1 / 0 ) ).to.be.true
     expect( is.not.equal( new Number( 0 / 0 ) , -1 / 0 ) ).to.be.true
     expect( is.not.equal( new Number( 0 / 0 ) , new Number( 0 ) ) ).to.be.true
-    expect( is.not.equal( new Number( 0 / 0 ) , new Number( 0 / 0 ) ) ).to.be.false
+    expect( is.not.equal( new Number( 0 / 0 ) , new Number( 0 / 0 ) ) ).to.be.true
     expect( is.not.equal( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( new Number( 0 / 0 ) , '' ) ).to.be.true
@@ -829,7 +829,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.equal( '' , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( '' , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( '' , '' ) ).to.be.false
-    expect( is.not.equal( '' , new String( '' ) ) ).to.be.false
+    expect( is.not.equal( '' , new String( '' ) ) ).to.be.true
     expect( is.not.equal( '' , true ) ).to.be.true
     expect( is.not.equal( '' , false ) ).to.be.true
     expect( is.not.equal( '' , new Boolean( true ) ) ).to.be.true
@@ -856,8 +856,8 @@ describe( 'bundle:equality' , function () {
     expect( is.not.equal( new String( '' ) , new Number( 0 / 0 ) ) ).to.be.true
     expect( is.not.equal( new String( '' ) , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( new String( '' ) , new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.not.equal( new String( '' ) , '' ) ).to.be.false
-    expect( is.not.equal( new String( '' ) , new String( '' ) ) ).to.be.false
+    expect( is.not.equal( new String( '' ) , '' ) ).to.be.true
+    expect( is.not.equal( new String( '' ) , new String( '' ) ) ).to.be.true
     expect( is.not.equal( new String( '' ) , true ) ).to.be.true
     expect( is.not.equal( new String( '' ) , false ) ).to.be.true
     expect( is.not.equal( new String( '' ) , new Boolean( true ) ) ).to.be.true
@@ -888,7 +888,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.equal( true , new String( '' ) ) ).to.be.true
     expect( is.not.equal( true , true ) ).to.be.false
     expect( is.not.equal( true , false ) ).to.be.true
-    expect( is.not.equal( true , new Boolean( true ) ) ).to.be.false
+    expect( is.not.equal( true , new Boolean( true ) ) ).to.be.true
     expect( is.not.equal( true , new Boolean( false ) ) ).to.be.true
     expect( is.not.equal( true , {} ) ).to.be.true
     expect( is.not.equal( true , { foo : 0 } ) ).to.be.true
@@ -917,7 +917,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.equal( false , true ) ).to.be.true
     expect( is.not.equal( false , false ) ).to.be.false
     expect( is.not.equal( false , new Boolean( true ) ) ).to.be.true
-    expect( is.not.equal( false , new Boolean( false ) ) ).to.be.false
+    expect( is.not.equal( false , new Boolean( false ) ) ).to.be.true
     expect( is.not.equal( false , {} ) ).to.be.true
     expect( is.not.equal( false , { foo : 0 } ) ).to.be.true
     expect( is.not.equal( false , { foo : [ 0 , { bar : { baz : 1 } } ] , qux : 2 } ) ).to.be.true
@@ -942,9 +942,9 @@ describe( 'bundle:equality' , function () {
     expect( is.not.equal( new Boolean( true ) , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.equal( new Boolean( true ) , '' ) ).to.be.true
     expect( is.not.equal( new Boolean( true ) , new String( '' ) ) ).to.be.true
-    expect( is.not.equal( new Boolean( true ) , true ) ).to.be.false
+    expect( is.not.equal( new Boolean( true ) , true ) ).to.be.true
     expect( is.not.equal( new Boolean( true ) , false ) ).to.be.true
-    expect( is.not.equal( new Boolean( true ) , new Boolean( true ) ) ).to.be.false
+    expect( is.not.equal( new Boolean( true ) , new Boolean( true ) ) ).to.be.true
     expect( is.not.equal( new Boolean( true ) , new Boolean( false ) ) ).to.be.true
     expect( is.not.equal( new Boolean( true ) , {} ) ).to.be.true
     expect( is.not.equal( new Boolean( true ) , { foo : 0 } ) ).to.be.true
@@ -971,9 +971,9 @@ describe( 'bundle:equality' , function () {
     expect( is.not.equal( new Boolean( false ) , '' ) ).to.be.true
     expect( is.not.equal( new Boolean( false ) , new String( '' ) ) ).to.be.true
     expect( is.not.equal( new Boolean( false ) , true ) ).to.be.true
-    expect( is.not.equal( new Boolean( false ) , false ) ).to.be.false
+    expect( is.not.equal( new Boolean( false ) , false ) ).to.be.true
     expect( is.not.equal( new Boolean( false ) , new Boolean( true ) ) ).to.be.true
-    expect( is.not.equal( new Boolean( false ) , new Boolean( false ) ) ).to.be.false
+    expect( is.not.equal( new Boolean( false ) , new Boolean( false ) ) ).to.be.true
     expect( is.not.equal( new Boolean( false ) , {} ) ).to.be.true
     expect( is.not.equal( new Boolean( false ) , { foo : 0 } ) ).to.be.true
     expect( is.not.equal( new Boolean( false ) , { foo : [ 0 , { bar : { baz : 1 } } ] , qux : 2 } ) ).to.be.true
@@ -1360,7 +1360,7 @@ describe( 'bundle:equality' , function () {
     expect( is.deepEqual( 0 , 0 / 0 ) ).to.be.false
     expect( is.deepEqual( 0 , +1 / 0 ) ).to.be.false
     expect( is.deepEqual( 0 , -1 / 0 ) ).to.be.false
-    expect( is.deepEqual( 0 , new Number( 0 ) ) ).to.be.true
+    expect( is.deepEqual( 0 , new Number( 0 ) ) ).to.be.false
     expect( is.deepEqual( 0 , new Number( 0 / 0 ) ) ).to.be.false
     expect( is.deepEqual( 0 , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.deepEqual( 0 , new Number( +1 / 0 ) ) ).to.be.false
@@ -1389,7 +1389,7 @@ describe( 'bundle:equality' , function () {
     expect( is.deepEqual( 0 / 0 , +1 / 0 ) ).to.be.false
     expect( is.deepEqual( 0 / 0 , -1 / 0 ) ).to.be.false
     expect( is.deepEqual( 0 / 0 , new Number( 0 ) ) ).to.be.false
-    expect( is.deepEqual( 0 / 0 , new Number( 0 / 0 ) ) ).to.be.true
+    expect( is.deepEqual( 0 / 0 , new Number( 0 / 0 ) ) ).to.be.false
     expect( is.deepEqual( 0 / 0 , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.deepEqual( 0 / 0 , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.deepEqual( 0 / 0 , '' ) ).to.be.false
@@ -1412,14 +1412,14 @@ describe( 'bundle:equality' , function () {
 
     expect( is.deepEqual( new Number( 0 ) , null ) ).to.be.false
     expect( is.deepEqual( new Number( 0 ) , void 0 ) ).to.be.false
-    expect( is.deepEqual( new Number( 0 ) , 0 ) ).to.be.true
+    expect( is.deepEqual( new Number( 0 ) , 0 ) ).to.be.false
     expect( is.deepEqual( new Number( 0 ) , 0 / 0 ) ).to.be.false
     expect( is.deepEqual( new Number( 0 ) , +1 / 0 ) ).to.be.false
     expect( is.deepEqual( new Number( 0 ) , -1 / 0 ) ).to.be.false
-    expect( is.deepEqual( new Number( 0 ) , new Number( new Number( 0 ) ) ) ).to.be.true
-    expect( is.deepEqual( new Number( 0 ) , new Number( new Number( 0 ) / 0 ) ) ).to.be.false
-    expect( is.deepEqual( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.deepEqual( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.false
+    expect( is.deepEqual( new Number( 0 ) , new Number( 0 ) ) ).to.be.true
+    expect( is.deepEqual( new Number( 0 ) , new Number( 0 / 0 ) ) ).to.be.true
+    expect( is.deepEqual( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.true
+    expect( is.deepEqual( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.deepEqual( new Number( 0 ) , '' ) ).to.be.false
     expect( is.deepEqual( new Number( 0 ) , new String( '' ) ) ).to.be.false
     expect( is.deepEqual( new Number( 0 ) , true ) ).to.be.false
@@ -1441,13 +1441,13 @@ describe( 'bundle:equality' , function () {
     expect( is.deepEqual( new Number( 0 / 0 ) , null ) ).to.be.false
     expect( is.deepEqual( new Number( 0 / 0 ) , void 0 ) ).to.be.false
     expect( is.deepEqual( new Number( 0 / 0 ) , 0 ) ).to.be.false
-    expect( is.deepEqual( new Number( 0 / 0 ) , 0 / 0 ) ).to.be.true
+    expect( is.deepEqual( new Number( 0 / 0 ) , 0 / 0 ) ).to.be.false
     expect( is.deepEqual( new Number( 0 / 0 ) , +1 / 0 ) ).to.be.false
     expect( is.deepEqual( new Number( 0 / 0 ) , -1 / 0 ) ).to.be.false
-    expect( is.deepEqual( new Number( 0 / 0 ) , new Number( 0 ) ) ).to.be.false
+    expect( is.deepEqual( new Number( 0 / 0 ) , new Number( 0 ) ) ).to.be.true
     expect( is.deepEqual( new Number( 0 / 0 ) , new Number( 0 / 0 ) ) ).to.be.true
-    expect( is.deepEqual( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.deepEqual( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.false
+    expect( is.deepEqual( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.true
+    expect( is.deepEqual( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.deepEqual( new Number( 0 / 0 ) , '' ) ).to.be.false
     expect( is.deepEqual( new Number( 0 / 0 ) , new String( '' ) ) ).to.be.false
     expect( is.deepEqual( new Number( 0 / 0 ) , true ) ).to.be.false
@@ -1477,7 +1477,7 @@ describe( 'bundle:equality' , function () {
     expect( is.deepEqual( '' , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.deepEqual( '' , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.deepEqual( '' , '' ) ).to.be.true
-    expect( is.deepEqual( '' , new String( '' ) ) ).to.be.true
+    expect( is.deepEqual( '' , new String( '' ) ) ).to.be.false
     expect( is.deepEqual( '' , true ) ).to.be.false
     expect( is.deepEqual( '' , false ) ).to.be.false
     expect( is.deepEqual( '' , new Boolean( true ) ) ).to.be.false
@@ -1504,7 +1504,7 @@ describe( 'bundle:equality' , function () {
     expect( is.deepEqual( new String( '' ) , new Number( 0 / 0 ) ) ).to.be.false
     expect( is.deepEqual( new String( '' ) , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.deepEqual( new String( '' ) , new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.deepEqual( new String( '' ) , '' ) ).to.be.true
+    expect( is.deepEqual( new String( '' ) , '' ) ).to.be.false
     expect( is.deepEqual( new String( '' ) , new String( '' ) ) ).to.be.true
     expect( is.deepEqual( new String( '' ) , true ) ).to.be.false
     expect( is.deepEqual( new String( '' ) , false ) ).to.be.false
@@ -1536,7 +1536,7 @@ describe( 'bundle:equality' , function () {
     expect( is.deepEqual( true , new String( '' ) ) ).to.be.false
     expect( is.deepEqual( true , true ) ).to.be.true
     expect( is.deepEqual( true , false ) ).to.be.false
-    expect( is.deepEqual( true , new Boolean( true ) ) ).to.be.true
+    expect( is.deepEqual( true , new Boolean( true ) ) ).to.be.false
     expect( is.deepEqual( true , new Boolean( false ) ) ).to.be.false
     expect( is.deepEqual( true , {} ) ).to.be.false
     expect( is.deepEqual( true , { foo : 0 } ) ).to.be.false
@@ -1565,7 +1565,7 @@ describe( 'bundle:equality' , function () {
     expect( is.deepEqual( false , true ) ).to.be.false
     expect( is.deepEqual( false , false ) ).to.be.true
     expect( is.deepEqual( false , new Boolean( true ) ) ).to.be.false
-    expect( is.deepEqual( false , new Boolean( false ) ) ).to.be.true
+    expect( is.deepEqual( false , new Boolean( false ) ) ).to.be.false
     expect( is.deepEqual( false , {} ) ).to.be.false
     expect( is.deepEqual( false , { foo : 0 } ) ).to.be.false
     expect( is.deepEqual( false , { foo : [ 0 , { bar : { baz : 1 } } ] , qux : 2 } ) ).to.be.false
@@ -1590,10 +1590,10 @@ describe( 'bundle:equality' , function () {
     expect( is.deepEqual( new Boolean( true ) , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.deepEqual( new Boolean( true ) , '' ) ).to.be.false
     expect( is.deepEqual( new Boolean( true ) , new String( '' ) ) ).to.be.false
-    expect( is.deepEqual( new Boolean( true ) , true ) ).to.be.true
+    expect( is.deepEqual( new Boolean( true ) , true ) ).to.be.false
     expect( is.deepEqual( new Boolean( true ) , false ) ).to.be.false
     expect( is.deepEqual( new Boolean( true ) , new Boolean( true ) ) ).to.be.true
-    expect( is.deepEqual( new Boolean( true ) , new Boolean( false ) ) ).to.be.false
+    expect( is.deepEqual( new Boolean( true ) , new Boolean( false ) ) ).to.be.true
     expect( is.deepEqual( new Boolean( true ) , {} ) ).to.be.false
     expect( is.deepEqual( new Boolean( true ) , { foo : 0 } ) ).to.be.false
     expect( is.deepEqual( new Boolean( true ) , { foo : [ 0 , { bar : { baz : 1 } } ] , qux : 2 } ) ).to.be.false
@@ -1619,8 +1619,8 @@ describe( 'bundle:equality' , function () {
     expect( is.deepEqual( new Boolean( false ) , '' ) ).to.be.false
     expect( is.deepEqual( new Boolean( false ) , new String( '' ) ) ).to.be.false
     expect( is.deepEqual( new Boolean( false ) , true ) ).to.be.false
-    expect( is.deepEqual( new Boolean( false ) , false ) ).to.be.true
-    expect( is.deepEqual( new Boolean( false ) , new Boolean( true ) ) ).to.be.false
+    expect( is.deepEqual( new Boolean( false ) , false ) ).to.be.false
+    expect( is.deepEqual( new Boolean( false ) , new Boolean( true ) ) ).to.be.true
     expect( is.deepEqual( new Boolean( false ) , new Boolean( false ) ) ).to.be.true
     expect( is.deepEqual( new Boolean( false ) , {} ) ).to.be.false
     expect( is.deepEqual( new Boolean( false ) , { foo : 0 } ) ).to.be.false
@@ -2004,7 +2004,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.deepEqual( 0 , 0 / 0 ) ).to.be.true
     expect( is.not.deepEqual( 0 , +1 / 0 ) ).to.be.true
     expect( is.not.deepEqual( 0 , -1 / 0 ) ).to.be.true
-    expect( is.not.deepEqual( 0 , new Number( 0 ) ) ).to.be.false
+    expect( is.not.deepEqual( 0 , new Number( 0 ) ) ).to.be.true
     expect( is.not.deepEqual( 0 , new Number( 0 / 0 ) ) ).to.be.true
     expect( is.not.deepEqual( 0 , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.deepEqual( 0 , new Number( +1 / 0 ) ) ).to.be.true
@@ -2033,7 +2033,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.deepEqual( 0 / 0 , +1 / 0 ) ).to.be.true
     expect( is.not.deepEqual( 0 / 0 , -1 / 0 ) ).to.be.true
     expect( is.not.deepEqual( 0 / 0 , new Number( 0 ) ) ).to.be.true
-    expect( is.not.deepEqual( 0 / 0 , new Number( 0 / 0 ) ) ).to.be.false
+    expect( is.not.deepEqual( 0 / 0 , new Number( 0 / 0 ) ) ).to.be.true
     expect( is.not.deepEqual( 0 / 0 , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.deepEqual( 0 / 0 , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.deepEqual( 0 / 0 , '' ) ).to.be.true
@@ -2056,14 +2056,14 @@ describe( 'bundle:equality' , function () {
 
     expect( is.not.deepEqual( new Number( 0 ) , null ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 ) , void 0 ) ).to.be.true
-    expect( is.not.deepEqual( new Number( 0 ) , 0 ) ).to.be.false
+    expect( is.not.deepEqual( new Number( 0 ) , 0 ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 ) , 0 / 0 ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 ) , +1 / 0 ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 ) , -1 / 0 ) ).to.be.true
-    expect( is.not.deepEqual( new Number( 0 ) , new Number( new Number( 0 ) ) ) ).to.be.false
-    expect( is.not.deepEqual( new Number( 0 ) , new Number( new Number( 0 ) / 0 ) ) ).to.be.true
-    expect( is.not.deepEqual( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.not.deepEqual( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.true
+    expect( is.not.deepEqual( new Number( 0 ) , new Number( 0 ) ) ).to.be.false
+    expect( is.not.deepEqual( new Number( 0 ) , new Number( 0 / 0 ) ) ).to.be.false
+    expect( is.not.deepEqual( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.false
+    expect( is.not.deepEqual( new Number( 0 ) , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.not.deepEqual( new Number( 0 ) , '' ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 ) , new String( '' ) ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 ) , true ) ).to.be.true
@@ -2085,13 +2085,13 @@ describe( 'bundle:equality' , function () {
     expect( is.not.deepEqual( new Number( 0 / 0 ) , null ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 / 0 ) , void 0 ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 / 0 ) , 0 ) ).to.be.true
-    expect( is.not.deepEqual( new Number( 0 / 0 ) , 0 / 0 ) ).to.be.false
+    expect( is.not.deepEqual( new Number( 0 / 0 ) , 0 / 0 ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 / 0 ) , +1 / 0 ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 / 0 ) , -1 / 0 ) ).to.be.true
-    expect( is.not.deepEqual( new Number( 0 / 0 ) , new Number( 0 ) ) ).to.be.true
+    expect( is.not.deepEqual( new Number( 0 / 0 ) , new Number( 0 ) ) ).to.be.false
     expect( is.not.deepEqual( new Number( 0 / 0 ) , new Number( 0 / 0 ) ) ).to.be.false
-    expect( is.not.deepEqual( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.not.deepEqual( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.true
+    expect( is.not.deepEqual( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.false
+    expect( is.not.deepEqual( new Number( 0 / 0 ) , new Number( +1 / 0 ) ) ).to.be.false
     expect( is.not.deepEqual( new Number( 0 / 0 ) , '' ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 / 0 ) , new String( '' ) ) ).to.be.true
     expect( is.not.deepEqual( new Number( 0 / 0 ) , true ) ).to.be.true
@@ -2121,7 +2121,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.deepEqual( '' , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.deepEqual( '' , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.deepEqual( '' , '' ) ).to.be.false
-    expect( is.not.deepEqual( '' , new String( '' ) ) ).to.be.false
+    expect( is.not.deepEqual( '' , new String( '' ) ) ).to.be.true
     expect( is.not.deepEqual( '' , true ) ).to.be.true
     expect( is.not.deepEqual( '' , false ) ).to.be.true
     expect( is.not.deepEqual( '' , new Boolean( true ) ) ).to.be.true
@@ -2148,7 +2148,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.deepEqual( new String( '' ) , new Number( 0 / 0 ) ) ).to.be.true
     expect( is.not.deepEqual( new String( '' ) , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.deepEqual( new String( '' ) , new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.not.deepEqual( new String( '' ) , '' ) ).to.be.false
+    expect( is.not.deepEqual( new String( '' ) , '' ) ).to.be.true
     expect( is.not.deepEqual( new String( '' ) , new String( '' ) ) ).to.be.false
     expect( is.not.deepEqual( new String( '' ) , true ) ).to.be.true
     expect( is.not.deepEqual( new String( '' ) , false ) ).to.be.true
@@ -2180,7 +2180,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.deepEqual( true , new String( '' ) ) ).to.be.true
     expect( is.not.deepEqual( true , true ) ).to.be.false
     expect( is.not.deepEqual( true , false ) ).to.be.true
-    expect( is.not.deepEqual( true , new Boolean( true ) ) ).to.be.false
+    expect( is.not.deepEqual( true , new Boolean( true ) ) ).to.be.true
     expect( is.not.deepEqual( true , new Boolean( false ) ) ).to.be.true
     expect( is.not.deepEqual( true , {} ) ).to.be.true
     expect( is.not.deepEqual( true , { foo : 0 } ) ).to.be.true
@@ -2209,7 +2209,7 @@ describe( 'bundle:equality' , function () {
     expect( is.not.deepEqual( false , true ) ).to.be.true
     expect( is.not.deepEqual( false , false ) ).to.be.false
     expect( is.not.deepEqual( false , new Boolean( true ) ) ).to.be.true
-    expect( is.not.deepEqual( false , new Boolean( false ) ) ).to.be.false
+    expect( is.not.deepEqual( false , new Boolean( false ) ) ).to.be.true
     expect( is.not.deepEqual( false , {} ) ).to.be.true
     expect( is.not.deepEqual( false , { foo : 0 } ) ).to.be.true
     expect( is.not.deepEqual( false , { foo : [ 0 , { bar : { baz : 1 } } ] , qux : 2 } ) ).to.be.true
@@ -2234,10 +2234,10 @@ describe( 'bundle:equality' , function () {
     expect( is.not.deepEqual( new Boolean( true ) , new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.deepEqual( new Boolean( true ) , '' ) ).to.be.true
     expect( is.not.deepEqual( new Boolean( true ) , new String( '' ) ) ).to.be.true
-    expect( is.not.deepEqual( new Boolean( true ) , true ) ).to.be.false
+    expect( is.not.deepEqual( new Boolean( true ) , true ) ).to.be.true
     expect( is.not.deepEqual( new Boolean( true ) , false ) ).to.be.true
     expect( is.not.deepEqual( new Boolean( true ) , new Boolean( true ) ) ).to.be.false
-    expect( is.not.deepEqual( new Boolean( true ) , new Boolean( false ) ) ).to.be.true
+    expect( is.not.deepEqual( new Boolean( true ) , new Boolean( false ) ) ).to.be.false
     expect( is.not.deepEqual( new Boolean( true ) , {} ) ).to.be.true
     expect( is.not.deepEqual( new Boolean( true ) , { foo : 0 } ) ).to.be.true
     expect( is.not.deepEqual( new Boolean( true ) , { foo : [ 0 , { bar : { baz : 1 } } ] , qux : 2 } ) ).to.be.true
@@ -2263,8 +2263,8 @@ describe( 'bundle:equality' , function () {
     expect( is.not.deepEqual( new Boolean( false ) , '' ) ).to.be.true
     expect( is.not.deepEqual( new Boolean( false ) , new String( '' ) ) ).to.be.true
     expect( is.not.deepEqual( new Boolean( false ) , true ) ).to.be.true
-    expect( is.not.deepEqual( new Boolean( false ) , false ) ).to.be.false
-    expect( is.not.deepEqual( new Boolean( false ) , new Boolean( true ) ) ).to.be.true
+    expect( is.not.deepEqual( new Boolean( false ) , false ) ).to.be.true
+    expect( is.not.deepEqual( new Boolean( false ) , new Boolean( true ) ) ).to.be.false
     expect( is.not.deepEqual( new Boolean( false ) , new Boolean( false ) ) ).to.be.false
     expect( is.not.deepEqual( new Boolean( false ) , {} ) ).to.be.true
     expect( is.not.deepEqual( new Boolean( false ) , { foo : 0 } ) ).to.be.true

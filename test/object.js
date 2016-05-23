@@ -12,16 +12,16 @@ describe( 'bundle:object' , function () {
     expect( is.object( 0 / 0 ) ).to.be.false
     expect( is.object( +1 / 0 ) ).to.be.false
     expect( is.object( -1 / 0 ) ).to.be.false
-    expect( is.object( new Number( 0 ) ) ).to.be.false
-    expect( is.object( new Number( 0 / 0 ) ) ).to.be.false
-    expect( is.object( new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.object( new Number( -1 / 0 ) ) ).to.be.false
+    expect( is.object( new Number( 0 ) ) ).to.be.true
+    expect( is.object( new Number( 0 / 0 ) ) ).to.be.true
+    expect( is.object( new Number( +1 / 0 ) ) ).to.be.true
+    expect( is.object( new Number( -1 / 0 ) ) ).to.be.true
     expect( is.object( '' ) ).to.be.false
-    expect( is.object( new String( '' ) ) ).to.be.false
+    expect( is.object( new String( '' ) ) ).to.be.true
     expect( is.object( true ) ).to.be.false
     expect( is.object( false ) ).to.be.false
-    expect( is.object( new Boolean( true ) ) ).to.be.false
-    expect( is.object( new Boolean( false ) ) ).to.be.false
+    expect( is.object( new Boolean( true ) ) ).to.be.true
+    expect( is.object( new Boolean( false ) ) ).to.be.true
     expect( is.object( {} ) ).to.be.true
     expect( is.object( [] ) ).to.be.true
     expect( is.object( arguments ) ).to.be.true
@@ -36,16 +36,16 @@ describe( 'bundle:object' , function () {
     expect( is.not.object( 0 / 0 ) ).to.be.true
     expect( is.not.object( +1 / 0 ) ).to.be.true
     expect( is.not.object( -1 / 0 ) ).to.be.true
-    expect( is.not.object( new Number( 0 ) ) ).to.be.true
-    expect( is.not.object( new Number( 0 / 0 ) ) ).to.be.true
-    expect( is.not.object( new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.not.object( new Number( -1 / 0 ) ) ).to.be.true
+    expect( is.not.object( new Number( 0 ) ) ).to.be.false
+    expect( is.not.object( new Number( 0 / 0 ) ) ).to.be.false
+    expect( is.not.object( new Number( +1 / 0 ) ) ).to.be.false
+    expect( is.not.object( new Number( -1 / 0 ) ) ).to.be.false
     expect( is.not.object( '' ) ).to.be.true
-    expect( is.not.object( new String( '' ) ) ).to.be.true
+    expect( is.not.object( new String( '' ) ) ).to.be.false
     expect( is.not.object( true ) ).to.be.true
     expect( is.not.object( false ) ).to.be.true
-    expect( is.not.object( new Boolean( true ) ) ).to.be.true
-    expect( is.not.object( new Boolean( false ) ) ).to.be.true
+    expect( is.not.object( new Boolean( true ) ) ).to.be.false
+    expect( is.not.object( new Boolean( false ) ) ).to.be.false
     expect( is.not.object( {} ) ).to.be.false
     expect( is.not.object( [] ) ).to.be.false
     expect( is.not.object( arguments ) ).to.be.false
@@ -64,16 +64,16 @@ describe( 'bundle:object' , function () {
     expect( is.emptyObject( 0 / 0 ) ).to.be.false
     expect( is.emptyObject( +1 / 0 ) ).to.be.false
     expect( is.emptyObject( -1 / 0 ) ).to.be.false
-    expect( is.emptyObject( new Number( 0 ) ) ).to.be.false
-    expect( is.emptyObject( new Number( 0 / 0 ) ) ).to.be.false
-    expect( is.emptyObject( new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.emptyObject( new Number( -1 / 0 ) ) ).to.be.false
+    expect( is.emptyObject( new Number( 0 ) ) ).to.be.true
+    expect( is.emptyObject( new Number( 0 / 0 ) ) ).to.be.true
+    expect( is.emptyObject( new Number( +1 / 0 ) ) ).to.be.true
+    expect( is.emptyObject( new Number( -1 / 0 ) ) ).to.be.true
     expect( is.emptyObject( '' ) ).to.be.false
-    expect( is.emptyObject( new String( '' ) ) ).to.be.false
+    expect( is.emptyObject( new String( '' ) ) ).to.be.true
     expect( is.emptyObject( true ) ).to.be.false
     expect( is.emptyObject( false ) ).to.be.false
-    expect( is.emptyObject( new Boolean( true ) ) ).to.be.false
-    expect( is.emptyObject( new Boolean( false ) ) ).to.be.false
+    expect( is.emptyObject( new Boolean( true ) ) ).to.be.true
+    expect( is.emptyObject( new Boolean( false ) ) ).to.be.true
     expect( is.emptyObject( {} ) ).to.be.true
     expect( is.emptyObject( Object.create( {} ) ) ).to.be.true
     expect( is.emptyObject( { foo : 0 } ) ).to.be.false
@@ -90,16 +90,16 @@ describe( 'bundle:object' , function () {
     expect( is.not.emptyObject( 0 / 0 ) ).to.be.true
     expect( is.not.emptyObject( +1 / 0 ) ).to.be.true
     expect( is.not.emptyObject( -1 / 0 ) ).to.be.true
-    expect( is.not.emptyObject( new Number( 0 ) ) ).to.be.true
-    expect( is.not.emptyObject( new Number( 0 / 0 ) ) ).to.be.true
-    expect( is.not.emptyObject( new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.not.emptyObject( new Number( -1 / 0 ) ) ).to.be.true
+    expect( is.not.emptyObject( new Number( 0 ) ) ).to.be.false
+    expect( is.not.emptyObject( new Number( 0 / 0 ) ) ).to.be.false
+    expect( is.not.emptyObject( new Number( +1 / 0 ) ) ).to.be.false
+    expect( is.not.emptyObject( new Number( -1 / 0 ) ) ).to.be.false
     expect( is.not.emptyObject( '' ) ).to.be.true
-    expect( is.not.emptyObject( new String( '' ) ) ).to.be.true
+    expect( is.not.emptyObject( new String( '' ) ) ).to.be.false
     expect( is.not.emptyObject( true ) ).to.be.true
     expect( is.not.emptyObject( false ) ).to.be.true
-    expect( is.not.emptyObject( new Boolean( true ) ) ).to.be.true
-    expect( is.not.emptyObject( new Boolean( false ) ) ).to.be.true
+    expect( is.not.emptyObject( new Boolean( true ) ) ).to.be.false
+    expect( is.not.emptyObject( new Boolean( false ) ) ).to.be.false
     expect( is.not.emptyObject( {} ) ).to.be.false
     expect( is.not.emptyObject( Object.create( {} ) ) ).to.be.false
     expect( is.not.emptyObject( { foo : 0 } ) ).to.be.true

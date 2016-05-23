@@ -43,7 +43,7 @@ describe( 'bundle:type' , function () {
     expect( is.sameType( 0 , null ) ).to.be.false
     expect( is.sameType( 0 , void 0 ) ).to.be.false
     expect( is.sameType( 0 , 0 ) ).to.be.true
-    expect( is.sameType( 0 , new Number() ) ).to.be.true
+    expect( is.sameType( 0 , new Number() ) ).to.be.false
     expect( is.sameType( 0 , '' ) ).to.be.false
     expect( is.sameType( 0 , new String() ) ).to.be.false
     expect( is.sameType( 0 , true ) ).to.be.false
@@ -59,7 +59,7 @@ describe( 'bundle:type' , function () {
 
     expect( is.sameType( new Number() , null ) ).to.be.false
     expect( is.sameType( new Number() , void 0 ) ).to.be.false
-    expect( is.sameType( new Number() , 0 ) ).to.be.true
+    expect( is.sameType( new Number() , 0 ) ).to.be.false
     expect( is.sameType( new Number() , new Number() ) ).to.be.true
     expect( is.sameType( new Number() , '' ) ).to.be.false
     expect( is.sameType( new Number() , new String() ) ).to.be.false
@@ -79,7 +79,7 @@ describe( 'bundle:type' , function () {
     expect( is.sameType( '' , 0 ) ).to.be.false
     expect( is.sameType( '' , new Number() ) ).to.be.false
     expect( is.sameType( '' , '' ) ).to.be.true
-    expect( is.sameType( '' , new String() ) ).to.be.true
+    expect( is.sameType( '' , new String() ) ).to.be.false
     expect( is.sameType( '' , true ) ).to.be.false
     expect( is.sameType( '' , false ) ).to.be.false
     expect( is.sameType( '' , new Boolean() ) ).to.be.false
@@ -95,7 +95,7 @@ describe( 'bundle:type' , function () {
     expect( is.sameType( new String() , void 0 ) ).to.be.false
     expect( is.sameType( new String() , 0 ) ).to.be.false
     expect( is.sameType( new String() , new Number() ) ).to.be.false
-    expect( is.sameType( new String() , '' ) ).to.be.true
+    expect( is.sameType( new String() , '' ) ).to.be.false
     expect( is.sameType( new String() , new String() ) ).to.be.true
     expect( is.sameType( new String() , true ) ).to.be.false
     expect( is.sameType( new String() , false ) ).to.be.false
@@ -116,7 +116,7 @@ describe( 'bundle:type' , function () {
     expect( is.sameType( true , new String() ) ).to.be.false
     expect( is.sameType( true , true ) ).to.be.true
     expect( is.sameType( true , false ) ).to.be.true
-    expect( is.sameType( true , new Boolean() ) ).to.be.true
+    expect( is.sameType( true , new Boolean() ) ).to.be.false
     expect( is.sameType( true , {} ) ).to.be.false
     expect( is.sameType( true , [] ) ).to.be.false
     expect( is.sameType( true , arguments ) ).to.be.false
@@ -131,8 +131,8 @@ describe( 'bundle:type' , function () {
     expect( is.sameType( new Boolean() , new Number() ) ).to.be.false
     expect( is.sameType( new Boolean() , '' ) ).to.be.false
     expect( is.sameType( new Boolean() , new String() ) ).to.be.false
-    expect( is.sameType( new Boolean() , true ) ).to.be.true
-    expect( is.sameType( new Boolean() , false ) ).to.be.true
+    expect( is.sameType( new Boolean() , true ) ).to.be.false
+    expect( is.sameType( new Boolean() , false ) ).to.be.false
     expect( is.sameType( new Boolean() , new Boolean() ) ).to.be.true
     expect( is.sameType( new Boolean() , {} ) ).to.be.false
     expect( is.sameType( new Boolean() , [] ) ).to.be.false
@@ -298,7 +298,7 @@ describe( 'bundle:type' , function () {
     expect( is.not.sameType( 0 , null ) ).to.be.true
     expect( is.not.sameType( 0 , void 0 ) ).to.be.true
     expect( is.not.sameType( 0 , 0 ) ).to.be.false
-    expect( is.not.sameType( 0 , new Number() ) ).to.be.false
+    expect( is.not.sameType( 0 , new Number() ) ).to.be.true
     expect( is.not.sameType( 0 , '' ) ).to.be.true
     expect( is.not.sameType( 0 , new String() ) ).to.be.true
     expect( is.not.sameType( 0 , true ) ).to.be.true
@@ -314,7 +314,7 @@ describe( 'bundle:type' , function () {
 
     expect( is.not.sameType( new Number() , null ) ).to.be.true
     expect( is.not.sameType( new Number() , void 0 ) ).to.be.true
-    expect( is.not.sameType( new Number() , 0 ) ).to.be.false
+    expect( is.not.sameType( new Number() , 0 ) ).to.be.true
     expect( is.not.sameType( new Number() , new Number() ) ).to.be.false
     expect( is.not.sameType( new Number() , '' ) ).to.be.true
     expect( is.not.sameType( new Number() , new String() ) ).to.be.true
@@ -334,7 +334,7 @@ describe( 'bundle:type' , function () {
     expect( is.not.sameType( '' , 0 ) ).to.be.true
     expect( is.not.sameType( '' , new Number() ) ).to.be.true
     expect( is.not.sameType( '' , '' ) ).to.be.false
-    expect( is.not.sameType( '' , new String() ) ).to.be.false
+    expect( is.not.sameType( '' , new String() ) ).to.be.true
     expect( is.not.sameType( '' , true ) ).to.be.true
     expect( is.not.sameType( '' , false ) ).to.be.true
     expect( is.not.sameType( '' , new Boolean() ) ).to.be.true
@@ -350,7 +350,7 @@ describe( 'bundle:type' , function () {
     expect( is.not.sameType( new String() , void 0 ) ).to.be.true
     expect( is.not.sameType( new String() , 0 ) ).to.be.true
     expect( is.not.sameType( new String() , new Number() ) ).to.be.true
-    expect( is.not.sameType( new String() , '' ) ).to.be.false
+    expect( is.not.sameType( new String() , '' ) ).to.be.true
     expect( is.not.sameType( new String() , new String() ) ).to.be.false
     expect( is.not.sameType( new String() , true ) ).to.be.true
     expect( is.not.sameType( new String() , false ) ).to.be.true
@@ -371,7 +371,7 @@ describe( 'bundle:type' , function () {
     expect( is.not.sameType( true , new String() ) ).to.be.true
     expect( is.not.sameType( true , true ) ).to.be.false
     expect( is.not.sameType( true , false ) ).to.be.false
-    expect( is.not.sameType( true , new Boolean() ) ).to.be.false
+    expect( is.not.sameType( true , new Boolean() ) ).to.be.true
     expect( is.not.sameType( true , {} ) ).to.be.true
     expect( is.not.sameType( true , [] ) ).to.be.true
     expect( is.not.sameType( true , arguments ) ).to.be.true
@@ -386,8 +386,8 @@ describe( 'bundle:type' , function () {
     expect( is.not.sameType( new Boolean() , new Number() ) ).to.be.true
     expect( is.not.sameType( new Boolean() , '' ) ).to.be.true
     expect( is.not.sameType( new Boolean() , new String() ) ).to.be.true
-    expect( is.not.sameType( new Boolean() , true ) ).to.be.false
-    expect( is.not.sameType( new Boolean() , false ) ).to.be.false
+    expect( is.not.sameType( new Boolean() , true ) ).to.be.true
+    expect( is.not.sameType( new Boolean() , false ) ).to.be.true
     expect( is.not.sameType( new Boolean() , new Boolean() ) ).to.be.false
     expect( is.not.sameType( new Boolean() , {} ) ).to.be.true
     expect( is.not.sameType( new Boolean() , [] ) ).to.be.true

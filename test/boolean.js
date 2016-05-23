@@ -24,8 +24,8 @@ describe( 'bundle:boolean' , function () {
     expect( is.boolean( new String( 'lipsum' ) ) ).to.be.false
     expect( is.boolean( true ) ).to.be.true
     expect( is.boolean( false ) ).to.be.true
-    expect( is.boolean( new Boolean( true ) ) ).to.be.true
-    expect( is.boolean( new Boolean( false ) ) ).to.be.true
+    expect( is.boolean( new Boolean( true ) ) ).to.be.false
+    expect( is.boolean( new Boolean( false ) ) ).to.be.false
     expect( is.boolean( {} ) ).to.be.false
     expect( is.boolean( [] ) ).to.be.false
     expect( is.boolean( arguments ) ).to.be.false
@@ -52,8 +52,8 @@ describe( 'bundle:boolean' , function () {
     expect( is.not.boolean( new String( 'lipsum' ) ) ).to.be.true
     expect( is.not.boolean( true ) ).to.be.false
     expect( is.not.boolean( false ) ).to.be.false
-    expect( is.not.boolean( new Boolean( true ) ) ).to.be.false
-    expect( is.not.boolean( new Boolean( false ) ) ).to.be.false
+    expect( is.not.boolean( new Boolean( true ) ) ).to.be.true
+    expect( is.not.boolean( new Boolean( false ) ) ).to.be.true
     expect( is.not.boolean( {} ) ).to.be.true
     expect( is.not.boolean( [] ) ).to.be.true
     expect( is.not.boolean( arguments ) ).to.be.true

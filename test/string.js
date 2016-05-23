@@ -17,7 +17,7 @@ describe( 'bundle:string' , function () {
     expect( is.string( new Number( +1 / 0 ) ) ).to.be.false
     expect( is.string( new Number( -1 / 0 ) ) ).to.be.false
     expect( is.string( '' ) ).to.be.true
-    expect( is.string( new String( '' ) ) ).to.be.true
+    expect( is.string( new String( '' ) ) ).to.be.false
     expect( is.string( true ) ).to.be.false
     expect( is.string( false ) ).to.be.false
     expect( is.string( new Boolean( true ) ) ).to.be.false
@@ -41,7 +41,7 @@ describe( 'bundle:string' , function () {
     expect( is.not.string( new Number( +1 / 0 ) ) ).to.be.true
     expect( is.not.string( new Number( -1 / 0 ) ) ).to.be.true
     expect( is.not.string( '' ) ).to.be.false
-    expect( is.not.string( new String( '' ) ) ).to.be.false
+    expect( is.not.string( new String( '' ) ) ).to.be.true
     expect( is.not.string( true ) ).to.be.true
     expect( is.not.string( false ) ).to.be.true
     expect( is.not.string( new Boolean( true ) ) ).to.be.true
@@ -74,11 +74,11 @@ describe( 'bundle:string' , function () {
     expect( is.emptyString( '\f\n\r\t\v' ) ).to.be.true
     expect( is.emptyString( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ).to.be.true
     expect( is.emptyString( 'lipsum' ) ).to.be.false
-    expect( is.emptyString( new String( '' ) ) ).to.be.true
-    expect( is.emptyString( new String( ' ' ) ) ).to.be.true
-    expect( is.emptyString( new String( '  ' ) ) ).to.be.true
-    expect( is.emptyString( new String( '\f\n\r\t\v' ) ) ).to.be.true
-    expect( is.emptyString( new String( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ) ).to.be.true
+    expect( is.emptyString( new String( '' ) ) ).to.be.false
+    expect( is.emptyString( new String( ' ' ) ) ).to.be.false
+    expect( is.emptyString( new String( '  ' ) ) ).to.be.false
+    expect( is.emptyString( new String( '\f\n\r\t\v' ) ) ).to.be.false
+    expect( is.emptyString( new String( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ) ).to.be.false
     expect( is.emptyString( new String( 'lipsum' ) ) ).to.be.false
     expect( is.emptyString( true ) ).to.be.false
     expect( is.emptyString( false ) ).to.be.false
@@ -108,11 +108,11 @@ describe( 'bundle:string' , function () {
     expect( is.not.emptyString( '\f\n\r\t\v' ) ).to.be.false
     expect( is.not.emptyString( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ).to.be.false
     expect( is.not.emptyString( 'lipsum' ) ).to.be.true
-    expect( is.not.emptyString( new String( '' ) ) ).to.be.false
-    expect( is.not.emptyString( new String( ' ' ) ) ).to.be.false
-    expect( is.not.emptyString( new String( '  ' ) ) ).to.be.false
-    expect( is.not.emptyString( new String( '\f\n\r\t\v' ) ) ).to.be.false
-    expect( is.not.emptyString( new String( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ) ).to.be.false
+    expect( is.not.emptyString( new String( '' ) ) ).to.be.true
+    expect( is.not.emptyString( new String( ' ' ) ) ).to.be.true
+    expect( is.not.emptyString( new String( '  ' ) ) ).to.be.true
+    expect( is.not.emptyString( new String( '\f\n\r\t\v' ) ) ).to.be.true
+    expect( is.not.emptyString( new String( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ) ).to.be.true
     expect( is.not.emptyString( new String( 'lipsum' ) ) ).to.be.true
     expect( is.not.emptyString( true ) ).to.be.true
     expect( is.not.emptyString( false ) ).to.be.true
