@@ -1,6 +1,6 @@
 # is.js
 
-A simple, robust and extensible predicate library.
+An extensible check library.
 
 ## Tutorial
 

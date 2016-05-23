@@ -1,7 +1,7 @@
 {
   "name": "@pwn/is",
   "author": "Pwn <hi@pwn.buzz>",
-  "description": "an extensible predicate library",
+  "description": "an extensible check library",
   "version": "1.0.0",
   "license": "MIT",
   "main": "lib/is.js",
