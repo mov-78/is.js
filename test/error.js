@@ -6,53 +6,53 @@ describe( 'bundle:error' , function () {
 
   it( 'is.error' , function () {
 
-    expect( is.error( null ) ).to.be.false
-    expect( is.error( void 0 ) ).to.be.false
-    expect( is.error( 0 ) ).to.be.false
-    expect( is.error( 0 / 0 ) ).to.be.false
-    expect( is.error( +1 / 0 ) ).to.be.false
-    expect( is.error( -1 / 0 ) ).to.be.false
-    expect( is.error( new Number( 0 ) ) ).to.be.false
-    expect( is.error( new Number( 0 / 0 ) ) ).to.be.false
-    expect( is.error( new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.error( new Number( -1 / 0 ) ) ).to.be.false
-    expect( is.error( '' ) ).to.be.false
-    expect( is.error( new String( '' ) ) ).to.be.false
-    expect( is.error( true ) ).to.be.false
-    expect( is.error( false ) ).to.be.false
-    expect( is.error( new Boolean( true ) ) ).to.be.false
-    expect( is.error( new Boolean( false ) ) ).to.be.false
-    expect( is.error( {} ) ).to.be.false
-    expect( is.error( [] ) ).to.be.false
-    expect( is.error( arguments ) ).to.be.false
-    expect( is.error( function () {} ) ).to.be.false
-    expect( is.error( new Date() ) ).to.be.false
-    expect( is.error( new Error() ) ).to.be.true
-    expect( is.error( /^/ ) ).to.be.false
+    expect( is.error( null ) ).to.not.be.ok()
+    expect( is.error( void 0 ) ).to.not.be.ok()
+    expect( is.error( 0 ) ).to.not.be.ok()
+    expect( is.error( 0 / 0 ) ).to.not.be.ok()
+    expect( is.error( +1 / 0 ) ).to.not.be.ok()
+    expect( is.error( -1 / 0 ) ).to.not.be.ok()
+    expect( is.error( new Number( 0 ) ) ).to.not.be.ok()
+    expect( is.error( new Number( 0 / 0 ) ) ).to.not.be.ok()
+    expect( is.error( new Number( +1 / 0 ) ) ).to.not.be.ok()
+    expect( is.error( new Number( -1 / 0 ) ) ).to.not.be.ok()
+    expect( is.error( '' ) ).to.not.be.ok()
+    expect( is.error( new String( '' ) ) ).to.not.be.ok()
+    expect( is.error( true ) ).to.not.be.ok()
+    expect( is.error( false ) ).to.not.be.ok()
+    expect( is.error( new Boolean( true ) ) ).to.not.be.ok()
+    expect( is.error( new Boolean( false ) ) ).to.not.be.ok()
+    expect( is.error( {} ) ).to.not.be.ok()
+    expect( is.error( [] ) ).to.not.be.ok()
+    expect( is.error( arguments ) ).to.not.be.ok()
+    expect( is.error( function () {} ) ).to.not.be.ok()
+    expect( is.error( new Date() ) ).to.not.be.ok()
+    expect( is.error( new Error() ) ).to.be.ok()
+    expect( is.error( /^/ ) ).to.not.be.ok()
 
-    expect( is.not.error( null ) ).to.be.true
-    expect( is.not.error( void 0 ) ).to.be.true
-    expect( is.not.error( 0 ) ).to.be.true
-    expect( is.not.error( 0 / 0 ) ).to.be.true
-    expect( is.not.error( +1 / 0 ) ).to.be.true
-    expect( is.not.error( -1 / 0 ) ).to.be.true
-    expect( is.not.error( new Number( 0 ) ) ).to.be.true
-    expect( is.not.error( new Number( 0 / 0 ) ) ).to.be.true
-    expect( is.not.error( new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.not.error( new Number( -1 / 0 ) ) ).to.be.true
-    expect( is.not.error( '' ) ).to.be.true
-    expect( is.not.error( new String( '' ) ) ).to.be.true
-    expect( is.not.error( true ) ).to.be.true
-    expect( is.not.error( false ) ).to.be.true
-    expect( is.not.error( new Boolean( true ) ) ).to.be.true
-    expect( is.not.error( new Boolean( false ) ) ).to.be.true
-    expect( is.not.error( {} ) ).to.be.true
-    expect( is.not.error( [] ) ).to.be.true
-    expect( is.not.error( arguments ) ).to.be.true
-    expect( is.not.error( function () {} ) ).to.be.true
-    expect( is.not.error( new Date() ) ).to.be.true
-    expect( is.not.error( new Error() ) ).to.be.false
-    expect( is.not.error( /^/ ) ).to.be.true
+    expect( is.not.error( null ) ).to.be.ok()
+    expect( is.not.error( void 0 ) ).to.be.ok()
+    expect( is.not.error( 0 ) ).to.be.ok()
+    expect( is.not.error( 0 / 0 ) ).to.be.ok()
+    expect( is.not.error( +1 / 0 ) ).to.be.ok()
+    expect( is.not.error( -1 / 0 ) ).to.be.ok()
+    expect( is.not.error( new Number( 0 ) ) ).to.be.ok()
+    expect( is.not.error( new Number( 0 / 0 ) ) ).to.be.ok()
+    expect( is.not.error( new Number( +1 / 0 ) ) ).to.be.ok()
+    expect( is.not.error( new Number( -1 / 0 ) ) ).to.be.ok()
+    expect( is.not.error( '' ) ).to.be.ok()
+    expect( is.not.error( new String( '' ) ) ).to.be.ok()
+    expect( is.not.error( true ) ).to.be.ok()
+    expect( is.not.error( false ) ).to.be.ok()
+    expect( is.not.error( new Boolean( true ) ) ).to.be.ok()
+    expect( is.not.error( new Boolean( false ) ) ).to.be.ok()
+    expect( is.not.error( {} ) ).to.be.ok()
+    expect( is.not.error( [] ) ).to.be.ok()
+    expect( is.not.error( arguments ) ).to.be.ok()
+    expect( is.not.error( function () {} ) ).to.be.ok()
+    expect( is.not.error( new Date() ) ).to.be.ok()
+    expect( is.not.error( new Error() ) ).to.not.be.ok()
+    expect( is.not.error( /^/ ) ).to.be.ok()
 
   } )
 

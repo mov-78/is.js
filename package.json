@@ -12,16 +12,16 @@
     "test": "karma start"
   },
   "devDependencies": {
-    "chai": "~3.5.0",
     "eslint": "~2.10.2",
     "eslint-config-pwn-es5": "~3.1.0",
+    "expect": "~1.20.1",
     "grunt": "~1.0.1",
     "grunt-contrib-uglify": "~1.0.1",
     "karma": "~0.13.22",
-    "karma-chai": "~0.1.0",
     "karma-chrome-launcher": "~1.0.1",
+    "karma-expect": "~1.1.2",
     "karma-mocha": "~1.0.1",
     "load-grunt-tasks": "~3.5.0",
-    "mocha": "~2.4.5"
+    "mocha": "~2.5.2"
   }
 }

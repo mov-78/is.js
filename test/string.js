@@ -6,125 +6,125 @@ describe( 'bundle:string' , function () {
 
   it( 'is.string' , function () {
 
-    expect( is.string( null ) ).to.be.false
-    expect( is.string( void 0 ) ).to.be.false
-    expect( is.string( 0 ) ).to.be.false
-    expect( is.string( 0 / 0 ) ).to.be.false
-    expect( is.string( +1 / 0 ) ).to.be.false
-    expect( is.string( -1 / 0 ) ).to.be.false
-    expect( is.string( new Number( 0 ) ) ).to.be.false
-    expect( is.string( new Number( 0 / 0 ) ) ).to.be.false
-    expect( is.string( new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.string( new Number( -1 / 0 ) ) ).to.be.false
-    expect( is.string( '' ) ).to.be.true
-    expect( is.string( new String( '' ) ) ).to.be.false
-    expect( is.string( true ) ).to.be.false
-    expect( is.string( false ) ).to.be.false
-    expect( is.string( new Boolean( true ) ) ).to.be.false
-    expect( is.string( new Boolean( false ) ) ).to.be.false
-    expect( is.string( {} ) ).to.be.false
-    expect( is.string( [] ) ).to.be.false
-    expect( is.string( arguments ) ).to.be.false
-    expect( is.string( function () {} ) ).to.be.false
-    expect( is.string( new Date() ) ).to.be.false
-    expect( is.string( new Error() ) ).to.be.false
-    expect( is.string( /^/ ) ).to.be.false
+    expect( is.string( null ) ).to.not.be.ok()
+    expect( is.string( void 0 ) ).to.not.be.ok()
+    expect( is.string( 0 ) ).to.not.be.ok()
+    expect( is.string( 0 / 0 ) ).to.not.be.ok()
+    expect( is.string( +1 / 0 ) ).to.not.be.ok()
+    expect( is.string( -1 / 0 ) ).to.not.be.ok()
+    expect( is.string( new Number( 0 ) ) ).to.not.be.ok()
+    expect( is.string( new Number( 0 / 0 ) ) ).to.not.be.ok()
+    expect( is.string( new Number( +1 / 0 ) ) ).to.not.be.ok()
+    expect( is.string( new Number( -1 / 0 ) ) ).to.not.be.ok()
+    expect( is.string( '' ) ).to.be.ok()
+    expect( is.string( new String( '' ) ) ).to.not.be.ok()
+    expect( is.string( true ) ).to.not.be.ok()
+    expect( is.string( false ) ).to.not.be.ok()
+    expect( is.string( new Boolean( true ) ) ).to.not.be.ok()
+    expect( is.string( new Boolean( false ) ) ).to.not.be.ok()
+    expect( is.string( {} ) ).to.not.be.ok()
+    expect( is.string( [] ) ).to.not.be.ok()
+    expect( is.string( arguments ) ).to.not.be.ok()
+    expect( is.string( function () {} ) ).to.not.be.ok()
+    expect( is.string( new Date() ) ).to.not.be.ok()
+    expect( is.string( new Error() ) ).to.not.be.ok()
+    expect( is.string( /^/ ) ).to.not.be.ok()
 
-    expect( is.not.string( null ) ).to.be.true
-    expect( is.not.string( void 0 ) ).to.be.true
-    expect( is.not.string( 0 ) ).to.be.true
-    expect( is.not.string( 0 / 0 ) ).to.be.true
-    expect( is.not.string( +1 / 0 ) ).to.be.true
-    expect( is.not.string( -1 / 0 ) ).to.be.true
-    expect( is.not.string( new Number( 0 ) ) ).to.be.true
-    expect( is.not.string( new Number( 0 / 0 ) ) ).to.be.true
-    expect( is.not.string( new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.not.string( new Number( -1 / 0 ) ) ).to.be.true
-    expect( is.not.string( '' ) ).to.be.false
-    expect( is.not.string( new String( '' ) ) ).to.be.true
-    expect( is.not.string( true ) ).to.be.true
-    expect( is.not.string( false ) ).to.be.true
-    expect( is.not.string( new Boolean( true ) ) ).to.be.true
-    expect( is.not.string( new Boolean( false ) ) ).to.be.true
-    expect( is.not.string( {} ) ).to.be.true
-    expect( is.not.string( [] ) ).to.be.true
-    expect( is.not.string( arguments ) ).to.be.true
-    expect( is.not.string( function () {} ) ).to.be.true
-    expect( is.not.string( new Date() ) ).to.be.true
-    expect( is.not.string( new Error() ) ).to.be.true
-    expect( is.not.string( /^/ ) ).to.be.true
+    expect( is.not.string( null ) ).to.be.ok()
+    expect( is.not.string( void 0 ) ).to.be.ok()
+    expect( is.not.string( 0 ) ).to.be.ok()
+    expect( is.not.string( 0 / 0 ) ).to.be.ok()
+    expect( is.not.string( +1 / 0 ) ).to.be.ok()
+    expect( is.not.string( -1 / 0 ) ).to.be.ok()
+    expect( is.not.string( new Number( 0 ) ) ).to.be.ok()
+    expect( is.not.string( new Number( 0 / 0 ) ) ).to.be.ok()
+    expect( is.not.string( new Number( +1 / 0 ) ) ).to.be.ok()
+    expect( is.not.string( new Number( -1 / 0 ) ) ).to.be.ok()
+    expect( is.not.string( '' ) ).to.not.be.ok()
+    expect( is.not.string( new String( '' ) ) ).to.be.ok()
+    expect( is.not.string( true ) ).to.be.ok()
+    expect( is.not.string( false ) ).to.be.ok()
+    expect( is.not.string( new Boolean( true ) ) ).to.be.ok()
+    expect( is.not.string( new Boolean( false ) ) ).to.be.ok()
+    expect( is.not.string( {} ) ).to.be.ok()
+    expect( is.not.string( [] ) ).to.be.ok()
+    expect( is.not.string( arguments ) ).to.be.ok()
+    expect( is.not.string( function () {} ) ).to.be.ok()
+    expect( is.not.string( new Date() ) ).to.be.ok()
+    expect( is.not.string( new Error() ) ).to.be.ok()
+    expect( is.not.string( /^/ ) ).to.be.ok()
 
   } )
 
   it( 'is.emptyString' , function () {
 
-    expect( is.emptyString( null ) ).to.be.false
-    expect( is.emptyString( void 0 ) ).to.be.false
-    expect( is.emptyString( 0 ) ).to.be.false
-    expect( is.emptyString( 0 / 0 ) ).to.be.false
-    expect( is.emptyString( +1 / 0 ) ).to.be.false
-    expect( is.emptyString( -1 / 0 ) ).to.be.false
-    expect( is.emptyString( new Number( 0 ) ) ).to.be.false
-    expect( is.emptyString( new Number( 0 / 0 ) ) ).to.be.false
-    expect( is.emptyString( new Number( +1 / 0 ) ) ).to.be.false
-    expect( is.emptyString( new Number( -1 / 0 ) ) ).to.be.false
-    expect( is.emptyString( '' ) ).to.be.true
-    expect( is.emptyString( ' ' ) ).to.be.true
-    expect( is.emptyString( '  ' ) ).to.be.true
-    expect( is.emptyString( '\f\n\r\t\v' ) ).to.be.true
-    expect( is.emptyString( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ).to.be.true
-    expect( is.emptyString( 'lipsum' ) ).to.be.false
-    expect( is.emptyString( new String( '' ) ) ).to.be.false
-    expect( is.emptyString( new String( ' ' ) ) ).to.be.false
-    expect( is.emptyString( new String( '  ' ) ) ).to.be.false
-    expect( is.emptyString( new String( '\f\n\r\t\v' ) ) ).to.be.false
-    expect( is.emptyString( new String( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ) ).to.be.false
-    expect( is.emptyString( new String( 'lipsum' ) ) ).to.be.false
-    expect( is.emptyString( true ) ).to.be.false
-    expect( is.emptyString( false ) ).to.be.false
-    expect( is.emptyString( new Boolean( true ) ) ).to.be.false
-    expect( is.emptyString( new Boolean( false ) ) ).to.be.false
-    expect( is.emptyString( {} ) ).to.be.false
-    expect( is.emptyString( [] ) ).to.be.false
-    expect( is.emptyString( arguments ) ).to.be.false
-    expect( is.emptyString( function () {} ) ).to.be.false
-    expect( is.emptyString( new Date() ) ).to.be.false
-    expect( is.emptyString( new Error() ) ).to.be.false
-    expect( is.emptyString( /^/ ) ).to.be.false
+    expect( is.emptyString( null ) ).to.not.be.ok()
+    expect( is.emptyString( void 0 ) ).to.not.be.ok()
+    expect( is.emptyString( 0 ) ).to.not.be.ok()
+    expect( is.emptyString( 0 / 0 ) ).to.not.be.ok()
+    expect( is.emptyString( +1 / 0 ) ).to.not.be.ok()
+    expect( is.emptyString( -1 / 0 ) ).to.not.be.ok()
+    expect( is.emptyString( new Number( 0 ) ) ).to.not.be.ok()
+    expect( is.emptyString( new Number( 0 / 0 ) ) ).to.not.be.ok()
+    expect( is.emptyString( new Number( +1 / 0 ) ) ).to.not.be.ok()
+    expect( is.emptyString( new Number( -1 / 0 ) ) ).to.not.be.ok()
+    expect( is.emptyString( '' ) ).to.be.ok()
+    expect( is.emptyString( ' ' ) ).to.be.ok()
+    expect( is.emptyString( '  ' ) ).to.be.ok()
+    expect( is.emptyString( '\f\n\r\t\v' ) ).to.be.ok()
+    expect( is.emptyString( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ).to.be.ok()
+    expect( is.emptyString( 'lipsum' ) ).to.not.be.ok()
+    expect( is.emptyString( new String( '' ) ) ).to.not.be.ok()
+    expect( is.emptyString( new String( ' ' ) ) ).to.not.be.ok()
+    expect( is.emptyString( new String( '  ' ) ) ).to.not.be.ok()
+    expect( is.emptyString( new String( '\f\n\r\t\v' ) ) ).to.not.be.ok()
+    expect( is.emptyString( new String( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ) ).to.not.be.ok()
+    expect( is.emptyString( new String( 'lipsum' ) ) ).to.not.be.ok()
+    expect( is.emptyString( true ) ).to.not.be.ok()
+    expect( is.emptyString( false ) ).to.not.be.ok()
+    expect( is.emptyString( new Boolean( true ) ) ).to.not.be.ok()
+    expect( is.emptyString( new Boolean( false ) ) ).to.not.be.ok()
+    expect( is.emptyString( {} ) ).to.not.be.ok()
+    expect( is.emptyString( [] ) ).to.not.be.ok()
+    expect( is.emptyString( arguments ) ).to.not.be.ok()
+    expect( is.emptyString( function () {} ) ).to.not.be.ok()
+    expect( is.emptyString( new Date() ) ).to.not.be.ok()
+    expect( is.emptyString( new Error() ) ).to.not.be.ok()
+    expect( is.emptyString( /^/ ) ).to.not.be.ok()
 
-    expect( is.not.emptyString( null ) ).to.be.true
-    expect( is.not.emptyString( void 0 ) ).to.be.true
-    expect( is.not.emptyString( 0 ) ).to.be.true
-    expect( is.not.emptyString( 0 / 0 ) ).to.be.true
-    expect( is.not.emptyString( +1 / 0 ) ).to.be.true
-    expect( is.not.emptyString( -1 / 0 ) ).to.be.true
-    expect( is.not.emptyString( new Number( 0 ) ) ).to.be.true
-    expect( is.not.emptyString( new Number( 0 / 0 ) ) ).to.be.true
-    expect( is.not.emptyString( new Number( +1 / 0 ) ) ).to.be.true
-    expect( is.not.emptyString( new Number( -1 / 0 ) ) ).to.be.true
-    expect( is.not.emptyString( '' ) ).to.be.false
-    expect( is.not.emptyString( ' ' ) ).to.be.false
-    expect( is.not.emptyString( '  ' ) ).to.be.false
-    expect( is.not.emptyString( '\f\n\r\t\v' ) ).to.be.false
-    expect( is.not.emptyString( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ).to.be.false
-    expect( is.not.emptyString( 'lipsum' ) ).to.be.true
-    expect( is.not.emptyString( new String( '' ) ) ).to.be.true
-    expect( is.not.emptyString( new String( ' ' ) ) ).to.be.true
-    expect( is.not.emptyString( new String( '  ' ) ) ).to.be.true
-    expect( is.not.emptyString( new String( '\f\n\r\t\v' ) ) ).to.be.true
-    expect( is.not.emptyString( new String( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ) ).to.be.true
-    expect( is.not.emptyString( new String( 'lipsum' ) ) ).to.be.true
-    expect( is.not.emptyString( true ) ).to.be.true
-    expect( is.not.emptyString( false ) ).to.be.true
-    expect( is.not.emptyString( new Boolean( true ) ) ).to.be.true
-    expect( is.not.emptyString( new Boolean( false ) ) ).to.be.true
-    expect( is.not.emptyString( {} ) ).to.be.true
-    expect( is.not.emptyString( [] ) ).to.be.true
-    expect( is.not.emptyString( arguments ) ).to.be.true
-    expect( is.not.emptyString( function () {} ) ).to.be.true
-    expect( is.not.emptyString( new Date() ) ).to.be.true
-    expect( is.not.emptyString( new Error() ) ).to.be.true
-    expect( is.not.emptyString( /^/ ) ).to.be.true
+    expect( is.not.emptyString( null ) ).to.be.ok()
+    expect( is.not.emptyString( void 0 ) ).to.be.ok()
+    expect( is.not.emptyString( 0 ) ).to.be.ok()
+    expect( is.not.emptyString( 0 / 0 ) ).to.be.ok()
+    expect( is.not.emptyString( +1 / 0 ) ).to.be.ok()
+    expect( is.not.emptyString( -1 / 0 ) ).to.be.ok()
+    expect( is.not.emptyString( new Number( 0 ) ) ).to.be.ok()
+    expect( is.not.emptyString( new Number( 0 / 0 ) ) ).to.be.ok()
+    expect( is.not.emptyString( new Number( +1 / 0 ) ) ).to.be.ok()
+    expect( is.not.emptyString( new Number( -1 / 0 ) ) ).to.be.ok()
+    expect( is.not.emptyString( '' ) ).to.not.be.ok()
+    expect( is.not.emptyString( ' ' ) ).to.not.be.ok()
+    expect( is.not.emptyString( '  ' ) ).to.not.be.ok()
+    expect( is.not.emptyString( '\f\n\r\t\v' ) ).to.not.be.ok()
+    expect( is.not.emptyString( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ).to.not.be.ok()
+    expect( is.not.emptyString( 'lipsum' ) ).to.be.ok()
+    expect( is.not.emptyString( new String( '' ) ) ).to.be.ok()
+    expect( is.not.emptyString( new String( ' ' ) ) ).to.be.ok()
+    expect( is.not.emptyString( new String( '  ' ) ) ).to.be.ok()
+    expect( is.not.emptyString( new String( '\f\n\r\t\v' ) ) ).to.be.ok()
+    expect( is.not.emptyString( new String( '\u0009\u000A\u000B\u000C\u000D\u0020' ) ) ).to.be.ok()
+    expect( is.not.emptyString( new String( 'lipsum' ) ) ).to.be.ok()
+    expect( is.not.emptyString( true ) ).to.be.ok()
+    expect( is.not.emptyString( false ) ).to.be.ok()
+    expect( is.not.emptyString( new Boolean( true ) ) ).to.be.ok()
+    expect( is.not.emptyString( new Boolean( false ) ) ).to.be.ok()
+    expect( is.not.emptyString( {} ) ).to.be.ok()
+    expect( is.not.emptyString( [] ) ).to.be.ok()
+    expect( is.not.emptyString( arguments ) ).to.be.ok()
+    expect( is.not.emptyString( function () {} ) ).to.be.ok()
+    expect( is.not.emptyString( new Date() ) ).to.be.ok()
+    expect( is.not.emptyString( new Error() ) ).to.be.ok()
+    expect( is.not.emptyString( /^/ ) ).to.be.ok()
 
   } )
 
