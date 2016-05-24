@@ -2,7 +2,7 @@
 
 An extensible check library.
 
-## Tutorial
+## Usage
 
 ## Cheatsheet
 
@@ -31,7 +31,7 @@ TL;DR
 - [is.emptyString( str:string )](#)
 - [is.stringIncludes( str:string , substr:string )](#)
 - [is.startsWith( str:string , prefix:string )](#)
-- [is.endssWith( str:string , suffix:string)](#)
+- [is.endsWith( str:string , suffix:string )](#)
 
 #### bundle:boolean
 
