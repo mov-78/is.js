@@ -8,13 +8,13 @@ An extensible check library.
 
 TL;DR
 
-### bundle:nil
+**bundle:nil**
 
 - [is.null( val:any )](#)
 - [is.undefined( val:any )](#)
 - [is.nil( val:any )](#)
 
-### bundle:number
+**bundle:number**
 
 - [is.number( val:any )](#)
 - [is.nan( val:any )](#)
@@ -25,7 +25,7 @@ TL;DR
 - [is.integer( num:number )](#)
 - [is.safeInteger( num:number )](#)
 
-### bundle:string
+**bundle:string**
 
 - [is.string( val:any )](#)
 - [is.emptyString( str:string )](#)
@@ -33,7 +33,7 @@ TL;DR
 - [is.startsWith( str:string , prefix:string )](#)
 - [is.endsWith( str:string , suffix:string )](#)
 
-### bundle:boolean
+**bundle:boolean**
 
 - [is.boolean( val:any )](#)
 - [is.true( val:any )](#)
@@ -41,18 +41,18 @@ TL;DR
 - [is.truthy( val:any )](#)
 - [is.falsy( val:any )](#)
 
-### bundle:primitive
+**bundle:primitive**
 
 - [is.primitive( val:any )](#)
 
-### bundle:object
+**bundle:object**
 
 - [is.object( val:any )](#)
 - [is.emptyObject( obj:object )](#)
 - [is.ownPropertyDefined( obj:object , key:string )](#)
 - [is.propertyDefined( obj:object , key:string )](#)
 
-### bundle:array
+**bundle:array**
 
 - [is.array( val:any )](#)
 - [is.arrayLike( val:any )](#)
@@ -61,29 +61,29 @@ TL;DR
 - [is.arrayIncludes( ary:array , val:any )](#)
 - [is.arrayDeepIncludes( ary:array , val:any )](#)
 
-### bundle:function
+**bundle:function**
 
 - [is.function( val:any )](#)
 
-### bundle:date
+**bundle:date**
 
 - [is.date( val:any )](#)
 
-### bundle:error
+**bundle:error**
 
 - [is.error( val:any )](#)
 
-### bundle:regex
+**bundle:regex**
 
 - [is.regex( val:any )](#)
 
-### bundle:type
+**bundle:type**
 
 - [is.sameType( val:any , oth:any )](#)
 - [is.instanceOf( obj:object , ctor:function )](#)
 - [is.prototypeOf( proto:object , obj:object )](#)
 
-### bundle:equality
+**bundle:equality**
 
 - [is.equal( val:any , oth:any )](#)
 - [is.deepEqual( val:any , oth:any )](#)
