@@ -118,3 +118,106 @@ Checks whether given value is either `null` or `undefined`.
 is.nil( null ) // true
 is.nil( undefined ) // true
 ```
+
+### bundle:number
+
+#### is.number( val:any )
+
+Checks whether given value is a Number.
+
+```js
+is.number( 0 ) // true
+is.number( '0' ) // false
+is.number( Number.NaN ) // true
+is.number( Number.POSITIVE_INFINITY ) // true
+is.number( Number.NEGATIVE_INFINITY ) // true
+is.number( new Number( 0 ) ) // false
+```
+
+#### is.nan( val:any )
+
+Checks whether given value is NaN.
+
+```js
+is.nan( 0 ) // false
+is.nan( Number.NaN ) // true
+is.nan( 'one' ) // false
+```
+
+#### is.odd( num:number )
+
+Checks whether given value is an odd number.
+
+```js
+is.odd( 1 ) // true
+is.odd( 2 ) // false
+is.odd( '1' ) // false
+is.odd( '2' ) // false
+```
+
+#### is.even( num:number )
+
+Checks whether given value is an even number.
+
+```js
+is.even( 1 ) // false
+is.even( 2 ) // true
+is.even( '1' ) // false
+is.even( '2' ) // false
+```
+
+#### is.finite( num:number )
+
+Checks whether given value is a finite number.
+
+```js
+is.finite( 0 ) // true
+is.finite( '0' ) // false
+is.finite( Number.NaN ) // false
+is.finite( Number.POSITIVE_INFINITY ) // false
+is.finite( Number.NEGATIVE_INFINITY ) // false
+```
+
+#### is.infinite( num:number )
+
+Checks whether given value is a infinite number, i.e, `Number.POSITIVE_INFINITY` or `Number.NEGATIVE_INFINITY`.
+
+```js
+is.infinite( 0 ) // false
+is.infinite( '0' ) // false
+is.infinite( Number.NaN ) // false
+is.infinite( Number.POSITIVE_INFINITY ) // true
+is.infinite( Number.NEGATIVE_INFINITY ) // true
+```
+
+#### is.integer( num:number )
+
+Checks whether given value is an integer.
+
+```js
+is.integer( 0 ) // true
+is.integer( 0.1 ) // false
+is.integer( Number.NaN ) // false
+is.integer( Number.POSITIVE_INFINITY ) // false
+is.integer( Number.NEGATIVE_INFINITY ) // false
+is.integer( Number.MAX_SAFE_INTEGER ) // true
+is.integer( Number.MIN_SAFE_INTEGER ) // true
+is.integer( Number.MAX_SAFE_INTEGER + 1 ) // true
+is.integer( Number.MIN_SAFE_INTEGER - 1 ) // true
+```
+
+#### is.safeInteger( num:number )
+
+Checks whether given value is a safe integer.
+
+```js
+is.safeInteger( 0 ) // true
+is.safeInteger( 0.1 ) // false
+is.safeInteger( Number.NaN ) // false
+is.safeInteger( Number.POSITIVE_INFINITY ) // false
+is.safeInteger( Number.NEGATIVE_INFINITY ) // false
+is.safeInteger( Number.MAX_SAFE_INTEGER ) // true
+is.safeInteger( Number.MIN_SAFE_INTEGER ) // true
+is.safeInteger( Number.MAX_SAFE_INTEGER + 1 ) // false
+is.safeInteger( Number.MIN_SAFE_INTEGER - 1 ) // false
+```
