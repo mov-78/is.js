@@ -56,7 +56,6 @@ TL;DR
 
 - [is.array( val:any )](#)
 - [is.arrayLike( val:any )](#)
-- [is.arguments( val:any )](#)
 - [is.emptyArray( ary:array )](#)
 - [is.arrayIncludes( ary:array , val:any )](#)
 - [is.arrayDeepIncludes( ary:array , val:any )](#)
