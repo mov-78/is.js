@@ -10,9 +10,9 @@ TL;DR
 
 **bundle:nil**
 
-- [is.null( val:any )](#isnull-valany)
-- [is.undefined( val:any )](#isundefined-valany)
-- [is.nil( val:any )](#isnil-valany)
+- [is.null( val:any )](#isnull-valany-)
+- [is.undefined( val:any )](#isundefined-valany-)
+- [is.nil( val:any )](#isnil-valany-)
 
 **bundle:number**
 
