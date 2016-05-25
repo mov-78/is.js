@@ -16,14 +16,14 @@ TL;DR
 
 **bundle:number**
 
-- [is.number( val:any )](#)
-- [is.nan( val:any )](#)
-- [is.odd( num:number )](#)
-- [is.even( num:number )](#)
-- [is.finite( num:number )](#)
-- [is.infinite( num:number )](#)
-- [is.integer( num:number )](#)
-- [is.safeInteger( num:number )](#)
+- [is.number( val:any )](#isnumber-valany-)
+- [is.nan( val:any )](#isnan-valany-)
+- [is.odd( num:number )](#isodd-numnumber-)
+- [is.even( num:number )](#iseven-numnumber-)
+- [is.finite( num:number )](#isfinite-numnumber-)
+- [is.infinite( num:number )](#isinfinite-numnumber-)
+- [is.integer( num:number )](#isinteger-numnumber-)
+- [is.safeInteger( num:number )](#issafeinteger-numnumber-)
 
 **bundle:string**
 
