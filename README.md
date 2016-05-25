@@ -10,9 +10,9 @@ TL;DR
 
 **bundle:nil**
 
-- [is.null( val:any )](#)
-- [is.undefined( val:any )](#)
-- [is.nil( val:any )](#)
+- [is.null( val:any )](#isnull-valany)
+- [is.undefined( val:any )](#isundefined-valany)
+- [is.nil( val:any )](#isnil-valany)
 
 **bundle:number**
 
@@ -92,7 +92,7 @@ TL;DR
 
 ### bundle:nil
 
-#### is.null( val:any ): boolean
+#### is.null( val:any )
 
 Checks whether given value is `null`.
 
@@ -101,7 +101,7 @@ is.null( null ) // true
 is.null( undefined ) // false
 ```
 
-#### is.undefined( val:any ): boolean
+#### is.undefined( val:any )
 
 Checks whether given value is `undefined`.
 
@@ -110,7 +110,7 @@ is.undefined( null ) // false
 is.undefined( undefined ) // true
 ```
 
-#### is.nil( val:any ): boolean
+#### is.nil( val:any )
 
 Checks whether given value is either `null` or `undefined`.
 
