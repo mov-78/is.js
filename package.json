@@ -1,7 +1,7 @@
 {
   "name": "@pwn/is",
   "author": "Pwn <hi@pwn.buzz>",
-  "description": "an extensible check library",
+  "description": "Minimalistic check library",
   "version": "1.0.0",
   "license": "MIT",
   "main": "lib/is.js",

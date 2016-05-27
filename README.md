@@ -1,6 +1,6 @@
 # is.js
 
-An extensible check library.
+Minimalistic check library.
 
 ## Usage
 
