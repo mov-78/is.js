@@ -106,6 +106,10 @@ __bundle:regex__
 
 - [is.regex( value )](#)
 
+__bundle:symbol__
+
+- [is.symbol( value )](#)
+
 __bundle:type__
 
 - [is.sameType( value , other )](#)
@@ -335,6 +339,17 @@ Checks whether given value is a `RegExp` object.
 ```js
 is.regex( /^/ ) // true
 is.regex( new RegExp() ) // true
+```
+
+### bundle:symbol
+
+#### is.symbol( value )
+
+Checks whether given value is a symbol.
+
+```js
+is.symbol( Symbol() ) // true
+is.symbol( Symbol.for( 'is' ) ) // true
 ```
 
 ## Writing new predicates
