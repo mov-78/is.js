@@ -8,24 +8,24 @@ An extensible check library.
 
 TL;DR
 
-**bundle:nil**
+__bundle:nil__
 
-- [is.null( val:any )](#isnull-valany-)
-- [is.undefined( val:any )](#isundefined-valany-)
-- [is.nil( val:any )](#isnil-valany-)
+- [is.null( val:any )](#)
+- [is.undefined( val:any )](#)
+- [is.nil( val:any )](#)
 
-**bundle:number**
+__bundle:number__
 
-- [is.number( val:any )](#isnumber-valany-)
-- [is.nan( val:any )](#isnan-valany-)
-- [is.odd( num:number )](#isodd-numnumber-)
-- [is.even( num:number )](#iseven-numnumber-)
-- [is.finite( num:number )](#isfinite-numnumber-)
-- [is.infinite( num:number )](#isinfinite-numnumber-)
-- [is.integer( num:number )](#isinteger-numnumber-)
-- [is.safeInteger( num:number )](#issafeinteger-numnumber-)
+- [is.number( val:any )](#)
+- [is.nan( val:any )](#)
+- [is.odd( num:number )](#)
+- [is.even( num:number )](#)
+- [is.finite( num:number )](#)
+- [is.infinite( num:number )](#)
+- [is.integer( num:number )](#)
+- [is.safeInteger( num:number )](#)
 
-**bundle:string**
+__bundle:string__
 
 - [is.string( val:any )](#)
 - [is.emptyString( str:string )](#)
@@ -33,7 +33,7 @@ TL;DR
 - [is.startsWith( str:string , prefix:string )](#)
 - [is.endsWith( str:string , suffix:string )](#)
 
-**bundle:boolean**
+__bundle:boolean__
 
 - [is.boolean( val:any )](#)
 - [is.true( val:any )](#)
@@ -41,18 +41,18 @@ TL;DR
 - [is.truthy( val:any )](#)
 - [is.falsy( val:any )](#)
 
-**bundle:primitive**
+__bundle:primitive__
 
 - [is.primitive( val:any )](#)
 
-**bundle:object**
+__bundle:object__
 
 - [is.object( val:any )](#)
 - [is.emptyObject( obj:object )](#)
 - [is.ownPropertyDefined( obj:object , key:string )](#)
 - [is.propertyDefined( obj:object , key:string )](#)
 
-**bundle:array**
+__bundle:array__
 
 - [is.array( val:any )](#)
 - [is.arrayLike( val:any )](#)
@@ -60,29 +60,29 @@ TL;DR
 - [is.arrayIncludes( ary:array , val:any )](#)
 - [is.arrayDeepIncludes( ary:array , val:any )](#)
 
-**bundle:function**
+__bundle:function__
 
 - [is.function( val:any )](#)
 
-**bundle:date**
+__bundle:date__
 
 - [is.date( val:any )](#)
 
-**bundle:error**
+__bundle:error__
 
 - [is.error( val:any )](#)
 
-**bundle:regex**
+__bundle:regex__
 
 - [is.regex( val:any )](#)
 
-**bundle:type**
+__bundle:type__
 
 - [is.sameType( val:any , oth:any )](#)
 - [is.instanceOf( obj:object , ctor:function )](#)
 - [is.prototypeOf( proto:object , obj:object )](#)
 
-**bundle:equality**
+__bundle:equality__
 
 - [is.equal( val:any , oth:any )](#)
 - [is.deepEqual( val:any , oth:any )](#)

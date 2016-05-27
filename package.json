@@ -8,10 +8,11 @@
   "bugs": "https://github.com/pwnn/is.js/issues",
   "repository": "https://github.com/pwnn/is.js",
   "scripts": {
-    "build": "grunt",
+    "build": "grunt && docco lib/is.js",
     "test": "karma start"
   },
   "devDependencies": {
+    "docco": "~0.7.0",
     "eslint": "~2.10.2",
     "eslint-config-pwn-es5": "~3.1.0",
     "expect": "~1.20.1",
