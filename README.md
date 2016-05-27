@@ -126,20 +126,22 @@ Checks whether given value is a Number.
 
 ```js
 is.number( 0 ) // true
-is.number( '0' ) // false
 is.number( Number.NaN ) // true
 is.number( Number.POSITIVE_INFINITY ) // true
 is.number( Number.NEGATIVE_INFINITY ) // true
+is.number( '0' ) // false
 is.number( new Number( 0 ) ) // false
 ```
 
 #### is.nan( val:any )
 
-Checks whether given value is NaN.
+Checks whether given value is `NaN`.
 
 ```js
 is.nan( 0 ) // false
 is.nan( Number.NaN ) // true
+is.nan( Number.POSITIVE_INFINITY ) // false
+is.nan( Number.NEGATIVE_INFINITY ) // false
 is.nan( 'one' ) // false
 ```
 
@@ -179,7 +181,7 @@ is.finite( Number.NEGATIVE_INFINITY ) // false
 
 #### is.infinite( num:number )
 
-Checks whether given value is a infinite number, i.e, `Number.POSITIVE_INFINITY` or `Number.NEGATIVE_INFINITY`.
+Checks whether given value is an infinite number, i.e, `Number.POSITIVE_INFINITY` or `Number.NEGATIVE_INFINITY`.
 
 ```js
 is.infinite( 0 ) // false
@@ -219,4 +221,49 @@ is.safeInteger( Number.MAX_SAFE_INTEGER ) // true
 is.safeInteger( Number.MIN_SAFE_INTEGER ) // true
 is.safeInteger( Number.MAX_SAFE_INTEGER + 1 ) // false
 is.safeInteger( Number.MIN_SAFE_INTEGER - 1 ) // false
+```
+
+### bundle:function
+
+#### is.function( val:any )
+
+Checks whether given value is a function.
+
+```js
+is.function( function () {} ) // true
+is.function( function* () {} ) // true
+is.function( () => null ) // true
+is.function( new Function() ) // true
+```
+
+### bundle:date
+
+#### is.date( val:any )
+
+Checks whether given value is a `Date` object.
+
+```js
+is.date( new Date() ) // true
+```
+
+### bundle:error
+
+#### is.error( val:any )
+
+Checks whether given value is an `Error` object.
+
+```js
+is.error( new Error() ) // true
+is.error( new TypeError() ) // true
+```
+
+### bundle:regex
+
+#### is.regex( val:any )
+
+Checks whether given value is a `RegExp` object.
+
+```js
+is.regex( /^/ ) // true
+is.regex( new RegExp() ) // true
 ```
