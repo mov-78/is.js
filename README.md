@@ -2,6 +2,20 @@
 
 Minimalistic check library.
 
+## Install
+
+Node:
+
+```sh
+$ npm install --save @pwn/is
+```
+
+Browser:
+
+```html
+<script src="path/to/is.js"></script>
+```
+
 ## Usage
 
 ## Cheatsheet
