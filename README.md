@@ -123,8 +123,6 @@ __bundle:equality__
 
 ## API reference
 
-### bundle:nil
-
 #### is.null( value )
 
 Checks whether given value is `null`.
@@ -151,8 +149,6 @@ Checks whether given value is either `null` or `undefined`.
 is.nil( null ) // true
 is.nil( undefined ) // true
 ```
-
-### bundle:number
 
 #### is.number( value )
 
@@ -257,8 +253,6 @@ is.safeInteger( Number.MAX_SAFE_INTEGER + 1 ) // false
 is.safeInteger( Number.MIN_SAFE_INTEGER - 1 ) // false
 ```
 
-### bundle:boolean
-
 #### is.boolean( value )
 
 Checks whether given value is a boolean.
@@ -271,8 +265,6 @@ is.boolean( false ) // true
 is.boolean( new Boolean( true ) ) // false
 is.boolean( new Boolean( false ) ) // false
 ```
-
-### bundle:primitive
 
 #### is.primitive( value )
 
@@ -296,8 +288,6 @@ is.primitive( [] ) // false
 is.primitive( function() {} ) // false
 ```
 
-### bundle:function
-
 #### is.function( value )
 
 Checks whether given value is a function.
@@ -309,8 +299,6 @@ is.function( () => null ) // true
 is.function( new Function() ) // true
 ```
 
-### bundle:date
-
 #### is.date( value )
 
 Checks whether given value is a `Date` object.
@@ -318,8 +306,6 @@ Checks whether given value is a `Date` object.
 ```js
 is.date( new Date() ) // true
 ```
-
-### bundle:error
 
 #### is.error( value )
 
@@ -330,8 +316,6 @@ is.error( new Error() ) // true
 is.error( new TypeError() ) // true
 ```
 
-### bundle:regex
-
 #### is.regex( value )
 
 Checks whether given value is a `RegExp` object.
@@ -340,8 +324,6 @@ Checks whether given value is a `RegExp` object.
 is.regex( /^/ ) // true
 is.regex( new RegExp() ) // true
 ```
-
-### bundle:symbol
 
 #### is.symbol( value )
 
