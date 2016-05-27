@@ -156,7 +156,7 @@ is.nil( undefined ) // true
 
 #### is.number( value )
 
-Checks whether given value is a Number.
+Checks whether given value is a number.
 
 ```js
 is.number( 0 ) // true
