@@ -18,6 +18,26 @@ Browser:
 
 ## Usage
 
+A code sample is worth a thousand words:
+
+```js
+is.number( 0 ) // true
+is.not.number( 0 ) // false
+is.equal( [ 1 , [ 2 , 3 ] ] , [ 1 , [ 2 , 3 ] ] ) // false
+is.deepEqual( [ 1 , [ 2 , 3 ] ] , [ 1 , [ 2 , 3 ] ] ) // true
+```
+
+All checks, or _predicates_ in `is.js` terminology, takes two general forms:
+
+- __POSITIVE CHECK__: `is.predicate( ...args )` - Checks whether certain condition met.
+- __NEGATIVE CHECK__: `is.not.predicate( ...args )` - The inverse of its corresponding _POSITIVE CHECK_.
+
+That's it! What's next?
+
+- [Cheatsheet](#cheatsheet) - List of available predicates.
+- [API reference](#api-reference) - Detailed documentation.
+- [Writing new predicates](#writing-new-predicates) - Learn how to define new predicates.
+
 ## Cheatsheet
 
 TL;DR
@@ -101,7 +121,7 @@ __bundle:equality__
 - [is.equal( val:any , oth:any )](#)
 - [is.deepEqual( val:any , oth:any )](#)
 
-## API Reference
+## API reference
 
 ### bundle:nil
 
@@ -281,3 +301,5 @@ Checks whether given value is a `RegExp` object.
 is.regex( /^/ ) // true
 is.regex( new RegExp() ) // true
 ```
+
+## Writing new predicates
