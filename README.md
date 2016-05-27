@@ -70,10 +70,6 @@ __bundle:string__
 __bundle:boolean__
 
 - [is.boolean( value )](#)
-- [is.true( value )](#)
-- [is.false( value )](#)
-- [is.truthy( value )](#)
-- [is.falsy( value )](#)
 
 __bundle:primitive__
 
