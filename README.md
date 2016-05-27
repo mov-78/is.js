@@ -268,6 +268,30 @@ is.boolean( new Boolean( true ) ) // false
 is.boolean( new Boolean( false ) ) // false
 ```
 
+### bundle:primitive
+
+#### is.primitive( value )
+
+Checks whether given value is a [primitive](https://developer.mozilla.org/en-US/docs/Glossary/Primitive).
+
+```js
+is.primitive( null ) // true
+is.primitive( undefined ) // true
+is.primitive( 0 ) // true
+is.primitive( new Number( 0 ) ) // false
+is.primitive( '' ) // true
+is.primitive( new String( '' ) ) // false
+is.primitive( true ) // true
+is.primitive( new Boolean( true ) ) // false
+is.primitive( false ) // true
+is.primitive( new Boolean( false ) ) // false
+is.primitive( Symbol() ) // true
+is.primitive( Symbol.for( 'hi' ) ) // true
+is.primitive( {} ) // false
+is.primitive( [] ) // false
+is.primitive( function() {} ) // false
+```
+
 ### bundle:function
 
 #### is.function( value )
