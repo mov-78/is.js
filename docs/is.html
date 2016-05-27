@@ -28,7 +28,7 @@
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
               <pre><code>is.js - <span class="hljs-number">1.0</span><span class="hljs-number">.0</span>
-An extensible check library
+Minimalistic check library
 Pwn &lt;hi@pwn.buzz&gt;
 </code></pre>
             </div>
@@ -235,8 +235,8 @@ They will never show up in <code>for...in</code> loops nor pass <code>propertyIs
               </div>
               <p>There’re two type of checks in <code>is.js</code>:</p>
 <ul>
-<li>is.predicate( …args )      // positive check</li>
-<li>is.not.predicate( …args )  // negative check</li>
+<li><strong>POSITIVE CHECK</strong>: is.predicate( …args )</li>
+<li><strong>NEGATIVE CHECK</strong>: is.not.predicate( …args )</li>
 </ul>
 <p>All check methods, or <em>predicates</em> in <code>is.js</code> terminology, are defined on
 the <code>proto</code> object, which both <code>is</code> and <code>is.not</code> inherits from.</p>
@@ -292,7 +292,7 @@ the <code>proto</code> object, which both <code>is</code> and <code>is.not</code
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p><strong>util.getTag( value:any )</strong></p>
+              <p><strong>util.getTag( value )</strong></p>
 <p>Get the class, or <em>tag</em> in <code>is.js</code> terminology, of any given value.</p>
 
             </div>
@@ -331,7 +331,7 @@ the <code>proto</code> object, which both <code>is</code> and <code>is.not</code
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <p><strong>util.addPredicate( name:string , predicate:function )</strong></p>
+              <p><strong>util.addPredicate( name , predicate )</strong></p>
 <p>Add new checks(or <em>predicates</em> in <code>is.js</code> terminology).</p>
 
             </div>
@@ -395,7 +395,7 @@ cases on behave of the predicate.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
-              <p><strong>is.use( bundle:function )</strong></p>
+              <p><strong>is.use( bundle )</strong></p>
 <p>Define new <em>bundles</em>(collection of <em>predicates</em>).</p>
 
             </div>
@@ -476,7 +476,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
-              <p><strong>is.null( val:any )</strong></p>
+              <p><strong>is.null( value )</strong></p>
 <p>Checks whether given value is <code>null</code>.</p>
 
             </div>
@@ -494,7 +494,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
-              <p><strong>is.undefined( val:any )</strong></p>
+              <p><strong>is.undefined( value )</strong></p>
 <p>Checks whether given value is <code>undefined</code>.</p>
 
             </div>
@@ -512,7 +512,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              <p><strong>is.nil( val:any )</strong></p>
+              <p><strong>is.nil( value )</strong></p>
 <p>Checks whether given value is either <code>null</code> or <code>undefined</code>.</p>
 
             </div>
@@ -547,7 +547,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
-              <p><strong>is.number( val:any )</strong></p>
+              <p><strong>is.number( value )</strong></p>
 <p>Checks whether given value is a number.</p>
 
             </div>
@@ -565,7 +565,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
-              <p><strong>is.nan( val:any )</strong></p>
+              <p><strong>is.nan( value )</strong></p>
 <p>Checks whether given value is <code>NaN</code>.</p>
 
             </div>
@@ -583,7 +583,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
-              <p><strong>is.odd( num:number )</strong></p>
+              <p><strong>is.odd( number )</strong></p>
 <p>Checks whether given value is an odd number.</p>
 
             </div>
@@ -601,7 +601,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
-              <p><strong>is.even( num:number )</strong></p>
+              <p><strong>is.even( number )</strong></p>
 <p>Checks whether given value is an even number.</p>
 
             </div>
@@ -619,7 +619,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
-              <p><strong>is.finite( num:number )</strong></p>
+              <p><strong>is.finite( number )</strong></p>
 <p>Checks whether given value is a finite number.</p>
 
             </div>
@@ -641,7 +641,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
-              <p><strong>is.infinite( num:number )</strong></p>
+              <p><strong>is.infinite( number )</strong></p>
 <p>Checks whether given value is an infinite number, i.e, +∞ or -∞.</p>
 
             </div>
@@ -659,7 +659,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
-              <p><strong>is.integer( num:number )</strong></p>
+              <p><strong>is.integer( number )</strong></p>
 <p>Checks whether given value is an integer.</p>
 
             </div>
@@ -681,7 +681,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
-              <p><strong>is.safeInteger( num:number )</strong></p>
+              <p><strong>is.safeInteger( number )</strong></p>
 <p>Checks whether given value is a safe integer.</p>
 
             </div>
@@ -1110,7 +1110,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
-              <p><strong>is.function( val:any )</strong></p>
+              <p><strong>is.function( value )</strong></p>
 <p>Checks whether given value is a function.</p>
 
             </div>
@@ -1145,7 +1145,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
-              <p><strong>is.date( val:any )</strong></p>
+              <p><strong>is.date( value )</strong></p>
 <p>Checks whether given value is a <code>Date</code> object.</p>
 
             </div>
@@ -1180,7 +1180,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
-              <p><strong>is.error( val:any )</strong></p>
+              <p><strong>is.error( value )</strong></p>
 <p>Checks whether given value is an <code>Error</code> object.</p>
 
             </div>
@@ -1215,7 +1215,7 @@ distributed as standalone modules, e.g:</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
-              <p><strong>is.regex( val:any )</strong></p>
+              <p><strong>is.regex( value )</strong></p>
 <p>Checks whether given value is a <code>RegExp</code> object.</p>
 
             </div>

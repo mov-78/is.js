@@ -44,88 +44,88 @@ TL;DR
 
 __bundle:nil__
 
-- [is.null( val:any )](#)
-- [is.undefined( val:any )](#)
-- [is.nil( val:any )](#)
+- [is.null( value )](#)
+- [is.undefined( value )](#)
+- [is.nil( value )](#)
 
 __bundle:number__
 
-- [is.number( val:any )](#)
-- [is.nan( val:any )](#)
-- [is.odd( num:number )](#)
-- [is.even( num:number )](#)
-- [is.finite( num:number )](#)
-- [is.infinite( num:number )](#)
-- [is.integer( num:number )](#)
-- [is.safeInteger( num:number )](#)
+- [is.number( value )](#)
+- [is.nan( value )](#)
+- [is.odd( number )](#)
+- [is.even( number )](#)
+- [is.finite( number )](#)
+- [is.infinite( number )](#)
+- [is.integer( number )](#)
+- [is.safeInteger( number )](#)
 
 __bundle:string__
 
-- [is.string( val:any )](#)
-- [is.emptyString( str:string )](#)
-- [is.stringIncludes( str:string , substr:string )](#)
-- [is.startsWith( str:string , prefix:string )](#)
-- [is.endsWith( str:string , suffix:string )](#)
+- [is.string( value )](#)
+- [is.emptyString( string )](#)
+- [is.stringIncludes( string , substring )](#)
+- [is.startsWith( string , prefix )](#)
+- [is.endsWith( string , suffix )](#)
 
 __bundle:boolean__
 
-- [is.boolean( val:any )](#)
-- [is.true( val:any )](#)
-- [is.false( val:any )](#)
-- [is.truthy( val:any )](#)
-- [is.falsy( val:any )](#)
+- [is.boolean( value )](#)
+- [is.true( value )](#)
+- [is.false( value )](#)
+- [is.truthy( value )](#)
+- [is.falsy( value )](#)
 
 __bundle:primitive__
 
-- [is.primitive( val:any )](#)
+- [is.primitive( value )](#)
 
 __bundle:object__
 
-- [is.object( val:any )](#)
-- [is.emptyObject( obj:object )](#)
-- [is.ownPropertyDefined( obj:object , key:string )](#)
-- [is.propertyDefined( obj:object , key:string )](#)
+- [is.object( value )](#)
+- [is.emptyObject( object )](#)
+- [is.ownPropertyDefined( object , key )](#)
+- [is.propertyDefined( object , key )](#)
 
 __bundle:array__
 
-- [is.array( val:any )](#)
-- [is.arrayLike( val:any )](#)
-- [is.emptyArray( ary:array )](#)
-- [is.arrayIncludes( ary:array , val:any )](#)
-- [is.arrayDeepIncludes( ary:array , val:any )](#)
+- [is.array( value )](#)
+- [is.arrayLike( value )](#)
+- [is.emptyArray( array )](#)
+- [is.arrayIncludes( array , member )](#)
+- [is.arrayDeepIncludes( array , member )](#)
 
 __bundle:function__
 
-- [is.function( val:any )](#)
+- [is.function( value )](#)
 
 __bundle:date__
 
-- [is.date( val:any )](#)
+- [is.date( value )](#)
 
 __bundle:error__
 
-- [is.error( val:any )](#)
+- [is.error( value )](#)
 
 __bundle:regex__
 
-- [is.regex( val:any )](#)
+- [is.regex( value )](#)
 
 __bundle:type__
 
-- [is.sameType( val:any , oth:any )](#)
-- [is.instanceOf( obj:object , ctor:function )](#)
-- [is.prototypeOf( proto:object , obj:object )](#)
+- [is.sameType( value , other )](#)
+- [is.instanceOf( object , constructor )](#)
+- [is.prototypeOf( prototype , object )](#)
 
 __bundle:equality__
 
-- [is.equal( val:any , oth:any )](#)
-- [is.deepEqual( val:any , oth:any )](#)
+- [is.equal( value , other )](#)
+- [is.deepEqual( value , other )](#)
 
 ## API reference
 
 ### bundle:nil
 
-#### is.null( val:any )
+#### is.null( value )
 
 Checks whether given value is `null`.
 
@@ -134,7 +134,7 @@ is.null( null ) // true
 is.null( undefined ) // false
 ```
 
-#### is.undefined( val:any )
+#### is.undefined( value )
 
 Checks whether given value is `undefined`.
 
@@ -143,7 +143,7 @@ is.undefined( null ) // false
 is.undefined( undefined ) // true
 ```
 
-#### is.nil( val:any )
+#### is.nil( value )
 
 Checks whether given value is either `null` or `undefined`.
 
@@ -154,7 +154,7 @@ is.nil( undefined ) // true
 
 ### bundle:number
 
-#### is.number( val:any )
+#### is.number( value )
 
 Checks whether given value is a Number.
 
@@ -167,7 +167,7 @@ is.number( '0' ) // false
 is.number( new Number( 0 ) ) // false
 ```
 
-#### is.nan( val:any )
+#### is.nan( value )
 
 Checks whether given value is `NaN`.
 
@@ -179,7 +179,7 @@ is.nan( Number.NEGATIVE_INFINITY ) // false
 is.nan( 'one' ) // false
 ```
 
-#### is.odd( num:number )
+#### is.odd( number )
 
 Checks whether given value is an odd number.
 
@@ -190,7 +190,7 @@ is.odd( '1' ) // false
 is.odd( '2' ) // false
 ```
 
-#### is.even( num:number )
+#### is.even( number )
 
 Checks whether given value is an even number.
 
@@ -201,7 +201,7 @@ is.even( '1' ) // false
 is.even( '2' ) // false
 ```
 
-#### is.finite( num:number )
+#### is.finite( number )
 
 Checks whether given value is a finite number.
 
@@ -213,7 +213,7 @@ is.finite( Number.POSITIVE_INFINITY ) // false
 is.finite( Number.NEGATIVE_INFINITY ) // false
 ```
 
-#### is.infinite( num:number )
+#### is.infinite( number )
 
 Checks whether given value is an infinite number, i.e, `Number.POSITIVE_INFINITY` or `Number.NEGATIVE_INFINITY`.
 
@@ -225,7 +225,7 @@ is.infinite( Number.POSITIVE_INFINITY ) // true
 is.infinite( Number.NEGATIVE_INFINITY ) // true
 ```
 
-#### is.integer( num:number )
+#### is.integer( number )
 
 Checks whether given value is an integer.
 
@@ -241,7 +241,7 @@ is.integer( Number.MAX_SAFE_INTEGER + 1 ) // true
 is.integer( Number.MIN_SAFE_INTEGER - 1 ) // true
 ```
 
-#### is.safeInteger( num:number )
+#### is.safeInteger( number )
 
 Checks whether given value is a safe integer.
 
@@ -259,7 +259,7 @@ is.safeInteger( Number.MIN_SAFE_INTEGER - 1 ) // false
 
 ### bundle:function
 
-#### is.function( val:any )
+#### is.function( value )
 
 Checks whether given value is a function.
 
@@ -272,7 +272,7 @@ is.function( new Function() ) // true
 
 ### bundle:date
 
-#### is.date( val:any )
+#### is.date( value )
 
 Checks whether given value is a `Date` object.
 
@@ -282,7 +282,7 @@ is.date( new Date() ) // true
 
 ### bundle:error
 
-#### is.error( val:any )
+#### is.error( value )
 
 Checks whether given value is an `Error` object.
 
@@ -293,7 +293,7 @@ is.error( new TypeError() ) // true
 
 ### bundle:regex
 
-#### is.regex( val:any )
+#### is.regex( value )
 
 Checks whether given value is a `RegExp` object.
 
