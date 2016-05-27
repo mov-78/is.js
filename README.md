@@ -253,6 +253,21 @@ is.safeInteger( Number.MAX_SAFE_INTEGER + 1 ) // false
 is.safeInteger( Number.MIN_SAFE_INTEGER - 1 ) // false
 ```
 
+### bundle:boolean
+
+#### is.boolean( value )
+
+Checks whether given value is a boolean.
+
+```js
+is.boolean( 1 ) // false
+is.boolean( 0 ) // false
+is.boolean( true ) // true
+is.boolean( false ) // true
+is.boolean( new Boolean( true ) ) // false
+is.boolean( new Boolean( false ) ) // false
+```
+
 ### bundle:function
 
 #### is.function( value )
