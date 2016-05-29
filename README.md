@@ -35,7 +35,7 @@ All checks, or _predicates_ in `is.js` terminology, takes two general forms:
 That's it! What's next?
 
 - [Cheatsheet](#cheatsheet) - List of available predicates.
-- [API reference](#api-reference) - Detailed documentation.
+- [API reference](#api-reference) - Detailed documentation on each predicate.
 - [Writing new predicates](#writing-new-predicates) - Learn how to define new predicates.
 
 ## Cheatsheet
@@ -282,7 +282,7 @@ is.primitive( new Boolean( true ) ) // false
 is.primitive( false ) // true
 is.primitive( new Boolean( false ) ) // false
 is.primitive( Symbol() ) // true
-is.primitive( Symbol.for( 'hi' ) ) // true
+is.primitive( Symbol.for( 'is' ) ) // true
 is.primitive( {} ) // false
 is.primitive( [] ) // false
 is.primitive( function() {} ) // false
