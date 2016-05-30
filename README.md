@@ -288,6 +288,53 @@ is.primitive( [] ) // false
 is.primitive( function() {} ) // false
 ```
 
+#### is.object( value )
+
+Checks whether given value is an object.
+
+```js
+is.object( null ) // false
+is.object( undefined ) // false
+is.object( 0 ) // false
+is.object( '' ) // false
+is.object( true ) // false
+is.object( false ) // false
+is.object( Symbol() ) // false
+is.object( Symbol.for( 'is' ) ) // false
+is.object( {} ) // true
+is.object( [] ) // true
+is.object( function () {} ) // true
+```
+
+#### is.emptyObject( object )
+
+Checks whether given value is an empty object, i.e, an object without any own, enumerable, string keyed properties.
+
+```js
+is.emptyObject( {} ) // true
+is.emptyObject( { foo : 'bar' } ) // false
+is.emptyObject( Object.create( { foo : 'bar' } ) ) // true
+is.emptyObject( Object.defineProperty( {} , 'foo' , { value : 'bar' } ) ) // true
+```
+
+#### is.ownPropertyDefined( object , key )
+
+Checks whether given property is defined directly on `object`.
+
+```js
+is.ownPropertyDefined( { foo : 'bar' } , 'foo' ) // true
+is.ownPropertyDefined( Object.create( { foo : 'bar' } ) , 'foo' ) // false
+```
+
+#### is.propertyDefined( object , key )
+
+Checks whether given property is defined on `object`, directly or indirectly via prototype chain.
+
+```js
+is.propertyDefined( { foo : 'bar' } , 'foo' ) // true
+is.propertyDefined( Object.create( { foo : 'bar' } ) , 'foo' ) // true
+```
+
 #### is.function( value )
 
 Checks whether given value is a function.
