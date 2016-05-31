@@ -437,4 +437,33 @@ is.symbol( Symbol() ) // true
 is.symbol( Symbol.for( 'is' ) ) // true
 ```
 
+#### is.equal( value , other )
+
+Checks whether given values are equal, using [SameValueZero](http://bit.ly/1soiz3w) algorithm.
+
+```js
+is.equal( null , undefined ) // false
+is.equal( 0 , 0 ) // true
+is.equal( 0 , '0' ) // false
+is.equal( Number.NaN , Number.NaN ) // true
+is.equal( [] , [] ) // false
+```
+
+#### is.deepEqual( value , other )
+
+Checks whether given values are deeply equal, i.e:
+
+- If `Type( value ) !== Type( other )`, returns `false`.
+- For primitives, checks whether they are equal using _SameValueZero_.
+- For arrays, checks whether they have same set of members, all of which are deeply equal.
+- Otherwise, checks whether they have same set of own, enumerable, string keyed properties, all of which are deeply equal.
+
+```js
+is.deepEqual( null , undefined ) // false
+is.deepEqual( 0 , 0 ) // true
+is.deepEqual( 0 , '0' ) // false
+is.deepEqual( Number.NaN , Number.NaN ) // true
+is.deepEqual( [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] , [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] ) // true
+```
+
 ## Writing new predicates
