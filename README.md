@@ -466,4 +466,57 @@ is.deepEqual( Number.NaN , Number.NaN ) // true
 is.deepEqual( [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] , [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] ) // true
 ```
 
+#### is.sameType( value , other )
+
+Checks whether given values are of the same type.
+
+```js
+is.sameType( 0 , 0 ) // true
+is.sameType( 0 , '0' ) // false
+is.sameType( 0 , new Number( 0 ) ) // false
+is.sameType( 0 , Number.NaN ) // true
+is.sameType( [] , {} ) // false
+```
+
+#### is.instanceOf( object , constructor )
+
+Checks whether `constructor.prototype` exists within `object`'s prototype chain.
+
+```js
+class Foo {}
+class Bar extends Foo {}
+class Baz {}
+
+const alice = new Bar()
+const bob = new Baz()
+
+is.instanceOf( alice , Foo ) // true
+is.instanceOf( alice , Bar ) // true
+is.instanceOf( alice , Baz ) // false
+
+is.instanceOf( bob , Foo ) // false
+is.instanceOf( bob , Bar ) // false
+is.instanceOf( bob , Baz ) // true
+
+is.instanceOf( {} , '' ) // false - failed silently if `constructor` is not a function
+```
+
+#### is.prototypeOf( prototype , object )
+
+Checks whether `prototype` exists within `object`'s prototype chain.
+
+```js
+const foo = {}
+const bar = Object.create( foo )
+const baz = Object.create( bar )
+const qux = {}
+
+is.prototypeOf( foo , bar ) // true
+is.prototypeOf( bar , baz ) // true
+is.prototypeOf( foo , baz ) // true
+is.prototypeOf( foo , qux ) // false
+is.prototypeOf( bar , qux ) // false
+is.prototypeOf( baz , qux ) // false
+```
+
 ## Writing new predicates
