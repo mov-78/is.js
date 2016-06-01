@@ -253,6 +253,51 @@ is.safeInteger( Number.MAX_SAFE_INTEGER + 1 ) // false
 is.safeInteger( Number.MIN_SAFE_INTEGER - 1 ) // false
 ```
 
+#### is.string( value )
+
+Checks whether given value is a string.
+
+```js
+is.string( 'lipsum' ) // true
+is.string( `lipsum` ) // true
+```
+
+#### is.emptyString( string )
+
+Checks whether given value is an empty string, i.e, a string with whitespace characters only.
+
+```js
+is.emptyString( '' ) // true
+is.emptyString( ' ' ) // true
+is.emptyString( '\f\n\r\t' ) // true
+is.emptyString( '\u0009\u000A\u000B\u000C\u000D\u0020' ) // true
+is.emptyString( 'lipsum' ) // false
+```
+
+#### is.stringIncludes( string , substring )
+
+Checks whether `string` includes `substring`.
+
+```js
+is.stringIncludes( 'foobar' , 'oo' ) // true
+```
+
+#### is.startsWith( string , prefix )
+
+Checks whether `string` starts with `prefix`.
+
+```js
+is.startsWith( 'foobar' , 'foo' ) // true
+```
+
+#### is.endsWith( string , suffix )
+
+Checks whether `string` ends with `suffix`.
+
+```js
+is.endsWith( 'foobar' , 'bar' ) // true
+```
+
 #### is.boolean( value )
 
 Checks whether given value is a boolean.
