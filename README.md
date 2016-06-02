@@ -542,6 +542,7 @@ Checks whether given values are equal, using [SameValueZero](http://bit.ly/1soiz
 ```js
 is.equal( null , undefined ) // false
 is.equal( 0 , 0 ) // true
+is.equal( +0 , -0 ) // true
 is.equal( 0 , '0' ) // false
 is.equal( Number.NaN , Number.NaN ) // true
 is.equal( [] , [] ) // false
