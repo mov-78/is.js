@@ -366,7 +366,7 @@ As a special case, functions are never qualified as _array-like_.
 ```js
 is.arrayLike( [] ) // true
 is.arrayLike( '' ) // true
-is.arrayLike( document.links ) // true
+is.arrayLike( document.scripts ) // true
 is.arrayLike( function() {} ) // false
 ```
 
