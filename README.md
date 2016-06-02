@@ -92,10 +92,12 @@ __bundle:type__
 - [is.instanceOf( object , constructor )](#)
 - [is.prototypeOf( prototype , object )](#)
 - [is.primitive( value )](#)
-- [is.function( value )](#)
 - [is.date( value )](#)
 - [is.error( value )](#)
+- [is.function( value )](#)
+- [is.map( value )](#)
 - [is.regexp( value )](#)
+- [is.set( value )](#)
 - [is.symbol( value )](#)
 
 __bundle:equality__
@@ -293,28 +295,6 @@ is.boolean( new Boolean( true ) ) // false
 is.boolean( new Boolean( false ) ) // false
 ```
 
-#### is.primitive( value )
-
-Checks whether given value is a [primitive](https://developer.mozilla.org/en-US/docs/Glossary/Primitive).
-
-```js
-is.primitive( null ) // true
-is.primitive( undefined ) // true
-is.primitive( 0 ) // true
-is.primitive( new Number( 0 ) ) // false
-is.primitive( '' ) // true
-is.primitive( new String( '' ) ) // false
-is.primitive( true ) // true
-is.primitive( new Boolean( true ) ) // false
-is.primitive( false ) // true
-is.primitive( new Boolean( false ) ) // false
-is.primitive( Symbol() ) // true
-is.primitive( Symbol.for( 'is' ) ) // true
-is.primitive( {} ) // false
-is.primitive( [] ) // false
-is.primitive( function() {} ) // false
-```
-
 #### is.object( value )
 
 Checks whether given value is an object.
@@ -418,81 +398,6 @@ is.arrayDeepIncludes( [ 0 , 1 , 2 ] , 0 ) // true
 is.arrayDeepIncludes( [ [ 1 , 2 ] , 3 ] , [ 1 , 2 ] ) // true
 ```
 
-#### is.function( value )
-
-Checks whether given value is a function.
-
-```js
-is.function( function () {} ) // true
-is.function( function* () {} ) // true
-is.function( () => null ) // true
-is.function( new Function() ) // true
-```
-
-#### is.date( value )
-
-Checks whether given value is a `Date` object.
-
-```js
-is.date( new Date() ) // true
-```
-
-#### is.error( value )
-
-Checks whether given value is an `Error` object.
-
-```js
-is.error( new Error() ) // true
-is.error( new TypeError() ) // true
-```
-
-#### is.regexp( value )
-
-Checks whether given value is a `RegExp` object.
-
-```js
-is.regexp( /^/ ) // true
-is.regexp( new RegExp() ) // true
-```
-
-#### is.symbol( value )
-
-Checks whether given value is a symbol.
-
-```js
-is.symbol( Symbol() ) // true
-is.symbol( Symbol.for( 'is' ) ) // true
-```
-
-#### is.equal( value , other )
-
-Checks whether given values are equal, using [SameValueZero](http://bit.ly/1soiz3w) algorithm.
-
-```js
-is.equal( null , undefined ) // false
-is.equal( 0 , 0 ) // true
-is.equal( 0 , '0' ) // false
-is.equal( Number.NaN , Number.NaN ) // true
-is.equal( [] , [] ) // false
-```
-
-#### is.deepEqual( value , other )
-
-Checks whether given values are deeply equal, i.e:
-
-- If `Type( value ) !== Type( other )`, returns `false`.
-- For primitives, checks whether they are equal using _SameValueZero_.
-- For arrays, checks whether they have same set of members, all of which are deeply equal.
-- Otherwise, checks whether they have same set of own, enumerable, string keyed properties, all of which are deeply equal.
-
-```js
-is.deepEqual( null , undefined ) // false
-is.deepEqual( 0 , 0 ) // true
-is.deepEqual( 0 , '0' ) // false
-is.deepEqual( Number.NaN , Number.NaN ) // true
-is.deepEqual( [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] , [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] ) // true
-```
-
 #### is.sameType( value , other )
 
 Checks whether given values are of the same type.
@@ -544,6 +449,119 @@ is.prototypeOf( foo , baz ) // true
 is.prototypeOf( foo , qux ) // false
 is.prototypeOf( bar , qux ) // false
 is.prototypeOf( baz , qux ) // false
+```
+
+#### is.primitive( value )
+
+Checks whether given value is a [primitive](https://developer.mozilla.org/en-US/docs/Glossary/Primitive).
+
+```js
+is.primitive( null ) // true
+is.primitive( undefined ) // true
+is.primitive( 0 ) // true
+is.primitive( new Number( 0 ) ) // false
+is.primitive( '' ) // true
+is.primitive( new String( '' ) ) // false
+is.primitive( true ) // true
+is.primitive( new Boolean( true ) ) // false
+is.primitive( false ) // true
+is.primitive( new Boolean( false ) ) // false
+is.primitive( Symbol() ) // true
+is.primitive( Symbol.for( 'is' ) ) // true
+is.primitive( {} ) // false
+is.primitive( [] ) // false
+is.primitive( function() {} ) // false
+```
+
+#### is.date( value )
+
+Checks whether given value is a `Date` object.
+
+```js
+is.date( new Date() ) // true
+```
+
+#### is.error( value )
+
+Checks whether given value is an `Error` object.
+
+```js
+is.error( new Error() ) // true
+is.error( new TypeError() ) // true
+```
+
+#### is.function( value )
+
+Checks whether given value is a function.
+
+```js
+is.function( function () {} ) // true
+is.function( function* () {} ) // true
+is.function( () => null ) // true
+is.function( new Function() ) // true
+```
+
+#### is.map( value )
+
+Checks whether given value is a `Map` object.
+
+```js
+is.map( new Map() ) // true
+```
+
+#### is.regexp( value )
+
+Checks whether given value is a `RegExp` object.
+
+```js
+is.regexp( /^/ ) // true
+is.regexp( new RegExp() ) // true
+```
+
+#### is.set( value )
+
+Checks whether given value is a `Set` object.
+
+```js
+is.set( new Set() ) // true
+```
+
+#### is.symbol( value )
+
+Checks whether given value is a symbol.
+
+```js
+is.symbol( Symbol() ) // true
+is.symbol( Symbol.for( 'is' ) ) // true
+```
+
+#### is.equal( value , other )
+
+Checks whether given values are equal, using [SameValueZero](http://bit.ly/1soiz3w) algorithm.
+
+```js
+is.equal( null , undefined ) // false
+is.equal( 0 , 0 ) // true
+is.equal( 0 , '0' ) // false
+is.equal( Number.NaN , Number.NaN ) // true
+is.equal( [] , [] ) // false
+```
+
+#### is.deepEqual( value , other )
+
+Checks whether given values are deeply equal, i.e:
+
+- If `Type( value ) !== Type( other )`, returns `false`.
+- For primitives, checks whether they are equal using _SameValueZero_.
+- For arrays, checks whether they have same set of members, all of which are deeply equal.
+- Otherwise, checks whether they have same set of own, enumerable, string keyed properties, all of which are deeply equal.
+
+```js
+is.deepEqual( null , undefined ) // false
+is.deepEqual( 0 , 0 ) // true
+is.deepEqual( 0 , '0' ) // false
+is.deepEqual( Number.NaN , Number.NaN ) // true
+is.deepEqual( [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] , [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] ) // true
 ```
 
 ## Writing new predicates
