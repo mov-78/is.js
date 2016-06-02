@@ -1,0 +1,8 @@
+env:
+  mocha: true
+globals:
+  is: true
+  expect: true
+rules:
+  no-empty-function: 0
+  no-new-wrappers: 0

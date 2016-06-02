@@ -1,6 +1,3 @@
-/* global expect, is */
-/* eslint-env mocha */
-
 describe( 'bundle:nil' , function () {
 
   it( 'is.null' , function () {
