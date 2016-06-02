@@ -71,10 +71,6 @@ __bundle:boolean__
 
 - [is.boolean( value )](#)
 
-__bundle:primitive__
-
-- [is.primitive( value )](#)
-
 __bundle:object__
 
 - [is.object( value )](#)
@@ -90,31 +86,17 @@ __bundle:array__
 - [is.arrayIncludes( array , member )](#)
 - [is.arrayDeepIncludes( array , member )](#)
 
-__bundle:function__
-
-- [is.function( value )](#)
-
-__bundle:date__
-
-- [is.date( value )](#)
-
-__bundle:error__
-
-- [is.error( value )](#)
-
-__bundle:regex__
-
-- [is.regex( value )](#)
-
-__bundle:symbol__
-
-- [is.symbol( value )](#)
-
 __bundle:type__
 
 - [is.sameType( value , other )](#)
 - [is.instanceOf( object , constructor )](#)
 - [is.prototypeOf( prototype , object )](#)
+- [is.primitive( value )](#)
+- [is.function( value )](#)
+- [is.date( value )](#)
+- [is.error( value )](#)
+- [is.regexp( value )](#)
+- [is.symbol( value )](#)
 
 __bundle:equality__
 
@@ -464,13 +446,13 @@ is.error( new Error() ) // true
 is.error( new TypeError() ) // true
 ```
 
-#### is.regex( value )
+#### is.regexp( value )
 
 Checks whether given value is a `RegExp` object.
 
 ```js
-is.regex( /^/ ) // true
-is.regex( new RegExp() ) // true
+is.regexp( /^/ ) // true
+is.regexp( new RegExp() ) // true
 ```
 
 #### is.symbol( value )
