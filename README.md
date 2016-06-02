@@ -36,7 +36,7 @@ That's it! What's next?
 
 - [Cheatsheet](#cheatsheet) - List of available predicates.
 - [API reference](#api-reference) - Detailed documentation on each predicate.
-- [Writing new predicates](#writing-new-predicates) - Learn how to define new predicates.
+- [Writing new predicates](#writing-new-predicates) - Learn how to define new predicates and extends existing ones.
 
 ## Cheatsheet
 
