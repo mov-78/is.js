@@ -1,4 +1,4 @@
-describe.only( 'bundle:string' , function () {
+describe( 'bundle:string' , function () {
 
   it( 'is.string' , function () {
     expect( is.string( '' ) ).to.be.ok()
