@@ -560,6 +560,7 @@ Checks whether given values are deeply equal, i.e:
 ```js
 is.deepEqual( null , undefined ) // false
 is.deepEqual( 0 , 0 ) // true
+is.deepEqual( +0 , -0 ) // true
 is.deepEqual( 0 , '0' ) // false
 is.deepEqual( Number.NaN , Number.NaN ) // true
 is.deepEqual( [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] , [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] ) // true
