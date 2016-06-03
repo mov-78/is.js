@@ -82,9 +82,6 @@ __bundle:array__
 
 - [is.array( value )](#)
 - [is.arrayLike( value )](#)
-- [is.emptyArray( array )](#)
-- [is.arrayIncludes( array , member )](#)
-- [is.arrayDeepIncludes( array , member )](#)
 
 __bundle:type__
 
@@ -377,34 +374,6 @@ is.arrayLike( [] ) // true
 is.arrayLike( '' ) // true
 is.arrayLike( document.scripts ) // true
 is.arrayLike( function() {} ) // false
-```
-
-#### is.emptyArray( array )
-
-Checks whether given value is an empty array.
-
-```js
-is.emptyArray( [] ) // true
-is.emptyArray( [ 0 ] ) // false
-is.emptyArray( new Array( 5 ) ) // false
-```
-
-#### is.arrayIncludes( array , member )
-
-Checks whether `member` is in `array`, using `is.equal` for membership test.
-
-```js
-is.arrayIncludes( [ 0 , 1 , 2 ] , 0 ) // true
-is.arrayIncludes( [ [ 1 , 2 ] , 3 ] , [ 1 , 2 ] ) // false
-```
-
-#### is.arrayDeepIncludes( array , member )
-
-Checks whether `member` is in `array`, using `is.deepEqual` for membership test.
-
-```js
-is.arrayDeepIncludes( [ 0 , 1 , 2 ] , 0 ) // true
-is.arrayDeepIncludes( [ [ 1 , 2 ] , 3 ] , [ 1 , 2 ] ) // true
 ```
 
 #### is.sameType( value , other )
