@@ -263,7 +263,10 @@ is.emptyString( 'lipsum' ) // false
 Checks whether `string` includes `substring`.
 
 ```js
-is.stringIncludes( 'foobar' , 'oo' ) // true
+is.stringIncludes( 'lipsum' , 'ps' ) // true
+is.stringIncludes( 'lipsum' , 'sp' ) // false
+is.stringIncludes( new String( 'lipsum' ) , 'ps' ) // false - `string` must be a string
+is.stringIncludes( 'lipsum' , new String( 'sp' ) ) // true - `substring` will be converted to a string as needed
 ```
 
 #### is.startsWith( string , prefix )
@@ -271,7 +274,10 @@ is.stringIncludes( 'foobar' , 'oo' ) // true
 Checks whether `string` starts with `prefix`.
 
 ```js
-is.startsWith( 'foobar' , 'foo' ) // true
+is.startsWith( 'lipsum' , 'lip' ) // true
+is.startsWith( 'lipsum' , 'sum' ) // false
+is.startsWith( new String( 'lipsum' ) , 'lip' ) // false - `string` must be a string
+is.startsWith( 'lipsum' , new String( 'lip' ) ) // true - `prefix` will be converted to a string as needed
 ```
 
 #### is.endsWith( string , suffix )
@@ -279,7 +285,10 @@ is.startsWith( 'foobar' , 'foo' ) // true
 Checks whether `string` ends with `suffix`.
 
 ```js
-is.endsWith( 'foobar' , 'bar' ) // true
+is.endsWith( 'lipsum' , 'sum' ) // true
+is.endsWith( 'lipsum' , 'lip' ) // false
+is.endsWith( new String( 'lipsum' ) , 'sum' ) // false - `string` must be a string
+is.endsWith( 'lipsum' , new String( 'sum' ) ) // true - `suffix` will be converted to a string as needed
 ```
 
 #### is.boolean( value )
