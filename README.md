@@ -63,7 +63,7 @@ __bundle:string__
 
 - [is.string( value )](#)
 - [is.emptyString( string )](#)
-- [is.stringIncludes( string , substring )](#)
+- [is.substring( substring , string , [offset=0] )](#)
 - [is.startsWith( string , prefix )](#)
 - [is.endsWith( string , suffix )](#)
 
@@ -253,15 +253,17 @@ is.emptyString( '\u0009\u000A\u000B\u000C\u000D\u0020' ) // true
 is.emptyString( 'lipsum' ) // false
 ```
 
-#### is.stringIncludes( string , substring )
+#### is.substring( substring , string , [offset=0] )
 
-Checks whether `string` includes `substring`.
+Checks whether one string may be found within another string.
 
 ```js
-is.stringIncludes( 'lipsum' , 'ps' ) // true
-is.stringIncludes( 'lipsum' , 'sp' ) // false
-is.stringIncludes( new String( 'lipsum' ) , 'ps' ) // false - `string` must be a string
-is.stringIncludes( 'lipsum' , new String( 'sp' ) ) // true - `substring` will be converted to a string as needed
+is.substring( 'ps' , 'lipsum' ) // true
+is.substring( 'sp' , 'lipsum' ) // false
+is.substring( 'ps' , 'lipsum' , 2 ) // true
+is.substring( 'ps' , 'lipsum' , 3 ) // false
+is.substring( 'ps' , 'lipsum' , -4 ) // true; supports negative offset
+is.substring( 'ps' , 'lipsum' , 10 ) // throws RangeError
 ```
 
 #### is.startsWith( string , prefix )
