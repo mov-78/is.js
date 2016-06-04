@@ -75,7 +75,6 @@ __bundle:object__
 
 - [is.object( value )](#)
 - [is.emptyObject( object )](#)
-- [is.ownPropertyDefined( object , key )](#)
 - [is.propertyDefined( object , key )](#)
 
 __bundle:array__
@@ -327,15 +326,6 @@ is.emptyObject( {} ) // true
 is.emptyObject( { foo : 'bar' } ) // false
 is.emptyObject( Object.create( { foo : 'bar' } ) ) // true
 is.emptyObject( Object.defineProperty( {} , 'foo' , { value : 'bar' } ) ) // true
-```
-
-#### is.ownPropertyDefined( object , key )
-
-Checks whether given property is defined directly on `object`.
-
-```js
-is.ownPropertyDefined( { foo : 'bar' } , 'foo' ) // true
-is.ownPropertyDefined( Object.create( { foo : 'bar' } ) , 'foo' ) // false
 ```
 
 #### is.propertyDefined( object , key )
