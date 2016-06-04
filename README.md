@@ -10,7 +10,7 @@ Node:
 $ npm install --save @pwn/is
 ```
 
-Browser(AMD ready):
+Browser:
 
 ```html
 <script src="path/to/is.js"></script>
@@ -30,17 +30,19 @@ is.deepEqual( [ 1 , [ 2 , 3 ] ] , [ 1 , [ 2 , 3 ] ] ) // true
 All checks, or _predicates_ in `is.js` terminology, takes two general forms:
 
 - __POSITIVE CHECK__: `is.predicate( ...args )` - Checks whether certain condition met.
-- __NEGATIVE CHECK__: `is.not.predicate( ...args )` - The inverse of its corresponding _POSITIVE CHECK_.
+- __NEGATIVE CHECK__: `is.not.predicate( ...args )` - The inverse of its corresponding positive check.
 
 That's it! What's next?
 
-- [Cheatsheet](#cheatsheet) - List of available predicates.
+- [Cheatsheet](#cheatsheet) - List of available predicates shipped with `is.js`.
 - [API reference](#api-reference) - Detailed documentation on each predicate.
 - [Writing new predicates](#writing-new-predicates) - Learn how to define new predicates and extends existing ones.
 
 ## Cheatsheet
 
 TL;DR
+
+> A _bundle_ is simply a way of organizing related predicates.
 
 __bundle:nil__
 
