@@ -81,7 +81,7 @@ __bundle:object__
 __bundle:array__
 
 - [is.array( value )](#)
-- [is.arrayLike( value )](#)
+- [is.arrayLikeObject( value )](#)
 - [is.inArray( value , array , [offset=0] , [comparator=is.equal] )](#)
 
 __bundle:type__
@@ -358,21 +358,19 @@ is.array( document.links ) // false
 is.array( function() {} ) // false
 ```
 
-#### is.arrayLike( value )
+#### is.arrayLikeObject( value )
 
 Checks whether given value is an _array-like_ object.
 
-An object is qualified as _array-like_ if it has a property named `length`
-that is a positive safe integer. Primitives may also be qualified as
-_array-like_ if its corresponding primitive wrapper object is _array-like_.
-
-As a special case, functions are never qualified as _array-like_.
+An object is qualified as _array-like_ if it has a property named
+`length` that is a positive safe integer. As a special case, functions
+are never qualified as _array-like_.
 
 ```js
-is.arrayLike( [] ) // true
-is.arrayLike( '' ) // true
-is.arrayLike( document.scripts ) // true
-is.arrayLike( function() {} ) // false
+is.arrayLikeObject( [] ) // true
+is.arrayLikeObject( '' ) // false
+is.arrayLikeObject( document.scripts ) // true
+is.arrayLikeObject( function() {} ) // false
 ```
 
 #### is.inArray( value , array , [offset=0] , [comparator=is.equal] )
