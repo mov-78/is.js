@@ -64,8 +64,8 @@ __bundle:string__
 - [is.string( value )](#)
 - [is.emptyString( string )](#)
 - [is.substring( substring , string , [offset=0] )](#)
-- [is.startsWith( string , prefix )](#)
-- [is.endsWith( string , suffix )](#)
+- [is.prefix( prefix , string )](#)
+- [is.suffix( suffix , string )](#)
 
 __bundle:boolean__
 
@@ -266,26 +266,26 @@ is.substring( 'ps' , 'lipsum' , -4 ) // true; supports negative offset
 is.substring( 'ps' , 'lipsum' , 10 ) // throws RangeError
 ```
 
-#### is.startsWith( string , prefix )
+#### is.prefix( prefix , string )
 
 Checks whether `string` starts with `prefix`.
 
 ```js
-is.startsWith( 'lipsum' , 'lip' ) // true
-is.startsWith( 'lipsum' , 'sum' ) // false
-is.startsWith( new String( 'lipsum' ) , 'lip' ) // false - `string` must be a string
-is.startsWith( 'lipsum' , new String( 'lip' ) ) // true - `prefix` will be converted to a string as needed
+is.prefix( 'lip' , 'lipsum' ) // true
+is.prefix( 'sum' , 'lipsum' ) // false
+is.prefix( 'lip' , [ 'lipsum' ] ) // throws TypeError: `string` must be a string primitive
+is.prefix( [ 'lip' ] , 'lipsum' ) // true - `prefix` will be converted to a string as needed
 ```
 
-#### is.endsWith( string , suffix )
+#### is.suffix( suffix , string )
 
 Checks whether `string` ends with `suffix`.
 
 ```js
-is.endsWith( 'lipsum' , 'sum' ) // true
-is.endsWith( 'lipsum' , 'lip' ) // false
-is.endsWith( new String( 'lipsum' ) , 'sum' ) // false - `string` must be a string
-is.endsWith( 'lipsum' , new String( 'sum' ) ) // true - `suffix` will be converted to a string as needed
+is.suffix( 'sum' , 'lipsum' ) // true
+is.suffix( 'lip' , 'lipsum' ) // false
+is.suffix( 'sum' , [ 'lipsum' ] ) // throws TypeError: `string` must be a string primitive
+is.suffix( [ 'sum' ] , 'lipsum' ) // true - `suffix` will be converted to a string as needed
 ```
 
 #### is.boolean( value )

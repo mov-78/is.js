@@ -1,5 +1,12 @@
 describe( 'bundle:string' , function () {
 
+  var isTypeError = function isTypeError( err ) {
+    expect( err ).to.be.a( TypeError )
+  }
+  var isRangeError = function isRangeError( err ) {
+    expect( err ).to.be.a( RangeError )
+  }
+
   it( 'is.string' , function () {
     expect( is.string( '' ) ).to.be.ok()
     expect( is.string( new String( '' ) ) ).to.not.be.ok()
@@ -14,13 +21,6 @@ describe( 'bundle:string' , function () {
   } )
 
   it( 'is.substring' , function () {
-
-    var isTypeError = function isTypeError( err ) {
-      expect( err ).to.be.a( TypeError )
-    }
-    var isRangeError = function isRangeError( err ) {
-      expect( err ).to.be.a( RangeError )
-    }
 
     expect( function () {
       is.substring( 'ps' )
@@ -41,18 +41,22 @@ describe( 'bundle:string' , function () {
 
   } )
 
-  it( 'is.startsWith' , function () {
-    expect( is.startsWith( 'lipsum' , 'lip' ) ).to.be.ok()
-    expect( is.startsWith( 'lipsum' , 'sum' ) ).to.not.be.ok()
-    expect( is.startsWith( new String( 'lipsum' ) , 'lip' ) ).to.not.be.ok()
-    expect( is.startsWith( 'lipsum' , new String( 'lip' ) ) ).to.be.ok()
+  it( 'is.prefix' , function () {
+    expect( is.prefix( 'lip' , 'lipsum' ) ).to.be.ok()
+    expect( is.prefix( 'sum' , 'lipsum' ) ).to.not.be.ok()
+    expect( function () {
+      is.prefix( 'lip' , [ 'lipsum' ] )
+    } ).to.throwException( isTypeError )
+    expect( is.prefix( [ 'lip' ] , 'lipsum' ) ).to.be.ok()
   } )
 
-  it( 'is.endsWith' , function () {
-    expect( is.endsWith( 'lipsum' , 'lip' ) ).to.not.be.ok()
-    expect( is.endsWith( 'lipsum' , 'sum' ) ).to.be.ok()
-    expect( is.endsWith( new String( 'lipsum' ) , 'sum' ) ).to.not.be.ok()
-    expect( is.endsWith( 'lipsum' , new String( 'sum' ) ) ).to.be.ok()
+  it( 'is.suffix' , function () {
+    expect( is.suffix( 'lip' , 'lipsum' ) ).to.not.be.ok()
+    expect( is.suffix( 'sum' , 'lipsum' ) ).to.be.ok()
+    expect( function () {
+      is.suffix( 'sum' , [ 'lipsum' ] )
+    } ).to.throwException( isTypeError )
+    expect( is.suffix( [ 'sum' ] , 'lipsum' ) ).to.be.ok()
   } )
 
 } )
