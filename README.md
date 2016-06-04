@@ -385,7 +385,7 @@ Checks whether given array or array-like object contains certain element.
 - __comparator__: The comparator invoked per element against `value`.
 
 The default comparator, which is `is.equal`, can be configured by setting
-`is.defaults.comparator` to another comparator function.
+`is.defaults.inArrayComparator` to another comparator function.
 
 By default, `is.inArray` skip _holes_ in sparse arrays. This behavior
 can be turned off by setting `is.defaults.skipHoles` to `false`.
