@@ -10,7 +10,7 @@ Node:
 $ npm install --save @pwn/is
 ```
 
-Browser:
+Browser(AMD ready):
 
 ```html
 <script src="path/to/is.js"></script>
