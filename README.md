@@ -82,6 +82,7 @@ __bundle:array__
 
 - [is.array( value )](#)
 - [is.arrayLike( value )](#)
+- [is.inArray( value , array , [offset=0] , [comparator=is.equal] )](#)
 
 __bundle:type__
 
@@ -374,6 +375,33 @@ is.arrayLike( [] ) // true
 is.arrayLike( '' ) // true
 is.arrayLike( document.scripts ) // true
 is.arrayLike( function() {} ) // false
+```
+
+#### is.inArray( value , array , [offset=0] , [comparator=is.equal] )
+
+Checks whether given array or array-like object contains certain element.
+
+- __value__: The element to search.
+- __array__: The array or array-like object to search from.
+- __offset__: The index(inclusive) to search from.
+- __comparator__: The comparator invoked per element against `value`.
+
+The default comparator, which is `is.equal`, can be configured by setting
+`is.defaults.comparator` to another comparator function.
+
+By default, `is.inArray` skip _holes_ in sparse arrays. This behavior
+can be turned off by setting `is.defaults.skipHoles` to `false`.
+
+```js
+is.inArray( 2 , [ 1 , 2 , 3 ] ) // true
+is.inArray( 4 , [ 1 , 2 , 3 ] ) // false
+is.inArray( 2 , [ 1 , 2 , 3 ] , 1 ) // true
+is.inArray( 2 , [ 1 , 2 , 3 ] , 2 ) // false
+is.inArray( 2 , [ 1 , 2 , 3 ] , 3 ) // thrown _RangeError_
+is.inArray( 2 , [ 1 , 2 , 3 ] , -2 ) // true; supports negative offset
+is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] ) // false
+is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , 0 , is.deepEqual ) // true
+is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , is.deepEqual ) // true; `offset` can be omitted when passing a custom _comparator_
 ```
 
 #### is.sameType( value , other )
