@@ -75,7 +75,7 @@ __bundle:object__
 
 - [is.object( value )](#)
 - [is.emptyObject( object )](#)
-- [is.propertyDefined( object , key )](#)
+- [is.propertyDefined( object , keyPath )](#)
 
 __bundle:array__
 
@@ -328,13 +328,18 @@ is.emptyObject( Object.create( { foo : 'bar' } ) ) // true
 is.emptyObject( Object.defineProperty( {} , 'foo' , { value : 'bar' } ) ) // true
 ```
 
-#### is.propertyDefined( object , key )
+#### is.propertyDefined( object , keyPath )
 
-Checks whether given property is defined on `object`, directly or indirectly via prototype chain.
+Checks whether given property is defined(recursively) on `object`.
 
 ```js
 is.propertyDefined( { foo : 'bar' } , 'foo' ) // true
 is.propertyDefined( Object.create( { foo : 'bar' } ) , 'foo' ) // true
+is.propertyDefined( { foo : { bar : { baz : 0 } } } , 'foo.bar.baz' ) // true
+is.propertyDefined( { foo : { bar : { baz : 0 } } } , 'foo.qux.baz' ) // false
+is.defaults.keyPathSeparator = '|' // keyPath separator is configurable
+is.propertyDefined( { foo : { bar : 0 } } , 'foo.bar' ) // false
+is.propertyDefined( { foo : { bar : 0 } } , 'foo|bar' ) // true
 ```
 
 #### is.array( value )
