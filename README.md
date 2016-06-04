@@ -395,11 +395,15 @@ is.inArray( 2 , [ 1 , 2 , 3 ] ) // true
 is.inArray( 4 , [ 1 , 2 , 3 ] ) // false
 is.inArray( 2 , [ 1 , 2 , 3 ] , 1 ) // true
 is.inArray( 2 , [ 1 , 2 , 3 ] , 2 ) // false
-is.inArray( 2 , [ 1 , 2 , 3 ] , 3 ) // thrown _RangeError_
+is.inArray( 2 , [ 1 , 2 , 3 ] , 3 ) // throws RangeError
 is.inArray( 2 , [ 1 , 2 , 3 ] , -2 ) // true; supports negative offset
 is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] ) // false
 is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , 0 , is.deepEqual ) // true
-is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , is.deepEqual ) // true; `offset` can be omitted when passing a custom _comparator_
+is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , is.deepEqual ) // true; `offset` can be omitted when passing a custom comparator
+is.inArray( 2 , [ 1 , 2 , 3 ] , ( val , oth ) => val === oth ) // true
+is.inArray( undefined , new Array( 5 ) ) // false; skip holes by default
+is.default.skipHoles = false // configurable; turn off skipping holes
+is.inArray( undefined , new Array( 5 ) ) // true
 ```
 
 #### is.sameType( value , other )
