@@ -10,10 +10,14 @@ Node:
 $ npm install --save @pwn/is
 ```
 
+```js
+const is = require( '@pwn/is' )
+```
+
 Browser:
 
 ```html
-<script src="path/to/is.js"></script>
+<script src="path/to/is.min.js"></script>
 ```
 
 ## Usage
@@ -21,8 +25,9 @@ Browser:
 A code sample is worth a thousand words:
 
 ```js
-is.number( 0 ) // true
-is.not.number( 0 ) // false
+is.array( [] ) // true
+is.not.integer( 0 ) // false
+is.propertyDefined( { foo : { bar : 0 } } , 'foo.bar' ) // true
 is.equal( [ 1 , [ 2 , 3 ] ] , [ 1 , [ 2 , 3 ] ] ) // false
 is.deepEqual( [ 1 , [ 2 , 3 ] ] , [ 1 , [ 2 , 3 ] ] ) // true
 ```
