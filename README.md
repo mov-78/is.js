@@ -74,11 +74,11 @@ __bundle:number__
 
 __bundle:string__
 
-- [is.string( value )](#)
-- [is.emptyString( string )](#)
-- [is.substring( substring , string , [offset=0] )](#)
-- [is.prefix( prefix , string )](#)
-- [is.suffix( suffix , string )](#)
+- [is.string( value )](#isstring-value-)
+- [is.emptyString( string )](#isemptystring-string-)
+- [is.substring( substring , string , [offset=0] )](#issubstring-substring--string--offset0-)
+- [is.prefix( prefix , string )](#isprefix-prefix--string-)
+- [is.suffix( suffix , string )](#issuffix-suffix--string-)
 
 __bundle:boolean__
 
@@ -267,7 +267,7 @@ Checks whether given value is a string.
 
 ```js
 is.string( 'lipsum' ) // true
-is.string( `lipsum` ) // true
+is.string( new String( 'lipsum' ) ) // false
 ```
 
 #### is.emptyString( string )
@@ -288,6 +288,9 @@ Checks whether one string may be found within another string.
 
 ```js
 is.substring( 'ps' , 'lipsum' ) // true
+is.substring( [ 'ps' ] , 'lipsum' ) // true; `substring` will be converted to a string as needed
+is.substring( 'ps' , [ 'lipsum' ] ) // throws TypeError: `string` must be a string primitive
+is.substring( 'ps' , 'lipsum' , 3.14 ) // true; non-integer offset will be omitted and defaults to 0
 is.substring( 'sp' , 'lipsum' ) // false
 is.substring( 'ps' , 'lipsum' , 2 ) // true
 is.substring( 'ps' , 'lipsum' , 3 ) // false
