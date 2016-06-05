@@ -63,14 +63,14 @@ __bundle:nil__
 
 __bundle:number__
 
-- [is.number( value )](#)
-- [is.nan( value )](#)
-- [is.odd( number )](#)
-- [is.even( number )](#)
-- [is.finite( number )](#)
-- [is.infinite( number )](#)
-- [is.integer( number )](#)
-- [is.safeInteger( number )](#)
+- [is.number( value )](#isnumber-value-)
+- [is.nan( value )](#isnan-value-)
+- [is.odd( number )](#isodd-number-)
+- [is.even( number )](#iseven-number-)
+- [is.finite( number )](#isfinite-number-)
+- [is.infinite( number )](#isinfinite-number-)
+- [is.integer( number )](#isinteger-number-)
+- [is.safeInteger( number )](#issafeinteger-number-)
 
 __bundle:string__
 
@@ -162,6 +162,7 @@ Checks whether given value is `NaN`.
 ```js
 is.nan( 0 ) // false
 is.nan( Number.NaN ) // true
+is.nan( new Number( Number.NaN ) ) // false
 is.nan( Number.POSITIVE_INFINITY ) // false
 is.nan( Number.NEGATIVE_INFINITY ) // false
 is.nan( 'one' ) // false
@@ -176,6 +177,11 @@ is.odd( 1 ) // true
 is.odd( 2 ) // false
 is.odd( '1' ) // false
 is.odd( '2' ) // false
+is.odd( new Number( 1 ) ) // false
+is.odd( new Number( 2 ) ) // false
+is.odd( Number.NaN ) // false
+is.odd( Number.POSITIVE_INFINITY ) // false
+is.odd( Number.NEGATIVE_INFINITY ) // false
 ```
 
 #### is.even( number )
@@ -187,6 +193,11 @@ is.even( 1 ) // false
 is.even( 2 ) // true
 is.even( '1' ) // false
 is.even( '2' ) // false
+is.even( new Number( 1 ) ) // false
+is.even( new Number( 2 ) ) // false
+is.even( Number.NaN ) // false
+is.even( Number.POSITIVE_INFINITY ) // false
+is.even( Number.NEGATIVE_INFINITY ) // false
 ```
 
 #### is.finite( number )
@@ -203,7 +214,8 @@ is.finite( Number.NEGATIVE_INFINITY ) // false
 
 #### is.infinite( number )
 
-Checks whether given value is an infinite number, i.e, `Number.POSITIVE_INFINITY` or `Number.NEGATIVE_INFINITY`.
+Checks whether given value is an infinite number, i.e,
+`Number.POSITIVE_INFINITY` or `Number.NEGATIVE_INFINITY`.
 
 ```js
 is.infinite( 0 ) // false
@@ -219,6 +231,8 @@ Checks whether given value is an integer.
 
 ```js
 is.integer( 0 ) // true
+is.integer( '0' ) // false
+is.integer( new Number( 0 ) ) // false
 is.integer( 0.1 ) // false
 is.integer( Number.NaN ) // false
 is.integer( Number.POSITIVE_INFINITY ) // false
@@ -235,6 +249,8 @@ Checks whether given value is a safe integer.
 
 ```js
 is.safeInteger( 0 ) // true
+is.safeInteger( '0' ) // false
+is.safeInteger( new Number( 0 ) ) // false
 is.safeInteger( 0.1 ) // false
 is.safeInteger( Number.NaN ) // false
 is.safeInteger( Number.POSITIVE_INFINITY ) // false
