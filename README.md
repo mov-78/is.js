@@ -57,9 +57,9 @@ TL;DR
 
 __bundle:nil__
 
-- [is.null( value )](#)
-- [is.undefined( value )](#)
-- [is.nil( value )](#)
+- [is.null( value )](#isnull-value-)
+- [is.undefined( value )](#isundefined-value-)
+- [is.nil( value )](#isnil-value-)
 
 __bundle:number__
 
