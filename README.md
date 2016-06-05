@@ -110,8 +110,8 @@ __bundle:type__
 
 __bundle:equality__
 
-- [is.equal( value , other )](#)
-- [is.deepEqual( value , other )](#)
+- [is.equal( value , other )](#isequal-value--other-)
+- [is.deepEqual( value , other )](#isdeepequal-value--other-)
 
 ## API reference
 
@@ -536,9 +536,9 @@ Checks whether given values are equal, using [SameValueZero](http://bit.ly/1soiz
 ```js
 is.equal( null , undefined ) // false
 is.equal( 0 , 0 ) // true
-is.equal( +0 , -0 ) // true
 is.equal( 0 , '0' ) // false
-is.equal( Number.NaN , Number.NaN ) // true
+is.equal( +0 , -0 ) // true; SameValueZero
+is.equal( Number.NaN , Number.NaN ) // true; SameValueZero
 is.equal( [] , [] ) // false
 ```
 
@@ -554,10 +554,11 @@ Checks whether given values are deeply equal, i.e:
 ```js
 is.deepEqual( null , undefined ) // false
 is.deepEqual( 0 , 0 ) // true
-is.deepEqual( +0 , -0 ) // true
 is.deepEqual( 0 , '0' ) // false
-is.deepEqual( Number.NaN , Number.NaN ) // true
-is.deepEqual( [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] , [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : 5 } ] ) // true
+is.deepEqual( +0 , -0 ) // true; SameValueZero
+is.deepEqual( Number.NaN , Number.NaN ) // true; SameValueZero
+is.deepEqual( [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : { baz : 5 } } ] , [ 1 , { foo : [ 2 , [ 3 , 4 ] ] , bar : { baz : 5 } } ] ) // true
+is.deepEqual( Object.create( { foo : 1 } ) , Object.create( { foo : 2 } ) ) // true; only own, enumerable, string-keyed properties are checked
 ```
 
 ## Writing new predicates
