@@ -92,9 +92,9 @@ __bundle:object__
 
 __bundle:array__
 
-- [is.array( value )](#)
-- [is.arrayLikeObject( value )](#)
-- [is.inArray( value , array , [offset=0] , [comparator=is.equal] )](#)
+- [is.array( value )](#isarray-value-)
+- [is.arrayLikeObject( value )](#isarraylikeobject-value-)
+- [is.inArray( value , array , [offset=0] , [comparator=is.equal] )](#isinarray-value--array--offset0--comparatorisequal-)
 
 __bundle:type__
 
@@ -383,7 +383,7 @@ Checks whether given value is an array.
 ```js
 is.array( [] ) // true
 is.array( '' ) // false
-is.array( document.links ) // false
+is.array( document.scripts ) // false
 is.array( function() {} ) // false
 ```
 
@@ -408,7 +408,7 @@ Checks whether given array or array-like object contains certain element.
 
 - __value__: The element to search.
 - __array__: The array or array-like object to search from.
-- __offset__: The index(inclusive) to search from.
+- __offset__: The index to search from, inclusive.
 - __comparator__: The comparator invoked per element against `value`.
 
 The default comparator, which is `is.equal`, can be configured by setting
@@ -426,8 +426,8 @@ is.inArray( 2 , [ 1 , 2 , 3 ] , 3 ) // throws RangeError
 is.inArray( 2 , [ 1 , 2 , 3 ] , -2 ) // true; supports negative offset
 is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] ) // false
 is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , 0 , is.deepEqual ) // true
-is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , is.deepEqual ) // true; `offset` can be omitted when passing a custom comparator
-is.inArray( 2 , [ 1 , 2 , 3 ] , ( val , oth ) => val === oth ) // true
+is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , is.deepEqual ) // true; `offset` can be omitted when passing a custom comparator only
+is.inArray( 2 , [ 1 , 2 , 3 ] , ( val , arrMember ) => val === arrMember ) // true; `comparator` takes two parameters, the element to search and the array element of current iteration
 is.inArray( undefined , new Array( 5 ) ) // false; skip holes by default
 is.default.skipHoles = false // configurable; turn off skipping holes
 is.inArray( undefined , new Array( 5 ) ) // true
