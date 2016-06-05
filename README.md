@@ -20,6 +20,12 @@ Browser:
 <script src="path/to/is.min.js"></script>
 ```
 
+## Features
+
+- Zero dependencies, it just work.
+- Works with Node, AMD and browsers, including IE6.
+- Modular and extensible.
+
 ## Usage
 
 A code sample is worth a thousand words:
