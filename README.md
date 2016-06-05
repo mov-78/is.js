@@ -82,7 +82,7 @@ __bundle:string__
 
 __bundle:boolean__
 
-- [is.boolean( value )](#)
+- [is.boolean( value )](#isboolean-value-)
 
 __bundle:object__
 
