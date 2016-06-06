@@ -22,8 +22,8 @@ Browser:
 
 ## Features
 
-- Zero dependencies, it just work.
-- Works with Node, AMD and browsers, including IE6.
+- Zero dependencies.
+- Works with Node, AMD and all browsers, including IE6.
 - Modular and extensible.
 
 ## Usage
@@ -47,7 +47,7 @@ That's it! What's next?
 
 - [Cheatsheet](#cheatsheet) - List of available predicates shipped with `is.js`.
 - [API reference](#api-reference) - Detailed documentation on each predicate.
-- [Writing new predicates](#writing-new-predicates) - Learn how to define new predicates and extends existing ones.
+- [Writing new predicates](#writing-new-predicates) - Learn how to define new predicates.
 
 ## Cheatsheet
 
