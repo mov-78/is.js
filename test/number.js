@@ -25,7 +25,7 @@ describe( 'bundle:number' , function () {
 
     if ( typeof Symbol === 'function' ) {
       expect( is.numeric( Symbol( 0 ) ) ).to.not.be.ok()
-      expect( is.numeric( Symbol.for( 0 ) ) ).to.not.be.ok()
+      expect( is.numeric( Symbol[ 'for' ]( 0 ) ) ).to.not.be.ok()
     }
 
     expect( is.numeric( 1 ) ).to.be.ok()

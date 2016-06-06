@@ -39,8 +39,8 @@ describe( 'bundle:array' , function () {
     expect( is.inArray( 2 , [ 1 , 2 , 3 ] , 2 ) ).to.not.be.ok()
     expect( is.inArray( 2 , [ 1 , 2 , 3 ] , -2 ) ).to.be.ok()
 
-    expect( is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] ) , 0 , is.deepEqual ).to.be.ok()
-    expect( is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] ) , is.deepEqual ).to.be.ok() // shortcut
+    expect( is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , 0 , is.deepEqual ) ).to.be.ok()
+    expect( is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , is.deepEqual ) ).to.be.ok() // shortcut
 
     expect( is.defaults.skipHoles ).to.be.ok()
     expect( is.inArray( void 0 , new Array( 5 ) ) ).to.not.be.ok()
