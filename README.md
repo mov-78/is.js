@@ -10,10 +10,6 @@ Node:
 $ npm install --save @pwn/is
 ```
 
-```js
-const is = require( '@pwn/is' )
-```
-
 Browser:
 
 ```html
@@ -31,6 +27,8 @@ Browser:
 A code sample is worth a thousand words:
 
 ```js
+const is = require( '@pwn/is' )
+
 is.array( [] ) // true
 is.not.integer( 0 ) // false
 is.propertyDefined( { foo : { bar : 0 } } , 'foo.bar' ) // true
