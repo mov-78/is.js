@@ -594,3 +594,51 @@ is.deepEqual( Object.create( { foo : 1 } ) , Object.create( { foo : 2 } ) ) // t
 ```
 
 ## Writing new predicates
+
+_Predicates_ are essentially functions that checks whether certain condition met based on passed in arguments. They are packaged in various _bundles_. Conceptually, a bundle is simply a way
+of organizing related predicates. Implementation-wise, a bundle is a just a
+function that takes two parameters:
+
+- `util:object` - The utility object.
+- `is:object` - The `is` export.
+
+The `util` object defines a method called `addPredicate` that allows you to define new predicates:
+
+> util.addPredicate( name:string , predicate:function )
+> - name - The name of the predicate.
+> - predicate - The predicate function.
+
+Once defined, the predicate will be available on both `is` and `is.not` - `util.addPredicate` wraps the predicate in a delegate function and automatically handles positive/negative cases for you.
+
+Still confused? Take a look at this sample bundle:
+
+```js
+// my_bundle.js
+module.exports = function bundle( util , is ) {
+
+  util.addPredicate( 'positive' , function isPositive( value ) {
+    return is.number( value ) && value > 0
+  } )
+
+  util.addPredicate( 'negative' , function isNegative( value ) {
+    return is.number( value ) && value < 0
+  } )
+
+}
+```
+
+To use a bundle, simple call `is.use`:
+
+> is.use( bundle:function )
+
+```js
+const is = require( '@pwn/is' )
+
+// import all predicates from my_bundle.js
+is.use( require( 'path/to/my_bundle' ) )
+
+is.positive( +1 ) // true
+is.not.positive( -1 ) // true
+is.negative( -1 ) // true
+is.not.negative( +1 ) // true
+```
