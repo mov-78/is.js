@@ -606,7 +606,7 @@ The `util` object defines a method called `addPredicate` that allows you to defi
 > - name - The name of the predicate.
 > - predicate - The predicate function.
 
-Once defined, the predicate will be available on both `is` and `is.not` - `util.addPredicate` wraps the predicate in a delegate function and automatically handles positive/negative cases for you.
+Once defined, the predicate will be available on both `is` and `is.not` — `util.addPredicate` wraps the predicate in a delegate function and automatically handles positive/negative cases for you.
 
 Still confused? Take a look at this sample bundle:
 
