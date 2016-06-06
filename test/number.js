@@ -13,6 +13,72 @@ describe( 'bundle:number' , function () {
 
   } )
 
+  it( 'is.numeric' , function () {
+
+    expect( is.numeric( null ) ).to.not.be.ok()
+    expect( is.numeric( void 0 ) ).to.not.be.ok()
+    expect( is.numeric( true ) ).to.not.be.ok()
+    expect( is.numeric( false ) ).to.not.be.ok()
+    expect( is.numeric( { valueOf : function () { return 0 } } ) ).to.not.be.ok()
+    expect( is.numeric( [ 0 ] ) ).to.not.be.ok()
+    expect( is.numeric( function () { return 0 } ) ).to.not.be.ok()
+
+    if ( typeof Symbol === 'function' ) {
+      expect( is.numeric( Symbol( 0 ) ) ).to.not.be.ok()
+      expect( is.numeric( Symbol.for( 0 ) ) ).to.not.be.ok()
+    }
+
+    expect( is.numeric( 1 ) ).to.be.ok()
+    expect( is.numeric( -1 ) ).to.be.ok()
+    expect( is.numeric( 1.1 ) ).to.be.ok()
+    expect( is.numeric( -1.1 ) ).to.be.ok()
+    expect( is.numeric( 1e1 ) ).to.be.ok()
+    expect( is.numeric( 1e-1 ) ).to.be.ok()
+    expect( is.numeric( 1.1e1 ) ).to.be.ok()
+    expect( is.numeric( 1.1e-1 ) ).to.be.ok()
+    expect( is.numeric( 0xFF ) ).to.be.ok()
+
+    expect( is.numeric( new Number( 1 ) ) ).to.be.ok()
+    expect( is.numeric( new Number( -1 ) ) ).to.be.ok()
+    expect( is.numeric( new Number( 1.1 ) ) ).to.be.ok()
+    expect( is.numeric( new Number( -1.1 ) ) ).to.be.ok()
+    expect( is.numeric( new Number( 1e1 ) ) ).to.be.ok()
+    expect( is.numeric( new Number( 1e-1 ) ) ).to.be.ok()
+    expect( is.numeric( new Number( 1.1e1 ) ) ).to.be.ok()
+    expect( is.numeric( new Number( 1.1e-1 ) ) ).to.be.ok()
+    expect( is.numeric( new Number( 0xFF ) ) ).to.be.ok()
+
+    expect( is.numeric( ' 1 ' ) ).to.be.ok()
+    expect( is.numeric( ' -1 ' ) ).to.be.ok()
+    expect( is.numeric( ' 1.1 ' ) ).to.be.ok()
+    expect( is.numeric( ' -1.1 ' ) ).to.be.ok()
+    expect( is.numeric( ' 1e1 ' ) ).to.be.ok()
+    expect( is.numeric( ' 1e-1 ' ) ).to.be.ok()
+    expect( is.numeric( ' 1.1e1 ' ) ).to.be.ok()
+    expect( is.numeric( ' 1.1e-1 ' ) ).to.be.ok()
+    expect( is.numeric( ' 0xFF' ) ).to.be.ok()
+
+    expect( is.numeric( new String( ' 1 ' ) ) ).to.be.ok()
+    expect( is.numeric( new String( ' -1 ' ) ) ).to.be.ok()
+    expect( is.numeric( new String( ' 1.1 ' ) ) ).to.be.ok()
+    expect( is.numeric( new String( ' -1.1 ' ) ) ).to.be.ok()
+    expect( is.numeric( new String( ' 1e1 ' ) ) ).to.be.ok()
+    expect( is.numeric( new String( ' 1e-1 ' ) ) ).to.be.ok()
+    expect( is.numeric( new String( ' 1.1e1 ' ) ) ).to.be.ok()
+    expect( is.numeric( new String( ' 1.1e-1 ' ) ) ).to.be.ok()
+    expect( is.numeric( new String( ' 0xFF ' ) ) ).to.be.ok()
+
+    expect( is.numeric( 0 / 0 ) ).to.not.be.ok()
+    expect( is.numeric( +1 / 0 ) ).to.not.be.ok()
+    expect( is.numeric( -1 / 0 ) ).to.not.be.ok()
+
+    expect( is.number( '' ) ).to.not.be.ok()
+    expect( is.number( ' ' ) ).to.not.be.ok()
+    expect( is.number( 'one' ) ).to.not.be.ok()
+    expect( is.number( '1px' ) ).to.not.be.ok()
+
+  } )
+
   it( 'is.nan' , function () {
     expect( is.nan( 0 ) ).to.not.be.ok()
     expect( is.nan( 0 / 0 ) ).to.be.ok() // ←

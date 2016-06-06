@@ -64,6 +64,7 @@ __bundle:nil__
 __bundle:number__
 
 - [is.number( value )](#isnumber-value-)
+- [is.numeric( value )](#isnumeric-value-)
 - [is.nan( value )](#isnan-value-)
 - [is.odd( number )](#isodd-number-)
 - [is.even( number )](#iseven-number-)
@@ -153,6 +154,37 @@ is.number( Number.POSITIVE_INFINITY ) // true
 is.number( Number.NEGATIVE_INFINITY ) // true
 is.number( '0' ) // false
 is.number( new Number( 0 ) ) // false
+```
+
+#### is.numeric( value )
+
+Checks whether given value is likely a number.
+
+```js
+is.numeric( null ) // false
+is.numeric( undefined ) // false
+is.numeric( true ) // false
+is.numeric( false ) // false
+is.numeric( Symbol( 0 ) ) // false
+is.numeric( Symbol.for( 0 ) ) // false
+is.numeric( { valueOf() { return 0 } } ) // false
+is.numeric( [ 0 ] ) // false
+is.numeric( () => 0 ) // false
+
+is.numeric( '' ) // false
+is.numeric( 'one' ) // false
+is.numeric( '1px' ) // false
+is.numeric( '  0xFF  ' ) // true
+is.numeric( '1e1' ) // true
+is.numeric( '1.1E-1' ) // true
+is.numeric( '-1' ) // true
+is.numeric( '1.1' ) // true
+is.numeric( new Number( 1 ) ) // true
+is.numeric( new String( '1' ) ) // true
+
+is.numeric( Number.NaN ) // false
+is.numeric( Number.POSITIVE_INFINITY ) // false
+is.numeric( Number.NEGATIVE_INFINITY ) // false
 ```
 
 #### is.nan( value )
