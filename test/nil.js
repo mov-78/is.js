@@ -11,6 +11,11 @@ describe( 'bundle:nil' , function () {
 
   } )
 
+  it( 'is.exist' , function () {
+    expect( is.exist( null ) ).to.not.be.ok()
+    expect( is.exist( void 0 ) ).to.not.be.ok()
+  } )
+
   it( 'is.nil' , function () {
     expect( is.nil( null ) ).to.be.ok()
     expect( is.nil( void 0 ) ).to.be.ok()

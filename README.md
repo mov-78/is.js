@@ -57,6 +57,7 @@ __bundle:nil__
 
 - [is.null( value )](#isnull-value-)
 - [is.undefined( value )](#isundefined-value-)
+- [is.exist( value )](#isexist-value-)
 - [is.nil( value )](#isnil-value-)
 
 __bundle:number__
@@ -131,6 +132,15 @@ Checks whether given value is `undefined`.
 ```js
 is.undefined( null ) // false
 is.undefined( undefined ) // true
+```
+
+#### is.exist( value )
+
+Checks whether given value exists, i.e, not `null` nor `undefined`.
+
+```js
+is.exist( null ) // false
+is.exist( undefined ) // false
 ```
 
 #### is.nil( value )
