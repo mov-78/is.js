@@ -1,21 +1,17 @@
-/* global expect, is */
-/* eslint-env mocha */
-/* eslint no-empty-function: 0, no-new-wrappers: 0, no-unused-expressions: 0 */
-
 describe( 'bundle:object' , function () {
+
+  var createObject = Object.create || function createObject( proto ) {
+    function Surrogate() {} // eslint-disable-line func-style
+    Surrogate.prototype = proto
+    return new Surrogate()
+  }
 
   it( 'is.object' , function () {
 
     expect( is.object( null ) ).to.not.be.ok()
     expect( is.object( void 0 ) ).to.not.be.ok()
     expect( is.object( 0 ) ).to.not.be.ok()
-    expect( is.object( 0 / 0 ) ).to.not.be.ok()
-    expect( is.object( +1 / 0 ) ).to.not.be.ok()
-    expect( is.object( -1 / 0 ) ).to.not.be.ok()
     expect( is.object( new Number( 0 ) ) ).to.be.ok()
-    expect( is.object( new Number( 0 / 0 ) ) ).to.be.ok()
-    expect( is.object( new Number( +1 / 0 ) ) ).to.be.ok()
-    expect( is.object( new Number( -1 / 0 ) ) ).to.be.ok()
     expect( is.object( '' ) ).to.not.be.ok()
     expect( is.object( new String( '' ) ) ).to.be.ok()
     expect( is.object( true ) ).to.not.be.ok()
@@ -24,222 +20,184 @@ describe( 'bundle:object' , function () {
     expect( is.object( new Boolean( false ) ) ).to.be.ok()
     expect( is.object( {} ) ).to.be.ok()
     expect( is.object( [] ) ).to.be.ok()
-    expect( is.object( arguments ) ).to.be.ok()
     expect( is.object( function () {} ) ).to.be.ok()
-    expect( is.object( new Date() ) ).to.be.ok()
-    expect( is.object( new Error() ) ).to.be.ok()
-    expect( is.object( /^/ ) ).to.be.ok()
 
-    expect( is.not.object( null ) ).to.be.ok()
-    expect( is.not.object( void 0 ) ).to.be.ok()
-    expect( is.not.object( 0 ) ).to.be.ok()
-    expect( is.not.object( 0 / 0 ) ).to.be.ok()
-    expect( is.not.object( +1 / 0 ) ).to.be.ok()
-    expect( is.not.object( -1 / 0 ) ).to.be.ok()
-    expect( is.not.object( new Number( 0 ) ) ).to.not.be.ok()
-    expect( is.not.object( new Number( 0 / 0 ) ) ).to.not.be.ok()
-    expect( is.not.object( new Number( +1 / 0 ) ) ).to.not.be.ok()
-    expect( is.not.object( new Number( -1 / 0 ) ) ).to.not.be.ok()
-    expect( is.not.object( '' ) ).to.be.ok()
-    expect( is.not.object( new String( '' ) ) ).to.not.be.ok()
-    expect( is.not.object( true ) ).to.be.ok()
-    expect( is.not.object( false ) ).to.be.ok()
-    expect( is.not.object( new Boolean( true ) ) ).to.not.be.ok()
-    expect( is.not.object( new Boolean( false ) ) ).to.not.be.ok()
-    expect( is.not.object( {} ) ).to.not.be.ok()
-    expect( is.not.object( [] ) ).to.not.be.ok()
-    expect( is.not.object( arguments ) ).to.not.be.ok()
-    expect( is.not.object( function () {} ) ).to.not.be.ok()
-    expect( is.not.object( new Date() ) ).to.not.be.ok()
-    expect( is.not.object( new Error() ) ).to.not.be.ok()
-    expect( is.not.object( /^/ ) ).to.not.be.ok()
+    if ( typeof Symbol === 'function' ) {
+      expect( is.object( Symbol( 'is' ) ) ).to.not.be.ok()
+      expect( is.object( Symbol[ 'for' ]( 'is' ) ) ).to.not.be.ok()
+    }
 
   } )
 
   it( 'is.emptyObject' , function () {
 
-    expect( is.emptyObject( null ) ).to.not.be.ok()
-    expect( is.emptyObject( void 0 ) ).to.not.be.ok()
-    expect( is.emptyObject( 0 ) ).to.not.be.ok()
-    expect( is.emptyObject( 0 / 0 ) ).to.not.be.ok()
-    expect( is.emptyObject( +1 / 0 ) ).to.not.be.ok()
-    expect( is.emptyObject( -1 / 0 ) ).to.not.be.ok()
-    expect( is.emptyObject( new Number( 0 ) ) ).to.be.ok()
-    expect( is.emptyObject( new Number( 0 / 0 ) ) ).to.be.ok()
-    expect( is.emptyObject( new Number( +1 / 0 ) ) ).to.be.ok()
-    expect( is.emptyObject( new Number( -1 / 0 ) ) ).to.be.ok()
-    expect( is.emptyObject( '' ) ).to.not.be.ok()
-    expect( is.emptyObject( new String( '' ) ) ).to.be.ok()
-    expect( is.emptyObject( true ) ).to.not.be.ok()
-    expect( is.emptyObject( false ) ).to.not.be.ok()
-    expect( is.emptyObject( new Boolean( true ) ) ).to.be.ok()
-    expect( is.emptyObject( new Boolean( false ) ) ).to.be.ok()
     expect( is.emptyObject( {} ) ).to.be.ok()
-    expect( is.emptyObject( Object.create( {} ) ) ).to.be.ok()
-    expect( is.emptyObject( { foo : 0 } ) ).to.not.be.ok()
-    expect( is.emptyObject( Object.create( { foo : 0 } ) ) ).to.be.ok()
-    expect( is.emptyObject( [] ) ).to.be.ok()
-    expect( is.emptyObject( arguments ) ).to.be.ok()
-    expect( is.emptyObject( function () {} ) ).to.be.ok()
-    expect( is.emptyObject( new Date() ) ).to.be.ok()
-    expect( is.emptyObject( /^/ ) ).to.be.ok()
+    expect( is.emptyObject( { foo : 'bar' } ) ).to.not.be.ok()
 
-    expect( is.not.emptyObject( null ) ).to.be.ok()
-    expect( is.not.emptyObject( void 0 ) ).to.be.ok()
-    expect( is.not.emptyObject( 0 ) ).to.be.ok()
-    expect( is.not.emptyObject( 0 / 0 ) ).to.be.ok()
-    expect( is.not.emptyObject( +1 / 0 ) ).to.be.ok()
-    expect( is.not.emptyObject( -1 / 0 ) ).to.be.ok()
-    expect( is.not.emptyObject( new Number( 0 ) ) ).to.not.be.ok()
-    expect( is.not.emptyObject( new Number( 0 / 0 ) ) ).to.not.be.ok()
-    expect( is.not.emptyObject( new Number( +1 / 0 ) ) ).to.not.be.ok()
-    expect( is.not.emptyObject( new Number( -1 / 0 ) ) ).to.not.be.ok()
-    expect( is.not.emptyObject( '' ) ).to.be.ok()
-    expect( is.not.emptyObject( new String( '' ) ) ).to.not.be.ok()
-    expect( is.not.emptyObject( true ) ).to.be.ok()
-    expect( is.not.emptyObject( false ) ).to.be.ok()
-    expect( is.not.emptyObject( new Boolean( true ) ) ).to.not.be.ok()
-    expect( is.not.emptyObject( new Boolean( false ) ) ).to.not.be.ok()
-    expect( is.not.emptyObject( {} ) ).to.not.be.ok()
-    expect( is.not.emptyObject( Object.create( {} ) ) ).to.not.be.ok()
-    expect( is.not.emptyObject( { foo : 0 } ) ).to.be.ok()
-    expect( is.not.emptyObject( Object.create( { foo : 0 } ) ) ).to.not.be.ok()
-    expect( is.not.emptyObject( [] ) ).to.not.be.ok()
-    expect( is.not.emptyObject( arguments ) ).to.not.be.ok()
-    expect( is.not.emptyObject( function () {} ) ).to.not.be.ok()
-    expect( is.not.emptyObject( new Date() ) ).to.not.be.ok()
-    expect( is.not.emptyObject( /^/ ) ).to.not.be.ok()
+    // ignore inherited properties
+    expect( is.emptyObject( createObject( { foo : 'bar' } ) ) ).to.be.ok()
+
+    if ( Object.defineProperty ) {
+
+      // ignore non-enumerable properties
+      expect(
+        is.emptyObject(
+          Object.defineProperty( {} , 'foo' , { value : 'bar' , enumerable : false } )
+        )
+      ).to.be.ok()
+
+      if ( typeof Symbol === 'function' ) {
+        // ignore non-string-keyed properties
+        expect(
+          is.emptyObject(
+            Object.defineProperty( {} , Symbol() , { value : 'bar' , enumerable : true } )
+          )
+        ).to.be.ok()
+      }
+
+    }
 
   } )
 
-  it( 'is.ownPropertyDefined' , function () {
-
-    expect( is.ownPropertyDefined( null , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( void 0 , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( 0 , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( 0 / 0 , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( +1 / 0 , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( -1 / 0 , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( new Number( 0 ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( new Number( 0 / 0 ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( new Number( +1 / 0 ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( new Number( -1 / 0 ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( '' , 'length' ) ).to.be.ok()
-    expect( is.ownPropertyDefined( '' , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( new String( '' ) , 'length' ) ).to.be.ok()
-    expect( is.ownPropertyDefined( new String( '' ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( true , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( false , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( new Boolean( true ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( new Boolean( false ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( {} , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( { foo : 0 } , 'foo' ) ).to.be.ok()
-    expect( is.ownPropertyDefined( [] , 'length' ) ).to.be.ok()
-    expect( is.ownPropertyDefined( [] , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( arguments , 'length' ) ).to.be.ok()
-    expect( is.ownPropertyDefined( arguments , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( function () {} , 'length' ) ).to.be.ok()
-    expect( is.ownPropertyDefined( function () {} , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( new Date() , 'getDate' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( new Error() , 'valueOf' ) ).to.not.be.ok()
-    expect( is.ownPropertyDefined( /^/ , 'lastIndex' ) ).to.be.ok()
-    expect( is.ownPropertyDefined( /^/ , 'valueOf' ) ).to.not.be.ok()
-
-    expect( is.not.ownPropertyDefined( null , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( void 0 , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( 0 , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( 0 / 0 , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( +1 / 0 , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( -1 / 0 , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( new Number( 0 ) , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( new Number( 0 / 0 ) , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( new Number( +1 / 0 ) , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( new Number( -1 / 0 ) , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( '' , 'length' ) ).to.not.be.ok()
-    expect( is.not.ownPropertyDefined( '' , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( new String( '' ) , 'length' ) ).to.not.be.ok()
-    expect( is.not.ownPropertyDefined( new String( '' ) , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( true , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( false , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( new Boolean( true ) , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( new Boolean( false ) , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( {} , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( { foo : 0 } , 'foo' ) ).to.not.be.ok()
-    expect( is.not.ownPropertyDefined( [] , 'length' ) ).to.not.be.ok()
-    expect( is.not.ownPropertyDefined( [] , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( arguments , 'length' ) ).to.not.be.ok()
-    expect( is.not.ownPropertyDefined( arguments , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( function () {} , 'length' ) ).to.not.be.ok()
-    expect( is.not.ownPropertyDefined( function () {} , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( new Date() , 'getDate' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( new Error() , 'valueOf' ) ).to.be.ok()
-    expect( is.not.ownPropertyDefined( /^/ , 'lastIndex' ) ).to.not.be.ok()
-    expect( is.not.ownPropertyDefined( /^/ , 'valueOf' ) ).to.be.ok()
-
-  } )
   it( 'is.propertyDefined' , function () {
 
-    expect( is.propertyDefined( null , 'valueOf' ) ).to.not.be.ok()
-    expect( is.propertyDefined( void 0 , 'valueOf' ) ).to.not.be.ok()
-    expect( is.propertyDefined( 0 , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( 0 / 0 , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( +1 / 0 , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( -1 / 0 , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( new Number( 0 ) , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( new Number( 0 / 0 ) , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( new Number( +1 / 0 ) , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( new Number( -1 / 0 ) , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( '' , 'length' ) ).to.be.ok()
-    expect( is.propertyDefined( '' , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( new String( '' ) , 'length' ) ).to.be.ok()
-    expect( is.propertyDefined( new String( '' ) , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( true , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( false , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( new Boolean( true ) , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( new Boolean( false ) , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( {} , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( { foo : 0 } , 'foo' ) ).to.be.ok()
-    expect( is.propertyDefined( [] , 'length' ) ).to.be.ok()
-    expect( is.propertyDefined( [] , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( arguments , 'length' ) ).to.be.ok()
-    expect( is.propertyDefined( arguments , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( function () {} , 'length' ) ).to.be.ok()
-    expect( is.propertyDefined( function () {} , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( new Date() , 'getDate' ) ).to.be.ok()
-    expect( is.propertyDefined( new Error() , 'valueOf' ) ).to.be.ok()
-    expect( is.propertyDefined( /^/ , 'lastIndex' ) ).to.be.ok()
-    expect( is.propertyDefined( /^/ , 'valueOf' ) ).to.be.ok()
+    var fixture = { foo : { bar : { baz : 0 } } }
 
-    expect( is.not.propertyDefined( null , 'valueOf' ) ).to.be.ok()
-    expect( is.not.propertyDefined( void 0 , 'valueOf' ) ).to.be.ok()
-    expect( is.not.propertyDefined( 0 , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( 0 / 0 , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( +1 / 0 , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( -1 / 0 , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( new Number( 0 ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( new Number( 0 / 0 ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( new Number( +1 / 0 ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( new Number( -1 / 0 ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( '' , 'length' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( '' , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( new String( '' ) , 'length' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( new String( '' ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( true , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( false , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( new Boolean( true ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( new Boolean( false ) , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( {} , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( { foo : 0 } , 'foo' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( [] , 'length' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( [] , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( arguments , 'length' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( arguments , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( function () {} , 'length' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( function () {} , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( new Date() , 'getDate' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( new Error() , 'valueOf' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( /^/ , 'lastIndex' ) ).to.not.be.ok()
-    expect( is.not.propertyDefined( /^/ , 'valueOf' ) ).to.not.be.ok()
+    expect( is.propertyDefined( createObject( { foo : 'bar' } ) , 'foo' ) ).to.be.ok()
+
+    expect( is.propertyDefined( fixture , 'foo' ) ).to.be.ok()
+    expect( is.propertyDefined( fixture , 'fool' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'foo.bar' ) ).to.be.ok()
+    expect( is.propertyDefined( fixture , 'fool.bar' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'foo.ball' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'fool.ball' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'foo.bar.baz' ) ).to.be.ok()
+    expect( is.propertyDefined( fixture , 'fool.bar.baz' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'foo.ball.baz' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'foo.bar.ballon' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'fool.ball.baz' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'fool.bar.ballon' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'foo.ball.ballon' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'fool.ball.ballon' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'foo.bar.baz.qux' ) ).to.not.be.ok()
+
+  } )
+
+  it( 'is.conforms' , function () {
+
+    //
+    // non-strict mode
+    //
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.string }
+      )
+    ).to.not.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.number }
+      )
+    ).to.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.number , bar : is.number }
+      )
+    ).to.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.number , bar : is.string }
+      )
+    ).to.not.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.string , bar : is.number }
+      )
+    ).to.not.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.string , bar : is.string }
+      )
+    ).to.not.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.number , bar : is.number , baz : is.number }
+      )
+    ).to.not.be.ok()
+
+
+    //
+    // strict mode
+    //
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.string } ,
+        true
+      )
+    ).to.not.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.number } ,
+        true
+      )
+    ).to.not.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.number , bar : is.number } ,
+        true
+      )
+    ).to.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.number , bar : is.string } ,
+        true
+      )
+    ).to.not.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.string , bar : is.number } ,
+        true
+      )
+    ).to.not.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.string , bar : is.string } ,
+        true
+      )
+    ).to.not.be.ok()
+
+    expect(
+      is.conforms(
+        { foo : 0 , bar : 1 } ,
+        { foo : is.number , bar : is.number , baz : is.number } ,
+        true
+      )
+    ).to.not.be.ok()
 
   } )
 

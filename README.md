@@ -90,10 +90,10 @@ __bundle:boolean__
 
 __bundle:object__
 
-- [is.object( value )](#)
-- [is.emptyObject( object )](#)
-- [is.propertyDefined( object , keyPath )](#)
-- [is.conforms( object , schema , [strict=false] )](#)
+- [is.object( value )](#isobject-value-)
+- [is.emptyObject( object )](#isemptyobject-object-)
+- [is.propertyDefined( object , path )](#ispropertydefined-object--path-)
+- [is.conforms( object , schema , [strict=false] )](#isconforms-object--schema--strictfalse-)
 
 __bundle:array__
 
@@ -389,9 +389,11 @@ Checks whether given value is an object.
 is.object( null ) // false
 is.object( undefined ) // false
 is.object( 0 ) // false
+is.object( new Number( 0 ) ) // true
 is.object( '' ) // false
+is.object( new String( '' ) ) // true
 is.object( true ) // false
-is.object( false ) // false
+is.object( new Boolean( true ) ) // true
 is.object( Symbol() ) // false
 is.object( Symbol.for( 'is' ) ) // false
 is.object( {} ) // true
@@ -406,22 +408,23 @@ Checks whether given value is an empty object, i.e, an object without any own, e
 ```js
 is.emptyObject( {} ) // true
 is.emptyObject( { foo : 'bar' } ) // false
-is.emptyObject( Object.create( { foo : 'bar' } ) ) // true
-is.emptyObject( Object.defineProperty( {} , 'foo' , { value : 'bar' } ) ) // true
+is.emptyObject( Object.create( { foo : 'bar' } ) ) // true; ignore inherited properties
+is.emptyObject( Object.defineProperty( {} , 'foo' , { value : 'bar' } ) ) // true; ignore non-enumerable properties
+is.emptyObject( { [ Symbol() ] : 0 } ) // true; ignore non-string-keyed properties
+
 ```
 
-#### is.propertyDefined( object , keyPath )
+#### is.propertyDefined( object , path )
 
-Checks whether given property is defined(recursively) on `object`.
+Checks whether `path` is a direct or inherited property of `object`.
 
 ```js
-is.propertyDefined( { foo : 'bar' } , 'foo' ) // true
 is.propertyDefined( Object.create( { foo : 'bar' } ) , 'foo' ) // true
+is.propertyDefined( { foo : { bar : { baz : 0 } } } , 'foo' ) // true
+is.propertyDefined( { foo : { bar : { baz : 0 } } } , 'foo.bar' ) // true
 is.propertyDefined( { foo : { bar : { baz : 0 } } } , 'foo.bar.baz' ) // true
 is.propertyDefined( { foo : { bar : { baz : 0 } } } , 'foo.qux.baz' ) // false
-is.defaults.keyPathSeparator = '|' // keyPath separator is configurable
-is.propertyDefined( { foo : { bar : 0 } } , 'foo.bar' ) // false
-is.propertyDefined( { foo : { bar : 0 } } , 'foo|bar' ) // true
+is.propertyDefined( { foo : { bar : { baz : 0 } } } , 'foo.bar.baz.qux' ) // false
 ```
 
 #### is.conforms( object , schema , [strict=false] )
