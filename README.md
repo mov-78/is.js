@@ -448,18 +448,24 @@ properties, in addition to check whether all validators passed.
 
 ```js
 is.conforms(
-  { name : 'Pwn' } ,
+  { name : '@pwn/is' , access : 'public' } ,
   { name : is.exist }
 ) // true
 
 is.conforms(
-  { name : 'Pwn' } ,
+  { name : '@pwn/is' , access : 'public' } ,
+  { description : is.string }
+) // false; key `description` does not exist on `object`
+
+is.conforms(
+  { name : '@pwn/is' , access : 'public' } ,
   {
     name( value , key , context ) {
-      return is.string( value ) && value.length >= 3
+      return is.exist( value ) && context.access === 'public'
     }
   }
 ) // true
+
 
 //
 // strict mode
