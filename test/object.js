@@ -31,13 +31,30 @@ describe( 'bundle:object' , function () {
 
   it( 'is.emptyObject' , function () {
 
+    var supportsDefineProperty = ( function () {
+
+      if ( !Object.defineProperty ) {
+        return false
+      }
+
+      try {
+        // IE8 does define `Object.defineProperty`, but only DOM elements are allowed.
+        Object.defineProperty( {} , 'phony' , {} )
+      } catch ( error ) {
+        return false
+      }
+
+      return true
+
+    } )()
+
     expect( is.emptyObject( {} ) ).to.be.ok()
     expect( is.emptyObject( { foo : 'bar' } ) ).to.not.be.ok()
 
     // ignore inherited properties
     expect( is.emptyObject( createObject( { foo : 'bar' } ) ) ).to.be.ok()
 
-    if ( Object.defineProperty ) {
+    if ( supportsDefineProperty ) {
 
       // ignore non-enumerable properties
       expect(
