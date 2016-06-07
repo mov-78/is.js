@@ -34,6 +34,10 @@ is.not.integer( 0 ) // false
 is.propertyDefined( { foo : { bar : 0 } } , 'foo.bar' ) // true
 is.equal( [ 1 , [ 2 , 3 ] ] , [ 1 , [ 2 , 3 ] ] ) // false
 is.deepEqual( [ 1 , [ 2 , 3 ] ] , [ 1 , [ 2 , 3 ] ] ) // true
+
+// use a third-party bundle
+is.use( 'path/to/some/math/bundle' )
+is.prime( 7 ) // true
 ```
 
 All checks, or _predicates_ in `is.js` terminology, takes two general forms:
@@ -678,6 +682,9 @@ Still confused? Take a look at this sample bundle:
 
 ```js
 // my_bundle.js
+
+// `util` and `is` are passed in as free variables, so you don't
+// need to call `require( '@pwn/is' )`
 module.exports = function bundle( util , is ) {
 
   util.addPredicate( 'positive' , function isPositive( value ) {
