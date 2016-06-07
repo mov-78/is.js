@@ -36,7 +36,7 @@ is.equal( [ 1 , [ 2 , 3 ] ] , [ 1 , [ 2 , 3 ] ] ) // false
 is.deepEqual( [ 1 , [ 2 , 3 ] ] , [ 1 , [ 2 , 3 ] ] ) // true
 
 // use a third-party bundle
-is.use( 'path/to/some/math/bundle' )
+is.use( require( 'path/to/some/math/bundle' ) )
 is.prime( 7 ) // true
 ```
 
