@@ -514,12 +514,6 @@ Checks whether given array or array-like object contains certain element.
 - __offset__: The index to search from, inclusive.
 - __comparator__: The comparator invoked per element against `value`.
 
-The default comparator, which is `is.equal`, can be configured by setting
-`is.defaults.inArrayComparator` to another comparator function.
-
-By default, `is.inArray` skip _holes_ in sparse arrays. This behavior
-can be turned off by setting `is.defaults.skipHoles` to `false`.
-
 ```js
 is.inArray( 2 , [ 1 , 2 , 3 ] ) // true
 is.inArray( 4 , [ 1 , 2 , 3 ] ) // false
@@ -531,9 +525,6 @@ is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] ) // false
 is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , 0 , is.deepEqual ) // true
 is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , is.deepEqual ) // true; `offset` can be omitted when passing a custom comparator only
 is.inArray( 2 , [ 1 , 2 , 3 ] , ( val , arrMember ) => val === arrMember ) // true; `comparator` takes two parameters, the element to search and the array element of current iteration
-is.inArray( undefined , new Array( 5 ) ) // false; skip holes by default
-is.default.skipHoles = false // configurable; turn off skipping holes
-is.inArray( undefined , new Array( 5 ) ) // true
 ```
 
 #### is.sameType( value , other )
