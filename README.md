@@ -103,15 +103,15 @@ __bundle:array__
 
 __bundle:type__
 
-- [is.sameType( value , other )](#)
-- [is.primitive( value )](#)
-- [is.date( value )](#)
-- [is.error( value )](#)
-- [is.function( value )](#)
-- [is.map( value )](#)
-- [is.regexp( value )](#)
-- [is.set( value )](#)
-- [is.symbol( value )](#)
+- [is.sameType( value , other )](#issametype-value--other-)
+- [is.primitive( value )](#isprimitive-value-)
+- [is.date( value )](#isdate-value-)
+- [is.error( value )](#iserror-value-)
+- [is.function( value )](#isfunction-value-)
+- [is.map( value )](#ismap-value-)
+- [is.regexp( value )](#isregexp-value-)
+- [is.set( value )](#isset-value-)
+- [is.symbol( value )](#issymbol-value-)
 
 __bundle:equality__
 
@@ -558,8 +558,6 @@ is.primitive( '' ) // true
 is.primitive( new String( '' ) ) // false
 is.primitive( true ) // true
 is.primitive( new Boolean( true ) ) // false
-is.primitive( false ) // true
-is.primitive( new Boolean( false ) ) // false
 is.primitive( Symbol() ) // true
 is.primitive( Symbol.for( 'is' ) ) // true
 is.primitive( {} ) // false
@@ -590,7 +588,6 @@ Checks whether given value is a function.
 
 ```js
 is.function( function () {} ) // true
-is.function( function* () {} ) // true
 is.function( () => null ) // true
 is.function( new Function() ) // true
 ```
