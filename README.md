@@ -452,7 +452,7 @@ is.conforms(
 is.conforms(
   { name : 'Pwn' } ,
   {
-    name : function ( value , key , context ) {
+    name( value , key , context ) {
       return is.string( value ) && value.length >= 3
     }
   }
@@ -468,7 +468,7 @@ is.conforms(
     access : 'public'
   } ,
   {
-    name ( value , key , context ) {
+    name( value , key , context ) {
       return is.string( value ) && value.length >= 3
     }
   } ,
