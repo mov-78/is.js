@@ -88,6 +88,7 @@ __bundle:object__
 - [is.object( value )](#)
 - [is.emptyObject( object )](#)
 - [is.propertyDefined( object , keyPath )](#)
+- [is.conforms( object , schema , [strict=false] )](#)
 
 __bundle:array__
 
@@ -407,6 +408,58 @@ is.propertyDefined( { foo : { bar : { baz : 0 } } } , 'foo.qux.baz' ) // false
 is.defaults.keyPathSeparator = '|' // keyPath separator is configurable
 is.propertyDefined( { foo : { bar : 0 } } , 'foo.bar' ) // false
 is.propertyDefined( { foo : { bar : 0 } } , 'foo|bar' ) // true
+```
+
+#### is.conforms( object , schema , [strict=false] )
+
+Checks whether `object` conforms to `schema`.
+
+A `schema` is an object whose properties are functions that takes
+these parameters(in order):
+
+- __value:any__ - The value of current iteration.
+- __key:string__ - The corresponding key of current iteration.
+- __context:object__ - The object in question.
+
+These functions, or _validators_, are called for each corresponding key
+in `object` to check whether object conforms to the schema. An object is
+said to be conforms to the schema if all validators passed.
+
+In strict mode(where `strict=true`), `is.conforms` also checks whether
+`object` and `schema` has the same set of own, enumerable, string-keyed
+properties, in addition to check whether all validators passed.
+
+```js
+is.conforms(
+  { name : 'Pwn' } ,
+  { name : is.exist }
+) // true
+
+is.conforms(
+  { name : 'Pwn' } ,
+  {
+    name : function ( value , key , context ) {
+      return is.string( value ) && value.length >= 3
+    }
+  }
+) // true
+
+//
+// strict mode
+//
+
+is.conforms(
+  {
+    name : '@pwn/is' ,
+    access : 'public'
+  } ,
+  {
+    name ( value , key , context ) {
+      return is.string( value ) && value.length >= 3
+    }
+  } ,
+  true // enable strict mode
+) // false; `object` has extraneous properties
 ```
 
 #### is.array( value )
