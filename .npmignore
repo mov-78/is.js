@@ -1,0 +1,5 @@
+docs/
+test/
+.eslintrc
+Gruntfile.js
+karma.conf.js
