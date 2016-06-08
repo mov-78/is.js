@@ -1,5 +1,7 @@
 # is.js
 
+![TravisCI](https://img.shields.io/travis/pwnn/is.js.svg?style=flat-square)
+
 Minimalistic predicate library.
 
 ## Install
