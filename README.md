@@ -1,6 +1,6 @@
 # is.js
 
-Minimalistic check library.
+Minimalistic predicate library.
 
 ## Install
 
