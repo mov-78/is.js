@@ -98,6 +98,10 @@ describe( 'bundle:object' , function () {
     expect( is.propertyDefined( fixture , 'fool.ball.ballon' ) ).to.not.be.ok()
     expect( is.propertyDefined( fixture , 'foo.bar.baz.qux' ) ).to.not.be.ok()
 
+    // `path` will be converted to a string as needed
+    expect( is.propertyDefined( fixture , new String( 'foo.bar.baz' ) ) ).to.be.ok()
+    expect( is.propertyDefined( fixture , [ 'foo.bar.baz' ] ) ).to.be.ok()
+
   } )
 
   it( 'is.conforms' , function () {

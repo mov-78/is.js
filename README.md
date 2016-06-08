@@ -336,14 +336,15 @@ Checks whether one string may be found within another string.
 
 ```js
 is.substring( 'ps' , 'lipsum' ) // true
-is.substring( [ 'ps' ] , 'lipsum' ) // true; `substring` will be converted to a string as needed
-is.substring( 'ps' , [ 'lipsum' ] ) // throws TypeError: `string` must be a string primitive
-is.substring( 'ps' , 'lipsum' , 3.14 ) // true; non-integer offset will be omitted and defaults to 0
 is.substring( 'sp' , 'lipsum' ) // false
+is.substring( [ 'ps' ] , 'lipsum' ) // true; `substring` will be converted to a string as needed
+is.substring( 'ps' , [ 'lipsum' ] ) // false; `string` must be a string
 is.substring( 'ps' , 'lipsum' , 2 ) // true
 is.substring( 'ps' , 'lipsum' , 3 ) // false
+is.substring( 'ps' , 'lipsum' , 3.14 ) // true; non-integer offset will be omitted and defaults to 0
 is.substring( 'ps' , 'lipsum' , -4 ) // true; supports negative offset
-is.substring( 'ps' , 'lipsum' , 10 ) // throws RangeError
+is.substring( 'ps' , 'lipsum' , 6 ) // false; offset out of range
+is.substring( 'ps' , 'lipsum' , -7 ) // false; offset out of range
 ```
 
 #### is.prefix( prefix , string )
@@ -353,7 +354,7 @@ Checks whether `string` starts with `prefix`.
 ```js
 is.prefix( 'lip' , 'lipsum' ) // true
 is.prefix( 'sum' , 'lipsum' ) // false
-is.prefix( 'lip' , [ 'lipsum' ] ) // throws TypeError: `string` must be a string primitive
+is.prefix( 'lip' , [ 'lipsum' ] ) // false; `string` must be a string
 is.prefix( [ 'lip' ] , 'lipsum' ) // true - `prefix` will be converted to a string as needed
 ```
 
@@ -364,7 +365,7 @@ Checks whether `string` ends with `suffix`.
 ```js
 is.suffix( 'sum' , 'lipsum' ) // true
 is.suffix( 'lip' , 'lipsum' ) // false
-is.suffix( 'sum' , [ 'lipsum' ] ) // throws TypeError: `string` must be a string primitive
+is.suffix( 'sum' , [ 'lipsum' ] ) // false; `string` must be a string
 is.suffix( [ 'sum' ] , 'lipsum' ) // true - `suffix` will be converted to a string as needed
 ```
 
@@ -525,9 +526,10 @@ is.inArray( 2 , [ 1 , 2 , 3 ] ) // true
 is.inArray( 4 , [ 1 , 2 , 3 ] ) // false
 is.inArray( 2 , [ 1 , 2 , 3 ] , 1 ) // true
 is.inArray( 2 , [ 1 , 2 , 3 ] , 2 ) // false
-is.inArray( 2 , [ 1 , 2 , 3 ] , 3 ) // throws RangeError
 is.inArray( 2 , [ 1 , 2 , 3 ] , -2 ) // true; supports negative offset
-is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] ) // false
+is.inArray( 2 , [ 1 , 2 , 3 ] , 3 ) // false; offset out of range
+is.inArray( 2 , [ 1 , 2 , 3 ] , -4 ) // false; offset out of range
+is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] ) // false; default comparator is `is.equal`
 is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , 0 , is.deepEqual ) // true
 is.inArray( [ 2 ] , [ 1 , [ 2 ] , 3 ] , is.deepEqual ) // true; `offset` can be omitted when passing a custom comparator only
 is.inArray( 2 , [ 1 , 2 , 3 ] , ( val , arrMember ) => val === arrMember ) // true; `comparator` takes two parameters, the element to search and the array element of current iteration
