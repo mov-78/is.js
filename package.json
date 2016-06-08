@@ -19,7 +19,6 @@
     "grunt": "~1.0.1",
     "grunt-contrib-uglify": "~1.0.1",
     "karma": "~0.13.22",
-    "karma-chrome-launcher": "~1.0.1",
     "karma-expect": "~1.1.2",
     "karma-mocha": "~1.0.1",
     "load-grunt-tasks": "~3.5.0",
