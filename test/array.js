@@ -15,10 +15,17 @@ describe( 'bundle:array' , function () {
   } )
 
   it( 'is.arrayLikeObject' , function () {
+
     expect( is.arrayLikeObject( [] ) ).to.be.ok()
     expect( is.arrayLikeObject( '' ) ).to.not.be.ok()
     expect( is.arrayLikeObject( document.scripts ) ).to.be.ok()
     expect( is.arrayLikeObject( function () {} ) ).to.not.be.ok()
+
+    expect( is.arrayLikeObject( { length : 'one' } ) ).to.not.be.ok()
+    expect( is.arrayLikeObject( { length : 3.14 } ) ).to.not.be.ok()
+    expect( is.arrayLikeObject( { length : -1 } ) ).to.not.be.ok()
+    expect( is.arrayLikeObject( { length : Math.pow( 2 , 53 ) } ) ).to.not.be.ok()
+
   } )
 
   it( 'is.inArray' , function () {
