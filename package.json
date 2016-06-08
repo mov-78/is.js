@@ -2,6 +2,16 @@
   "name": "@pwn/is",
   "author": "Pwn <hi@pwn.buzz>",
   "description": "Minimalistic predicate library",
+  "keywords": [
+    "is",
+    "check",
+    "predicate",
+    "type",
+    "typeof",
+    "type-check",
+    "compare",
+    "ie6"
+  ],
   "version": "1.0.0",
   "license": "MIT",
   "main": "lib/is.js",
