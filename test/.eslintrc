@@ -1,4 +1,5 @@
 env:
+  browser: true
   mocha: true
 globals:
   is: true
