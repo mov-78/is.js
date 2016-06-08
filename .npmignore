@@ -1,5 +1,6 @@
 docs/
 test/
 .eslintrc
+.travis.yml
 Gruntfile.js
 karma.conf.js
