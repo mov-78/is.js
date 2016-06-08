@@ -291,7 +291,7 @@ the <code>proto</code> object, which both <code>is</code> and <code>is.not</code
         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>( <span class="hljs-string">'"'</span> + name + <span class="hljs-string">'" is a reserved name'</span> )
       }
 
-      <span class="hljs-keyword">if</span> ( proto[ name ] ) {
+      <span class="hljs-keyword">if</span> ( hasOwnProperty.call( proto , name ) ) {
         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>( <span class="hljs-string">'predicate "'</span> + name + <span class="hljs-string">'" already defined'</span> )
       }
 
@@ -354,7 +354,7 @@ cases on behave of the predicate.</p>
               </div>
               <p><code>bundle</code> takes two parameters(order matters):</p>
 <ul>
-<li><code>util</code>: The utility interface.</li>
+<li><code>util</code>: The utility object.</li>
 <li><code>is</code>: The <code>is</code> export.</li>
 </ul>
 <p>The <code>util</code> and <code>is</code> export is passed in as free variables so that one
@@ -363,7 +363,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
    <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bundle</span>(<span class="hljs-params"> util , is </span>) </span>{
      util.addPredicate( <span class="hljs-string">'eq'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> value , other </span>) </span>{
        <span class="hljs-keyword">if</span> ( is.not.object( value ) || is.not.object( other ) ) {
-         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'...'</span> )
+         <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
        }
        <span class="hljs-keyword">return</span> value.uuid = other.uuid
      } )
@@ -378,8 +378,6 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             <div class="content"><div class='highlight'><pre>
       bundle( util , is )
 
-    } <span class="hljs-keyword">else</span> {
-      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'bundle must be a function'</span> )
     }
 
   }</pre></div></div>
@@ -795,7 +793,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
       <span class="hljs-keyword">var</span> length
 
       <span class="hljs-keyword">if</span> ( getTag( string ) !== <span class="hljs-string">'string'</span> ) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'expected string, got '</span> + getTag( string ) )
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
       }
 
       length = string.length
@@ -819,7 +817,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
       }
 
       <span class="hljs-keyword">if</span> ( offset &lt; <span class="hljs-number">0</span> || offset &gt;= length ) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">RangeError</span>( <span class="hljs-string">'offset out of range'</span> )
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
       }
 
       <span class="hljs-keyword">return</span> string.indexOf( substring , offset ) !== <span class="hljs-number">-1</span>
@@ -845,13 +843,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             
             <div class="content"><div class='highlight'><pre>
       util.addPredicate( <span class="hljs-string">'prefix'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPrefix</span>(<span class="hljs-params"> prefix , string </span>) </span>{
-
-        <span class="hljs-keyword">if</span> ( getTag( string ) !== <span class="hljs-string">'string'</span> ) {
-          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'expected string, got '</span> + getTag( string ) )
-        }
-
-        <span class="hljs-keyword">return</span> string.startsWith( prefix )
-
+        <span class="hljs-keyword">return</span> getTag( string ) === <span class="hljs-string">'string'</span> &amp;&amp; string.startsWith( prefix )
       } )</pre></div></div>
             
         </li>
@@ -870,13 +862,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             
             <div class="content"><div class='highlight'><pre>
       util.addPredicate( <span class="hljs-string">'suffix'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSuffix</span>(<span class="hljs-params"> suffix , string </span>) </span>{
-
-        <span class="hljs-keyword">if</span> ( getTag( string ) !== <span class="hljs-string">'string'</span> ) {
-          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'expected string, got '</span> + getTag( string ) )
-        }
-
-        <span class="hljs-keyword">return</span> string.endsWith( suffix )
-
+        <span class="hljs-keyword">return</span> getTag( string ) === <span class="hljs-string">'string'</span> &amp;&amp; string.endsWith( suffix )
       } )
 
     } <span class="hljs-keyword">else</span> {
@@ -896,7 +882,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
           <span class="hljs-keyword">var</span> stringLength
 
           <span class="hljs-keyword">if</span> ( getTag( string ) !== <span class="hljs-string">'string'</span> ) {
-            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'expected string, got '</span> + getTag( string ) )
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
           }
 
           affix = <span class="hljs-built_in">String</span>( affix )
@@ -1182,10 +1168,13 @@ are never qualified as <em>array-like</em>.</p>
             <div class="content"><div class='highlight'><pre>
     util.addPredicate( <span class="hljs-string">'arrayLikeObject'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isArrayLikeObject</span>(<span class="hljs-params"> value </span>) </span>{
 
+      <span class="hljs-keyword">var</span> length
+
       <span class="hljs-keyword">if</span> ( is.primitive( value ) || is[ <span class="hljs-string">'function'</span> ]( value ) ) {
         <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
       } <span class="hljs-keyword">else</span> {
-        <span class="hljs-keyword">return</span> is.safeInteger( value.length ) &amp;&amp; value.length &gt;= <span class="hljs-number">0</span>
+        length = value.length
+        <span class="hljs-keyword">return</span> is.integer( length ) &amp;&amp; length &gt;= <span class="hljs-number">0</span> &amp;&amp; length &lt;= <span class="hljs-number">0xFFFFFFFF</span> <span class="hljs-comment">// 32-bit unsigned int maximum</span>
       }
 
     } )</pre></div></div>
@@ -1230,7 +1219,7 @@ are never qualified as <em>array-like</em>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> ( is.not.arrayLikeObject( array ) ) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'expected array or array-like object, got '</span> + getTag( array ) )
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
       }
 
       <span class="hljs-keyword">if</span> ( is[ <span class="hljs-string">'function'</span> ]( offset ) ) {
@@ -1261,7 +1250,7 @@ are never qualified as <em>array-like</em>.</p>
       }
 
       <span class="hljs-keyword">if</span> ( offset &lt; <span class="hljs-number">0</span> || offset &gt;= length ) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">RangeError</span>( <span class="hljs-string">'offset out of range'</span> )
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
       }
 
       <span class="hljs-keyword">for</span> ( index = offset ; index &lt; length ; index += <span class="hljs-number">1</span> ) {</pre></div></div>
