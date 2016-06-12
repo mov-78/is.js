@@ -21,8 +21,9 @@ Browser:
 ## Features
 
 - Zero dependencies.
+- Un-opinionated — includes only the bare minimum predicates you're likely to use.
 - Works with Node, AMD and all browsers, including IE6.
-- Modular and extensible.
+- Extensible.
 
 ## Usage
 
