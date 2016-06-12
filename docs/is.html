@@ -117,6 +117,9 @@ given value.</p>
             
             <div class="content"><div class='highlight'><pre>
   <span class="hljs-keyword">var</span> getTag = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTag</span>(<span class="hljs-params"> value </span>) </span>{
+
+    <span class="hljs-keyword">var</span> rawTag
+
     <span class="hljs-keyword">if</span> ( value === <span class="hljs-literal">null</span> ) {</pre></div></div>
             
         </li>
@@ -133,10 +136,11 @@ given value.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">return</span> <span class="hljs-string">'null'</span>
+    } <span class="hljs-keyword">else</span> {
+      rawTag = toString.call( value )
+      <span class="hljs-keyword">return</span> rawTag.substring( <span class="hljs-number">8</span> , rawTag.length - <span class="hljs-number">1</span> ).toLowerCase()
     }
 
-    <span class="hljs-keyword">var</span> rawTag = toString.call( value )
-    <span class="hljs-keyword">return</span> rawTag.substring( <span class="hljs-number">8</span> , rawTag.length - <span class="hljs-number">1</span> ).toLowerCase()
   }</pre></div></div>
             
         </li>
