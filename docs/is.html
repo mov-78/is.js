@@ -95,7 +95,6 @@ environments that support <code>module.exports</code>, like Node.</p>
   <span class="hljs-keyword">var</span> is = { not : {} }
   <span class="hljs-keyword">var</span> util
 
-  <span class="hljs-keyword">var</span> floor = <span class="hljs-built_in">Math</span>.floor
   <span class="hljs-keyword">var</span> toString = <span class="hljs-built_in">Object</span>.prototype.toString
   <span class="hljs-keyword">var</span> hasOwnProperty = <span class="hljs-built_in">Object</span>.prototype.hasOwnProperty</pre></div></div>
             
@@ -631,7 +630,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
       util.addPredicate( <span class="hljs-string">'integer'</span> , <span class="hljs-built_in">Number</span>.isInteger )
     } <span class="hljs-keyword">else</span> {
       util.addPredicate( <span class="hljs-string">'integer'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isInteger</span>(<span class="hljs-params"> number </span>) </span>{
-        <span class="hljs-keyword">return</span> is.finite( number ) &amp;&amp; floor( number ) === number
+        <span class="hljs-keyword">return</span> is.finite( number ) &amp;&amp; <span class="hljs-built_in">Math</span>.floor( number ) === number
       } )
     }</pre></div></div>
             

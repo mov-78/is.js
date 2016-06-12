@@ -1,6 +1,6 @@
 # is.js
 
-![TravisCI](https://img.shields.io/travis/pwnn/is.js.svg?style=flat-square)
+![build status](https://img.shields.io/travis/pwnn/is.js.svg?style=flat-square)
 
 Minimalistic predicate library.
 
