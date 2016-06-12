@@ -92,9 +92,8 @@ environments that support <code>module.exports</code>, like Node.</p>
 
 } )( <span class="hljs-keyword">this</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factory</span>(<span class="hljs-params"></span>) </span>{
 
-  <span class="hljs-keyword">var</span> is
+  <span class="hljs-keyword">var</span> is = { not : {} }
   <span class="hljs-keyword">var</span> util
-  <span class="hljs-keyword">var</span> proto = {}
 
   <span class="hljs-keyword">var</span> floor = <span class="hljs-built_in">Math</span>.floor
   <span class="hljs-keyword">var</span> toString = <span class="hljs-built_in">Object</span>.prototype.toString
@@ -230,7 +229,10 @@ They will never show up in <code>for...in</code> loops nor pass
     <span class="hljs-string">'propertyIsEnumerable'</span> ,
     <span class="hljs-string">'constructor'</span>
 
-  ] )</pre></div></div>
+  ] )
+
+
+  util = {</pre></div></div>
             
         </li>
         
@@ -240,48 +242,6 @@ They will never show up in <code>for...in</code> loops nor pass
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
-              </div>
-              <p>There’re two type of checks in <code>is.js</code>:</p>
-<ul>
-<li><strong>POSITIVE CHECK</strong>: is.predicate( …args )</li>
-<li><strong>NEGATIVE CHECK</strong>: is.not.predicate( …args )</li>
-</ul>
-<p>All checks, or <em>predicates</em> in <code>is.js</code> terminology, are defined on
-the <code>proto</code> object, which both <code>is</code> and <code>is.not</code> inherits from.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>
-  <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">Object</span>.create ) {
-
-    is = <span class="hljs-built_in">Object</span>.create( proto )
-    is.not = <span class="hljs-built_in">Object</span>.create( proto )
-
-  } <span class="hljs-keyword">else</span> {
-
-    ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Surrogate</span>(<span class="hljs-params"></span>) </span>{} <span class="hljs-comment">// eslint-disable-line func-style, no-empty-function</span>
-      Surrogate.prototype = proto
-
-      is = <span class="hljs-keyword">new</span> Surrogate()
-      is.not = <span class="hljs-keyword">new</span> Surrogate()
-
-    } )()
-
-  }
-
-
-  util = {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-11">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p><strong>util.addPredicate( name , predicate )</strong></p>
 <p>Add new checks(or <em>predicates</em> in <code>is.js</code> terminology).</p>
@@ -295,33 +255,17 @@ the <code>proto</code> object, which both <code>is</code> and <code>is.not</code
         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>( <span class="hljs-string">'"'</span> + name + <span class="hljs-string">'" is a reserved name'</span> )
       }
 
-      <span class="hljs-keyword">if</span> ( hasOwnProperty.call( proto , name ) ) {
+      <span class="hljs-keyword">if</span> ( hasOwnProperty.call( is , name ) ) {
         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>( <span class="hljs-string">'predicate "'</span> + name + <span class="hljs-string">'" already defined'</span> )
       }
 
       <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> predicate !== <span class="hljs-string">'function'</span> ) {
         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'predicate must be a function'</span> )
-      }</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-12">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
-              </div>
-              <p>We wrap the predicate in a delegate method and adds that delegate to
-the <code>proto</code> object, so that the predicate method is accessible(via delegate)
-in both <code>is</code> and <code>is.not</code>. The delegate also handles positive/negative
-cases on behave of the predicate.</p>
+      }
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>      proto[ name ] = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">predicateDelegate</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> result = predicate.apply( <span class="hljs-literal">null</span> , <span class="hljs-built_in">arguments</span> )
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span> === is.not ? !result : !!result
+      is[ name ] = predicate
+      is.not[ name ] = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delegate</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> !predicate.apply( <span class="hljs-literal">null</span> , <span class="hljs-built_in">arguments</span> )
       }
 
     }
@@ -331,11 +275,11 @@ cases on behave of the predicate.</p>
         </li>
         
         
-        <li id="section-13">
+        <li id="section-11">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p><strong>is.use( bundle )</strong></p>
 <p>Define new <em>bundles</em>(collection of related <em>predicates</em>).</p>
@@ -350,11 +294,11 @@ cases on behave of the predicate.</p>
         </li>
         
         
-        <li id="section-14">
+        <li id="section-12">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p><code>bundle</code> takes two parameters(order matters):</p>
 <ul>
@@ -389,11 +333,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <h1 id="core-bundles">CORE BUNDLES</h1>
 <p>Predicates shipped with <code>is.js</code>, packaged in various bundles.</p>
@@ -403,11 +347,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-16">
+        <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <h3 id="bundle-nil">bundle:nil</h3>
 
@@ -419,11 +363,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-15">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p><strong>is.null( value )</strong></p>
 <p>Checks whether given value is <code>null</code>.</p>
@@ -438,11 +382,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-18">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p><strong>is.undefined( value )</strong></p>
 <p>Checks whether given value is <code>undefined</code>.</p>
@@ -457,11 +401,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-19">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p><strong>is.exist( value )</strong></p>
 <p>Checks whether given value exists, i.e, not <code>null</code> nor <code>undefined</code>.</p>
@@ -476,11 +420,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p><strong>is.nil( value )</strong></p>
 <p>Checks whether given value is either <code>null</code> or <code>undefined</code>.</p>
@@ -497,11 +441,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-21">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <h3 id="bundle-number">bundle:number</h3>
 
@@ -513,11 +457,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-22">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p><strong>is.number( value )</strong></p>
 <p>Checks whether given value is a number.</p>
@@ -532,11 +476,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-23">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <p><strong>is.numeral( value )</strong></p>
 <p>Checks whether given value is a numeral, i.e:</p>
@@ -572,11 +516,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-24">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p><strong>is.nan( value )</strong></p>
 <p>Checks whether given value is <code>NaN</code>.</p>
@@ -591,11 +535,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-25">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p><strong>is.odd( number )</strong></p>
 <p>Checks whether given value is an odd number.</p>
@@ -610,11 +554,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-26">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p><strong>is.even( number )</strong></p>
 <p>Checks whether given value is an even number.</p>
@@ -629,11 +573,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-27">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p><strong>is.finite( number )</strong></p>
 <p>Checks whether given value is a finite number.</p>
@@ -652,11 +596,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p><strong>is.infinite( number )</strong></p>
 <p>Checks whether given value is an infinite number, i.e: +∞ or -∞.</p>
@@ -671,11 +615,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-29">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p><strong>is.integer( number )</strong></p>
 <p>Checks whether given value is an integer.</p>
@@ -694,11 +638,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-30">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p><strong>is.safeInteger( number )</strong></p>
 <p>Checks whether given value is a safe integer.</p>
@@ -726,11 +670,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-31">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-31">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <h3 id="bundle-string">bundle:string</h3>
 
@@ -742,11 +686,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-32">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <p><strong>is.string( value )</strong></p>
 <p>Checks whether given value is a string.</p>
@@ -761,11 +705,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-33">
+        <li id="section-31">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <p><strong>is.emptyString( string )</strong></p>
 <p>Checks whether given value is an empty string, i.e, a string with whitespace characters only.</p>
@@ -780,11 +724,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-34">
+        <li id="section-32">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
               <p><strong>is.substring( substring , string , [offset=0] )</strong></p>
 <p>Checks whether one string may be found within another string.</p>
@@ -806,11 +750,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-35">
+        <li id="section-33">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-35">&#182;</a>
+                <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
               <p>Allow negative offsets.</p>
 
@@ -834,11 +778,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-36">
+        <li id="section-34">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
               <p><strong>is.prefix( prefix , string )</strong></p>
 <p>Checks whether <code>string</code> starts with <code>prefix</code>.</p>
@@ -853,11 +797,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-37">
+        <li id="section-35">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
               <p><strong>is.suffix( suffix , string )</strong></p>
 <p>Checks whether <code>string</code> ends with <code>suffix</code>.</p>
@@ -919,11 +863,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-38">
+        <li id="section-36">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <h3 id="bundle-boolean">bundle:boolean</h3>
 
@@ -935,11 +879,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-39">
+        <li id="section-37">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
+                <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
               <p><strong>is.boolean( value )</strong></p>
 <p>Checks whether given value is a boolean.</p>
@@ -956,11 +900,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-40">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-40">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
               <h3 id="bundle-object">bundle:object</h3>
 
@@ -972,11 +916,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-41">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-41">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p><strong>is.object( value )</strong></p>
 <p>Checks whether given value is an object.</p>
@@ -991,11 +935,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
         </li>
         
         
-        <li id="section-42">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-42">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <p><strong>is.emptyObject( object )</strong></p>
 <p>Checks whether given value is an empty object, i.e, an object without
@@ -1011,11 +955,11 @@ any own, enumerable, string keyed properties.</p>
         </li>
         
         
-        <li id="section-43">
+        <li id="section-41">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-43">&#182;</a>
+                <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
               <p><strong>is.propertyDefined( object , path )</strong></p>
 <p>Checks whether <code>path</code> is a direct or inherited property of <code>object</code>.</p>
@@ -1047,11 +991,11 @@ any own, enumerable, string keyed properties.</p>
         </li>
         
         
-        <li id="section-44">
+        <li id="section-42">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-44">&#182;</a>
+                <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
               <p><strong>is.conforms( object , schema , [strict=false] )</strong></p>
 <p>Checks whether <code>object</code> conforms to <code>schema</code>.</p>
@@ -1116,11 +1060,11 @@ properties, in addition to check whether all validators passed.</p>
         </li>
         
         
-        <li id="section-45">
+        <li id="section-43">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-45">&#182;</a>
+                <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
               <h3 id="bundle-array">bundle:array</h3>
 
@@ -1132,11 +1076,11 @@ properties, in addition to check whether all validators passed.</p>
         </li>
         
         
-        <li id="section-46">
+        <li id="section-44">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-46">&#182;</a>
+                <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
               <p><strong>is.array( value )</strong></p>
 <p>Checks whether given value is an array.</p>
@@ -1155,11 +1099,11 @@ properties, in addition to check whether all validators passed.</p>
         </li>
         
         
-        <li id="section-47">
+        <li id="section-45">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-47">&#182;</a>
+                <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
               <p><strong>is.arrayLikeObject( value )</strong></p>
 <p>Checks whether given value is an <em>array-like</em> object.</p>
@@ -1186,11 +1130,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-48">
+        <li id="section-46">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-48">&#182;</a>
+                <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
               <p><strong>is.inArray( value , array , [offset=0] , [comparator=is.equal] )</strong></p>
 <p>Checks whether given array or array-like object contains certain element.</p>
@@ -1212,11 +1156,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-49">
+        <li id="section-47">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-49">&#182;</a>
+                <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
               <p>Only works with genuine arrays or array-like objects.</p>
 
@@ -1239,11 +1183,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-50">
+        <li id="section-48">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-50">&#182;</a>
+                <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
               <p>Allow negative offsets.</p>
 
@@ -1262,11 +1206,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-51">
+        <li id="section-49">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-51">&#182;</a>
+                <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
               <p>Skip <em>holes</em> in sparse arrays.</p>
 
@@ -1291,11 +1235,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-52">
+        <li id="section-50">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-52">&#182;</a>
+                <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
               <h3 id="bundle-type">bundle:type</h3>
 
@@ -1307,11 +1251,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-53">
+        <li id="section-51">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
+                <a class="pilcrow" href="#section-51">&#182;</a>
               </div>
               <p><strong>is.sameType( value , other )</strong></p>
 <p>Checks whether given values are of the same type.</p>
@@ -1326,11 +1270,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-54">
+        <li id="section-52">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-54">&#182;</a>
+                <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
               <p><strong>is.primitive( value )</strong></p>
 <p>Checks whether given value is a primitive.</p>
@@ -1349,11 +1293,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-55">
+        <li id="section-53">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-55">&#182;</a>
+                <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
               <p>Generate type check predicates for standard builtin classes.</p>
 
@@ -1384,11 +1328,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-56">
+        <li id="section-54">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-56">&#182;</a>
+                <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
               <h3 id="bundle-equality">bundle:equality</h3>
 
@@ -1400,11 +1344,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-57">
+        <li id="section-55">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
               <p><strong>is.equal( value , other )</strong></p>
 <p>Checks whether given values are equal, using <em>SameValueZero</em> algorithm.</p>
@@ -1419,11 +1363,11 @@ are never qualified as <em>array-like</em>.</p>
         </li>
         
         
-        <li id="section-58">
+        <li id="section-56">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-58">&#182;</a>
+                <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
               <p><strong>is.deepEqual( value , other )</strong></p>
 <p>Checks whether given values are deeply equal, i.e:</p>
