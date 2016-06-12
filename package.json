@@ -19,7 +19,7 @@
   "repository": "https://github.com/pwnn/is.js",
   "scripts": {
     "build": "grunt && docco lib/is.js",
-    "test": "karma start --single-run --browsers PhantomJS"
+    "test": "karma start config/karma.sauceLabs.js"
   },
   "devDependencies": {
     "docco": "~0.7.0",
@@ -31,9 +31,8 @@
     "karma": "~0.13.22",
     "karma-expect": "~1.1.2",
     "karma-mocha": "~1.0.1",
-    "karma-phantomjs-launcher": "~1.0.0",
+    "karma-sauce-launcher": "~1.0.0",
     "load-grunt-tasks": "~3.5.0",
-    "mocha": "~2.5.2",
-    "phantomjs-prebuilt": "~2.1.7"
+    "mocha": "~2.5.2"
   }
 }
