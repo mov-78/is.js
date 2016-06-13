@@ -64,7 +64,10 @@ module.exports = function ( config ) {
     captureTimeout : 0 ,
     customLaunchers ,
     browsers : Object.keys( customLaunchers ) ,
-    sauceLabs : { startConnect : false }
+    sauceLabs : {
+      startConnect : false ,
+      tunnelIdentifier : process.env.TRAVIS_JOB_NUMBER
+    }
   } , require( './karma.base' ) ) )
 
 }
