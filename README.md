@@ -1,6 +1,6 @@
-# is.js
+# is.js ![version](https://img.shields.io/npm/v/@pwn/is.svg?style=flat-square) ![build status](https://img.shields.io/travis/pwnn/is.js.svg?style=flat-square)
 
-![build status](https://img.shields.io/travis/pwnn/is.js.svg?style=flat-square)
+![build status](https://saucelabs.com/browser-matrix/pwn-isjs.svg)
 
 Minimalistic predicate library.
 
