@@ -61,6 +61,7 @@ module.exports = function ( config ) {
 
   config.set( Object.assign( {
     singleRun : true ,
+    captureTimeout : 0 ,
     customLaunchers ,
     browsers : Object.keys( customLaunchers ) ,
     sauceLabs : { startConnect : false }
