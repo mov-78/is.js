@@ -62,7 +62,8 @@ module.exports = function ( config ) {
   config.set( Object.assign( {
     singleRun : true ,
     customLaunchers ,
-    browsers : Object.keys( customLaunchers )
+    browsers : Object.keys( customLaunchers ) ,
+    sauceLabs : { startConnect : false }
   } , require( './karma.base' ) ) )
 
 }
