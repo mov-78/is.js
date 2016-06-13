@@ -12,7 +12,7 @@
     "compare",
     "ie6"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "main": "lib/is.js",
   "bugs": "https://github.com/pwnn/is.js/issues",
