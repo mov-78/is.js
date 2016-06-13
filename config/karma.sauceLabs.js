@@ -1,46 +1,68 @@
-/* eslint camelcase:0 */
-
 module.exports = function ( config ) {
 
-  var customLaunchers = {
-    sl_ie_6 : {
+  const customLaunchers = {
+    SL_CHROME : {
+      base : 'SauceLabs' ,
+      browserName : 'chrome'
+    } ,
+    SL_FIREFOX : {
+      base : 'SauceLabs' ,
+      browserName : 'firefox'
+    } ,
+    SL_IE_6 : {
       base : 'SauceLabs' ,
       browserName : 'internet explorer' ,
       version : '6'
     } ,
-    sl_ie_7 : {
+    SL_IE_7 : {
       base : 'SauceLabs' ,
       browserName : 'internet explorer' ,
       version : '7'
     } ,
-    sl_ie_8 : {
+    SL_IE_8 : {
       base : 'SauceLabs' ,
       browserName : 'internet explorer' ,
       version : '8'
     } ,
-    sl_ie_9 : {
+    SL_IE_9 : {
       base : 'SauceLabs' ,
       browserName : 'internet explorer' ,
       version : '9'
     } ,
-    sl_ie_10 : {
+    SL_IE_10 : {
       base : 'SauceLabs' ,
       browserName : 'internet explorer' ,
       version : '10'
     } ,
-    sl_ie_11 : {
+    SL_IE_11 : {
       base : 'SauceLabs' ,
       browserName : 'internet explorer' ,
       version : '11'
+    } ,
+    SL_IOS_SAFARI_7 : {
+      base : 'SauceLabs' ,
+      browserName : 'iphone' ,
+      platform : 'OS X 10.9' ,
+      version : '7.0'
+    } ,
+    SL_IOS_SAFARI_8 : {
+      base : 'SauceLabs' ,
+      browserName : 'iphone' ,
+      platform : 'OS X 10.9' ,
+      version : '8.0'
+    } ,
+    SL_IOS_SAFARI_9 : {
+      base : 'SauceLabs' ,
+      browserName : 'iphone' ,
+      platform : 'OS X 10.9' ,
+      version : '9.0'
     }
   }
 
-  config.set( {
+  config.set( Object.assign( {
     singleRun : true ,
-    customLaunchers : customLaunchers ,
-    browsers : Object.keys( customLaunchers ) ,
-    frameworks : [ 'expect' , 'mocha' ] ,
-    files : [ '../lib/**/*.js' , '../test/**/*.js' ]
-  } )
+    customLaunchers ,
+    browsers : Object.keys( customLaunchers )
+  } , require( './karma.base' ) ) )
 
 }
