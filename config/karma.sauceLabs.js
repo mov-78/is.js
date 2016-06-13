@@ -64,6 +64,7 @@ module.exports = function ( config ) {
     captureTimeout : 0 ,
     customLaunchers ,
     browsers : Object.keys( customLaunchers ) ,
+    reporters : [ 'dots' , 'saucelabs' ] ,
     sauceLabs : {
       startConnect : false ,
       tunnelIdentifier : process.env.TRAVIS_JOB_NUMBER
