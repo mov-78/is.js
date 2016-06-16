@@ -4,6 +4,8 @@
 
 Minimalistic predicate library.
 
+> This is a general purpose check library, you may found [tagOf](https://github.com/pwnn/tagOf) useful if all you want is just check types.
+
 ## Install
 
 Node:
