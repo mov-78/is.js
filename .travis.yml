@@ -3,8 +3,6 @@ node_js:
   - 6.1.0
   - 5
   - 4
-addons:
-  sauce_connect: true
 
 cache:
   directories:
@@ -23,6 +21,7 @@ env:
 
 # Necessary to compile native modules for io.js v3 or Node.js v4
 addons:
+  sauce_connect: true
   apt:
     sources:
       - ubuntu-toolchain-r-test
