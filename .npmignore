@@ -1,6 +1,6 @@
 docs/
 test/
 .eslintrc
+.gitignore
 .travis.yml
 Gruntfile.js
-karma.conf.js

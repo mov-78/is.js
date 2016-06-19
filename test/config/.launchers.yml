@@ -1,0 +1,159 @@
+Chrome_51:
+  base: SauceLabs
+  browserName: Chrome
+  version: '51'
+Chrome_50:
+  base: SauceLabs
+  browserName: Chrome
+  version: '50'
+Chrome_49:
+  base: SauceLabs
+  browserName: Chrome
+  version: '49'
+Chrome_48:
+  base: SauceLabs
+  browserName: Chrome
+  version: '48'
+Chrome_47:
+  base: SauceLabs
+  browserName: Chrome
+  version: '47'
+
+
+Firefox_46:
+  base: SauceLabs
+  browserName: Firefox
+  version: '46'
+Firefox_45:
+  base: SauceLabs
+  browserName: Firefox
+  version: '45'
+Firefox_44:
+  base: SauceLabs
+  browserName: Firefox
+  version: '44'
+Firefox_43:
+  base: SauceLabs
+  browserName: Firefox
+  version: '43'
+Firefox_42:
+  base: SauceLabs
+  browserName: Firefox
+  version: '42'
+
+
+Edge:
+  base: SauceLabs
+  browserName: MicrosoftEdge
+
+
+InternetExplorer_11:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '11'
+InternetExplorer_10:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '10'
+InternetExplorer_9:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '9'
+InternetExplorer_8:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '8'
+InternetExplorer_7:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '7'
+InternetExplorer_6:
+  base: SauceLabs
+  browserName: Internet Explorer
+  version: '6'
+
+
+Safari_9:
+  base: SauceLabs
+  browserName: Safari
+  version: '9'
+Safari_8:
+  base: SauceLabs
+  browserName: Safari
+  version: '8'
+Safari_7:
+  base: SauceLabs
+  browserName: Safari
+  version: '7'
+Safari_6:
+  base: SauceLabs
+  browserName: Safari
+  version: '6'
+
+
+iOS_9_2:
+  base: SauceLabs
+  browserName: iPhone
+  version: '9.2'
+iOS_9_1:
+  base: SauceLabs
+  browserName: iPhone
+  version: '9.1'
+iOS_9_0:
+  base: SauceLabs
+  browserName: iPhone
+  version: '9.0'
+iOS_8_4:
+  base: SauceLabs
+  browserName: iPhone
+  version: '8.4'
+iOS_8_3:
+  base: SauceLabs
+  browserName: iPhone
+  version: '8.3'
+iOS_8_2:
+  base: SauceLabs
+  browserName: iPhone
+  version: '8.2'
+iOS_8_1:
+  base: SauceLabs
+  browserName: iPhone
+  version: '8.1'
+iOS_8_0:
+  base: SauceLabs
+  browserName: iPhone
+  version: '8.0'
+iOS_7_1:
+  base: SauceLabs
+  browserName: iPhone
+  version: '7.1'
+iOS_7_0:
+  base: SauceLabs
+  browserName: iPhone
+  version: '7.0'
+
+
+Android_5_0:
+  base: SauceLabs
+  browserName: Android
+  version: '5.0'
+Android_4_4:
+  base: SauceLabs
+  browserName: Android
+  version: '4.4'
+Android_4_3:
+  base: SauceLabs
+  browserName: Android
+  version: '4.3'
+Android_4_2:
+  base: SauceLabs
+  browserName: Android
+  version: '4.2'
+Android_4_1:
+  base: SauceLabs
+  browserName: Android
+  version: '4.1'
+Android_4_0:
+  base: SauceLabs
+  browserName: Android
+  version: '4.0'

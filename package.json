@@ -19,20 +19,20 @@
   "repository": "https://github.com/pwnn/is.js",
   "scripts": {
     "build": "grunt && docco lib/is.js",
-    "test": "karma start config/karma.sauceLabs.js"
+    "test": "jasmine JASMINE_CONFIG_PATH=test/config/jasmine.json && karma start test/config/karma.sauce.js",
+    "test:dev": "jasmine JASMINE_CONFIG_PATH=test/config/jasmine.json && karma start test/config/karma.local.js"
   },
   "devDependencies": {
     "docco": "~0.7.0",
     "eslint": "~2.10.2",
     "eslint-config-pwn-es5": "~3.1.0",
-    "expect": "~1.20.1",
     "grunt": "~1.0.1",
     "grunt-contrib-uglify": "~1.0.1",
+    "jasmine": "~2.4.1",
+    "js-yaml": "~3.6.1",
     "karma": "~0.13.22",
-    "karma-expect": "~1.1.2",
-    "karma-mocha": "~1.0.1",
+    "karma-jasmine": "~1.0.2",
     "karma-sauce-launcher": "~1.0.0",
-    "load-grunt-tasks": "~3.5.0",
-    "mocha": "~2.5.2"
+    "load-grunt-tasks": "~3.5.0"
   }
 }

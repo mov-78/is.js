@@ -8,23 +8,23 @@ describe( 'bundle:object' , function () {
 
   it( 'is.object' , function () {
 
-    expect( is.object( null ) ).to.not.be.ok()
-    expect( is.object( void 0 ) ).to.not.be.ok()
-    expect( is.object( 0 ) ).to.not.be.ok()
-    expect( is.object( new Number( 0 ) ) ).to.be.ok()
-    expect( is.object( '' ) ).to.not.be.ok()
-    expect( is.object( new String( '' ) ) ).to.be.ok()
-    expect( is.object( true ) ).to.not.be.ok()
-    expect( is.object( false ) ).to.not.be.ok()
-    expect( is.object( new Boolean( true ) ) ).to.be.ok()
-    expect( is.object( new Boolean( false ) ) ).to.be.ok()
-    expect( is.object( {} ) ).to.be.ok()
-    expect( is.object( [] ) ).to.be.ok()
-    expect( is.object( function () {} ) ).to.be.ok()
+    expect( is.object( null ) ).not.toBeTruthy()
+    expect( is.object( void 0 ) ).not.toBeTruthy()
+    expect( is.object( 0 ) ).not.toBeTruthy()
+    expect( is.object( new Number( 0 ) ) ).toBeTruthy()
+    expect( is.object( '' ) ).not.toBeTruthy()
+    expect( is.object( new String( '' ) ) ).toBeTruthy()
+    expect( is.object( true ) ).not.toBeTruthy()
+    expect( is.object( false ) ).not.toBeTruthy()
+    expect( is.object( new Boolean( true ) ) ).toBeTruthy()
+    expect( is.object( new Boolean( false ) ) ).toBeTruthy()
+    expect( is.object( {} ) ).toBeTruthy()
+    expect( is.object( [] ) ).toBeTruthy()
+    expect( is.object( function () {} ) ).toBeTruthy()
 
     if ( typeof Symbol === 'function' ) {
-      expect( is.object( Symbol( 'is' ) ) ).to.not.be.ok()
-      expect( is.object( Symbol[ 'for' ]( 'is' ) ) ).to.not.be.ok()
+      expect( is.object( Symbol( 'is' ) ) ).not.toBeTruthy()
+      expect( is.object( Symbol[ 'for' ]( 'is' ) ) ).not.toBeTruthy()
     }
 
   } )
@@ -48,11 +48,11 @@ describe( 'bundle:object' , function () {
 
     } )()
 
-    expect( is.emptyObject( {} ) ).to.be.ok()
-    expect( is.emptyObject( { foo : 'bar' } ) ).to.not.be.ok()
+    expect( is.emptyObject( {} ) ).toBeTruthy()
+    expect( is.emptyObject( { foo : 'bar' } ) ).not.toBeTruthy()
 
     // ignore inherited properties
-    expect( is.emptyObject( createObject( { foo : 'bar' } ) ) ).to.be.ok()
+    expect( is.emptyObject( createObject( { foo : 'bar' } ) ) ).toBeTruthy()
 
     if ( supportsDefineProperty ) {
 
@@ -61,7 +61,7 @@ describe( 'bundle:object' , function () {
         is.emptyObject(
           Object.defineProperty( {} , 'foo' , { value : 'bar' , enumerable : false } )
         )
-      ).to.be.ok()
+      ).toBeTruthy()
 
       if ( typeof Symbol === 'function' ) {
         // ignore non-string-keyed properties
@@ -69,7 +69,7 @@ describe( 'bundle:object' , function () {
           is.emptyObject(
             Object.defineProperty( {} , Symbol() , { value : 'bar' , enumerable : true } )
           )
-        ).to.be.ok()
+        ).toBeTruthy()
       }
 
     }
@@ -80,27 +80,27 @@ describe( 'bundle:object' , function () {
 
     var fixture = { foo : { bar : { baz : 0 } } }
 
-    expect( is.propertyDefined( createObject( { foo : 'bar' } ) , 'foo' ) ).to.be.ok()
+    expect( is.propertyDefined( createObject( { foo : 'bar' } ) , 'foo' ) ).toBeTruthy()
 
-    expect( is.propertyDefined( fixture , 'foo' ) ).to.be.ok()
-    expect( is.propertyDefined( fixture , 'fool' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'foo.bar' ) ).to.be.ok()
-    expect( is.propertyDefined( fixture , 'fool.bar' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'foo.ball' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'fool.ball' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'foo.bar.baz' ) ).to.be.ok()
-    expect( is.propertyDefined( fixture , 'fool.bar.baz' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'foo.ball.baz' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'foo.bar.ballon' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'fool.ball.baz' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'fool.bar.ballon' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'foo.ball.ballon' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'fool.ball.ballon' ) ).to.not.be.ok()
-    expect( is.propertyDefined( fixture , 'foo.bar.baz.qux' ) ).to.not.be.ok()
+    expect( is.propertyDefined( fixture , 'foo' ) ).toBeTruthy()
+    expect( is.propertyDefined( fixture , 'fool' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'foo.bar' ) ).toBeTruthy()
+    expect( is.propertyDefined( fixture , 'fool.bar' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'foo.ball' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'fool.ball' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'foo.bar.baz' ) ).toBeTruthy()
+    expect( is.propertyDefined( fixture , 'fool.bar.baz' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'foo.ball.baz' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'foo.bar.ballon' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'fool.ball.baz' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'fool.bar.ballon' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'foo.ball.ballon' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'fool.ball.ballon' ) ).not.toBeTruthy()
+    expect( is.propertyDefined( fixture , 'foo.bar.baz.qux' ) ).not.toBeTruthy()
 
     // `path` will be converted to a string as needed
-    expect( is.propertyDefined( fixture , new String( 'foo.bar.baz' ) ) ).to.be.ok()
-    expect( is.propertyDefined( fixture , [ 'foo.bar.baz' ] ) ).to.be.ok()
+    expect( is.propertyDefined( fixture , new String( 'foo.bar.baz' ) ) ).toBeTruthy()
+    expect( is.propertyDefined( fixture , [ 'foo.bar.baz' ] ) ).toBeTruthy()
 
   } )
 
@@ -115,49 +115,49 @@ describe( 'bundle:object' , function () {
         { foo : 0 , bar : 1 } ,
         { foo : is.string }
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
     expect(
       is.conforms(
         { foo : 0 , bar : 1 } ,
         { foo : is.number }
       )
-    ).to.be.ok()
+    ).toBeTruthy()
 
     expect(
       is.conforms(
         { foo : 0 , bar : 1 } ,
         { foo : is.number , bar : is.number }
       )
-    ).to.be.ok()
+    ).toBeTruthy()
 
     expect(
       is.conforms(
         { foo : 0 , bar : 1 } ,
         { foo : is.number , bar : is.string }
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
     expect(
       is.conforms(
         { foo : 0 , bar : 1 } ,
         { foo : is.string , bar : is.number }
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
     expect(
       is.conforms(
         { foo : 0 , bar : 1 } ,
         { foo : is.string , bar : is.string }
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
     expect(
       is.conforms(
         { foo : 0 , bar : 1 } ,
         { foo : is.number , bar : is.number , baz : is.number }
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
 
     //
@@ -170,7 +170,7 @@ describe( 'bundle:object' , function () {
         { foo : is.string } ,
         true
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
     expect(
       is.conforms(
@@ -178,7 +178,7 @@ describe( 'bundle:object' , function () {
         { foo : is.number } ,
         true
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
     expect(
       is.conforms(
@@ -186,7 +186,7 @@ describe( 'bundle:object' , function () {
         { foo : is.number , bar : is.number } ,
         true
       )
-    ).to.be.ok()
+    ).toBeTruthy()
 
     expect(
       is.conforms(
@@ -194,7 +194,7 @@ describe( 'bundle:object' , function () {
         { foo : is.number , bar : is.string } ,
         true
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
     expect(
       is.conforms(
@@ -202,7 +202,7 @@ describe( 'bundle:object' , function () {
         { foo : is.string , bar : is.number } ,
         true
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
     expect(
       is.conforms(
@@ -210,7 +210,7 @@ describe( 'bundle:object' , function () {
         { foo : is.string , bar : is.string } ,
         true
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
     expect(
       is.conforms(
@@ -218,7 +218,7 @@ describe( 'bundle:object' , function () {
         { foo : is.number , bar : is.number , baz : is.number } ,
         true
       )
-    ).to.not.be.ok()
+    ).not.toBeTruthy()
 
   } )
 
