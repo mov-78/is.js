@@ -58,6 +58,7 @@ That's it! What's next?
 - [Cheatsheet](#cheatsheet) - List of available predicates shipped with `is.js`.
 - [API reference](#api-reference) - Detailed documentation on each predicate.
 - [Writing new predicates](#writing-new-predicates) - Learn how to define new predicates.
+- [Annotated source](https://cdn.rawgit.com/pwnn/is.js/master/docs/is.html) - Source code, annotated.
 
 ## Cheatsheet
 
