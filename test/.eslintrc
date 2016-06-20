@@ -6,5 +6,5 @@ globals:
   is: true
   expect: true
 rules:
-  no-empty-function: 0
-  no-new-wrappers: 0
+  no-empty-function: off
+  no-new-wrappers: off
