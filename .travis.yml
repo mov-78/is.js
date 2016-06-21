@@ -1,29 +1,5 @@
 language: node_js
 node_js:
-  - 6.1.0
+  - 6
   - 5
   - 4
-
-cache:
-  directories:
-    - node_modules
-
-install:
-  - npm install
-
-script:
-  - npm run test
-  - npm run build
-
-# Necessary to compile native modules for io.js v3 or Node.js v4
-env:
-  - CXX=g++-4.8
-
-# Necessary to compile native modules for io.js v3 or Node.js v4
-addons:
-  sauce_connect: true
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
