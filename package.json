@@ -19,13 +19,15 @@
   "repository": "https://github.com/pwnn/is.js",
   "scripts": {
     "build": "uglifyjs lib/is.js -cm -o dist/is.min.js && docco lib/is.js",
-    "test": "jasmine JASMINE_CONFIG_PATH=test/config/jasmine.json && karma start test/config/karma.sauce.js",
-    "test:dev": "jasmine JASMINE_CONFIG_PATH=test/config/jasmine.json && karma start test/config/karma.local.js"
+    "coverage": "JASMINE_CONFIG_PATH=test/config/jasmine.json istanbul cover ./node_modules/.bin/jasmine",
+    "test": "JASMINE_CONFIG_PATH=test/config/jasmine.json jasmine && karma start test/config/karma.sauce.js",
+    "test:dev": "JASMINE_CONFIG_PATH=test/config/jasmine.json jasmine && karma start test/config/karma.local.js"
   },
   "devDependencies": {
     "docco": "~0.7.0",
     "eslint": "~2.10.2",
     "eslint-config-pwn-es5": "~3.1.0",
+    "istanbul": "~0.4.4",
     "jasmine": "~2.4.1",
     "js-yaml": "~3.6.1",
     "karma": "~0.13.22",
