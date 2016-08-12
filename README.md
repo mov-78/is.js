@@ -35,7 +35,7 @@ Browser:
 A code sample is worth a thousand words:
 
 ```js
-const is = require( '@pwn/is' )
+let is = require( '@pwn/is' )
 
 is.array( [] ) // true
 is.not.integer( 0 ) // false
@@ -458,22 +458,22 @@ properties, in addition to check whether all validators passed.
 
 ```js
 is.conforms(
-  { name : '@pwn/is' , access : 'public' } ,
-  { name : is.exist }
+    { name : '@pwn/is' , access : 'public' } ,
+    { name : is.exist }
 ) // true
 
 is.conforms(
-  { name : '@pwn/is' , access : 'public' } ,
-  { description : is.string }
+    { name : '@pwn/is' , access : 'public' } ,
+    { description : is.string }
 ) // false; key `description` does not exist on `object`
 
 is.conforms(
-  { name : '@pwn/is' , access : 'public' } ,
-  {
-    name( value , key , context ) {
-      return is.exist( value ) && context.access === 'public'
+    { name : '@pwn/is' , access : 'public' } ,
+    {
+        name( value , key , context ) {
+            return is.exist( value ) && context.access === 'public'
+        }
     }
-  }
 ) // true
 
 
@@ -482,16 +482,16 @@ is.conforms(
 //
 
 is.conforms(
-  {
-    name : '@pwn/is' ,
-    access : 'public'
-  } ,
-  {
-    name( value , key , context ) {
-      return is.string( value ) && value.length >= 3
-    }
-  } ,
-  true // enable strict mode
+    {
+        name : '@pwn/is' ,
+        access : 'public'
+    } ,
+    {
+        name( value , key , context ) {
+            return is.string( value ) && value.length >= 3
+        }
+    } ,
+    true // enable strict mode
 ) // false; `object` has extraneous properties
 ```
 
@@ -695,13 +695,13 @@ Still confused? Take a look at this sample bundle:
 // need to call `require( '@pwn/is' )`
 module.exports = function bundle( util , is ) {
 
-  util.addPredicate( 'positive' , function isPositive( value ) {
-    return is.number( value ) && value > 0
-  } )
+    util.addPredicate( 'positive' , function isPositive( value ) {
+        return is.number( value ) && value > 0
+    } )
 
-  util.addPredicate( 'negative' , function isNegative( value ) {
-    return is.number( value ) && value < 0
-  } )
+    util.addPredicate( 'negative' , function isNegative( value ) {
+        return is.number( value ) && value < 0
+    } )
 
 }
 ```
@@ -711,7 +711,7 @@ To use a bundle, simple call `is.use`:
 > is.use( bundle:function )
 
 ```js
-const is = require( '@pwn/is' )
+let is = require( '@pwn/is' )
 
 // import all predicates from my_bundle.js
 is.use( require( 'path/to/my_bundle' ) )

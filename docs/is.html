@@ -36,7 +36,7 @@ Pwn &lt;hi@pwn.buzz&gt;
             <div class="content"><div class='highlight'><pre>
 ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> root , factory </span>) </span>{
 
-  <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> define === <span class="hljs-string">'function'</span> &amp;&amp; define.amd ) {</pre></div></div>
+<span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> define === <span class="hljs-string">'function'</span> &amp;&amp; define.amd ) {</pre></div></div>
             
         </li>
         
@@ -53,7 +53,7 @@ Pwn &lt;hi@pwn.buzz&gt;
             
             <div class="content"><div class='highlight'><pre>    define( factory )
 
-  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">module</span> === <span class="hljs-string">'object'</span> &amp;&amp; <span class="hljs-built_in">module</span>.exports ) {</pre></div></div>
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">module</span> === <span class="hljs-string">'object'</span> &amp;&amp; <span class="hljs-built_in">module</span>.exports ) {</pre></div></div>
             
         </li>
         
@@ -71,7 +71,7 @@ environments that support <code>module.exports</code>, like Node.</p>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-built_in">module</span>.exports = factory()
 
-  } <span class="hljs-keyword">else</span> {</pre></div></div>
+} <span class="hljs-keyword">else</span> {</pre></div></div>
             
         </li>
         
@@ -88,14 +88,14 @@ environments that support <code>module.exports</code>, like Node.</p>
             
             <div class="content"><div class='highlight'><pre>    root.is = factory()
 
-  }
+}
 
 } )( <span class="hljs-keyword">this</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">factory</span>(<span class="hljs-params"></span>) </span>{
 
-  <span class="hljs-keyword">var</span> is = { not : {} }
-  <span class="hljs-keyword">var</span> util
+    <span class="hljs-keyword">var</span> is = { not : {} }
+    <span class="hljs-keyword">var</span> util
 
-  <span class="hljs-keyword">var</span> hasOwnProperty = <span class="hljs-built_in">Object</span>.prototype.hasOwnProperty</pre></div></div>
+    <span class="hljs-keyword">var</span> hasOwnProperty = <span class="hljs-built_in">Object</span>.prototype.hasOwnProperty</pre></div></div>
             
         </li>
         
@@ -113,37 +113,37 @@ given value.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  <span class="hljs-keyword">var</span> getTag = ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> getTag = ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
 
-    <span class="hljs-keyword">var</span> reSource = <span class="hljs-regexp">/(?:function|class)\s*(\w*)/</span>
+        <span class="hljs-keyword">var</span> reSource = <span class="hljs-regexp">/(?:function|class)\s*(\w*)/</span>
 
-    <span class="hljs-keyword">var</span> toString = <span class="hljs-built_in">Object</span>.prototype.toString
-    <span class="hljs-keyword">var</span> toSource = <span class="hljs-built_in">Function</span>.prototype.toString
+        <span class="hljs-keyword">var</span> toString = <span class="hljs-built_in">Object</span>.prototype.toString
+        <span class="hljs-keyword">var</span> toSource = <span class="hljs-built_in">Function</span>.prototype.toString
 
-    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tagOf</span>(<span class="hljs-params"> value </span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tagOf</span>(<span class="hljs-params"> value </span>) </span>{
 
-      <span class="hljs-keyword">var</span> tagFromClass
-      <span class="hljs-keyword">var</span> tagFromSource
+            <span class="hljs-keyword">var</span> tagFromClass
+            <span class="hljs-keyword">var</span> tagFromSource
 
-      <span class="hljs-keyword">if</span> ( value === <span class="hljs-literal">null</span> ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">'null'</span>
-      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( value === <span class="hljs-keyword">void</span> <span class="hljs-number">0</span> ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">'undefined'</span>
-      }
+            <span class="hljs-keyword">if</span> ( value === <span class="hljs-literal">null</span> ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-string">'null'</span>
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( value === <span class="hljs-keyword">void</span> <span class="hljs-number">0</span> ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-string">'undefined'</span>
+            }
 
-      tagFromClass = toString.call( value )
-      tagFromClass = tagFromClass.substring( <span class="hljs-number">8</span> , tagFromClass.length - <span class="hljs-number">1</span> )
+            tagFromClass = toString.call( value )
+            tagFromClass = tagFromClass.substring( <span class="hljs-number">8</span> , tagFromClass.length - <span class="hljs-number">1</span> )
 
-      <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> value.constructor !== <span class="hljs-string">'function'</span> ) {
-        <span class="hljs-keyword">return</span> tagFromClass.toLowerCase()
-      } <span class="hljs-keyword">else</span> {
-        tagFromSource = toSource.call( value.constructor ).match( reSource )[ <span class="hljs-number">1</span> ]
-        <span class="hljs-keyword">return</span> ( tagFromSource || tagFromClass ).toLowerCase()
-      }
+            <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> value.constructor !== <span class="hljs-string">'function'</span> ) {
+                <span class="hljs-keyword">return</span> tagFromClass.toLowerCase()
+            } <span class="hljs-keyword">else</span> {
+                tagFromSource = toSource.call( value.constructor ).match( reSource )[ <span class="hljs-number">1</span> ]
+                <span class="hljs-keyword">return</span> ( tagFromSource || tagFromClass ).toLowerCase()
+            }
 
-    }
+        }
 
-  } )()</pre></div></div>
+    } )()</pre></div></div>
             
         </li>
         
@@ -160,26 +160,26 @@ given value.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  <span class="hljs-keyword">var</span> ownKeys = <span class="hljs-built_in">Object</span>.keys || ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> dontEnums </span>) </span>{
+    <span class="hljs-keyword">var</span> ownKeys = <span class="hljs-built_in">Object</span>.keys || ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> dontEnums </span>) </span>{
 
-    <span class="hljs-keyword">var</span> dontEnumsLength = dontEnums.length
-    <span class="hljs-keyword">var</span> hasDontEnumBug = !{ toString : <span class="hljs-literal">null</span> }.propertyIsEnumerable( <span class="hljs-string">'toString'</span> )
+        <span class="hljs-keyword">var</span> dontEnumsLength = dontEnums.length
+        <span class="hljs-keyword">var</span> hasDontEnumBug = !{ toString : <span class="hljs-literal">null</span> }.propertyIsEnumerable( <span class="hljs-string">'toString'</span> )
 
-    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ownKeys</span>(<span class="hljs-params"> object </span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ownKeys</span>(<span class="hljs-params"> object </span>) </span>{
 
-      <span class="hljs-keyword">var</span> key
-      <span class="hljs-keyword">var</span> keys = []
-      <span class="hljs-keyword">var</span> index
+            <span class="hljs-keyword">var</span> key
+            <span class="hljs-keyword">var</span> keys = []
+            <span class="hljs-keyword">var</span> index
 
-      <span class="hljs-keyword">if</span> ( object === <span class="hljs-literal">null</span> || object === <span class="hljs-keyword">void</span> <span class="hljs-number">0</span> ) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'ownKeys called on non-object'</span> )
-      }
+            <span class="hljs-keyword">if</span> ( object === <span class="hljs-literal">null</span> || object === <span class="hljs-keyword">void</span> <span class="hljs-number">0</span> ) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'ownKeys called on non-object'</span> )
+            }
 
-      <span class="hljs-keyword">for</span> ( key <span class="hljs-keyword">in</span> object ) {
-        <span class="hljs-keyword">if</span> ( hasOwnProperty.call( object , key ) ) {
-          keys.push( key )
-        }
-      }</pre></div></div>
+            <span class="hljs-keyword">for</span> ( key <span class="hljs-keyword">in</span> object ) {
+                <span class="hljs-keyword">if</span> ( hasOwnProperty.call( object , key ) ) {
+                    keys.push( key )
+                }
+            }</pre></div></div>
             
         </li>
         
@@ -194,20 +194,20 @@ given value.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> ( hasDontEnumBug ) {
-        <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> ; index &lt; dontEnumsLength ; index += <span class="hljs-number">1</span> ) {
-          key = dontEnums[ index ]
-          <span class="hljs-keyword">if</span> ( hasOwnProperty.call( object , key ) ) {
-            keys.push( key )
-          }
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">if</span> ( hasDontEnumBug ) {
+                <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> ; index &lt; dontEnumsLength ; index += <span class="hljs-number">1</span> ) {
+                    key = dontEnums[ index ]
+                    <span class="hljs-keyword">if</span> ( hasOwnProperty.call( object , key ) ) {
+                        keys.push( key )
+                    }
+                }
+            }
+
+            <span class="hljs-keyword">return</span> keys
+
         }
-      }
 
-      <span class="hljs-keyword">return</span> keys
-
-    }
-
-  } )( [</pre></div></div>
+    } )( [</pre></div></div>
             
         </li>
         
@@ -224,18 +224,18 @@ They will never show up in <code>for...in</code> loops nor pass
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-string">'toString'</span> ,
-    <span class="hljs-string">'toLocaleString'</span> ,
-    <span class="hljs-string">'valueOf'</span> ,
-    <span class="hljs-string">'isPrototypeOf'</span> ,
-    <span class="hljs-string">'hasOwnProperty'</span> ,
-    <span class="hljs-string">'propertyIsEnumerable'</span> ,
-    <span class="hljs-string">'constructor'</span>
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-string">'toString'</span> ,
+        <span class="hljs-string">'toLocaleString'</span> ,
+        <span class="hljs-string">'valueOf'</span> ,
+        <span class="hljs-string">'isPrototypeOf'</span> ,
+        <span class="hljs-string">'hasOwnProperty'</span> ,
+        <span class="hljs-string">'propertyIsEnumerable'</span> ,
+        <span class="hljs-string">'constructor'</span>
 
-  ] )
+    ] )
 
 
-  util = {</pre></div></div>
+    util = {</pre></div></div>
             
         </li>
         
@@ -252,28 +252,28 @@ They will never show up in <code>for...in</code> loops nor pass
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    addPredicate : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addPredicate</span>(<span class="hljs-params"> name , predicate </span>) </span>{
+        addPredicate : <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addPredicate</span>(<span class="hljs-params"> name , predicate </span>) </span>{
 
-      <span class="hljs-keyword">if</span> ( <span class="hljs-regexp">/^(not|use)$/</span>.test( name ) ) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>( <span class="hljs-string">'"'</span> + name + <span class="hljs-string">'" is a reserved name'</span> )
-      }
+            <span class="hljs-keyword">if</span> ( <span class="hljs-regexp">/^(not|use)$/</span>.test( name ) ) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>( <span class="hljs-string">'"'</span> + name + <span class="hljs-string">'" is a reserved name'</span> )
+            }
 
-      <span class="hljs-keyword">if</span> ( hasOwnProperty.call( is , name ) ) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>( <span class="hljs-string">'predicate "'</span> + name + <span class="hljs-string">'" already defined'</span> )
-      }
+            <span class="hljs-keyword">if</span> ( hasOwnProperty.call( is , name ) ) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>( <span class="hljs-string">'predicate "'</span> + name + <span class="hljs-string">'" already defined'</span> )
+            }
 
-      <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> predicate !== <span class="hljs-string">'function'</span> ) {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'predicate must be a function'</span> )
-      }
+            <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> predicate !== <span class="hljs-string">'function'</span> ) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>( <span class="hljs-string">'predicate must be a function'</span> )
+            }
 
-      is[ name ] = predicate
-      is.not[ name ] = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delegate</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">return</span> !predicate.apply( <span class="hljs-literal">null</span> , <span class="hljs-built_in">arguments</span> )
-      }
+            is[ name ] = predicate
+            is.not[ name ] = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delegate</span>(<span class="hljs-params"></span>) </span>{
+                <span class="hljs-keyword">return</span> !predicate.apply( <span class="hljs-literal">null</span> , <span class="hljs-built_in">arguments</span> )
+            }
 
-    }
+        }
 
-  }</pre></div></div>
+    }</pre></div></div>
             
         </li>
         
@@ -290,9 +290,9 @@ They will never show up in <code>for...in</code> loops nor pass
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  is.use = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">use</span>(<span class="hljs-params"> bundle </span>) </span>{
+    is.use = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">use</span>(<span class="hljs-params"> bundle </span>) </span>{
 
-    <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> bundle === <span class="hljs-string">'function'</span> ) {</pre></div></div>
+        <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> bundle === <span class="hljs-string">'function'</span> ) {</pre></div></div>
             
         </li>
         
@@ -308,16 +308,16 @@ They will never show up in <code>for...in</code> loops nor pass
 <li><code>util</code>: The utility object.</li>
 <li><code>is</code>: The <code>is</code> export.</li>
 </ul>
-<p>The <code>util</code> and <code>is</code> export is passed in as free variables so that one
-can write standalone bundles without referencing <code>is.js</code> first.</p>
+<p>The <code>util</code> and <code>is</code> export is passed in as free variables so that
+one can write standalone bundles without referencing <code>is.js</code> first.</p>
 <pre><code class="lang-js">   <span class="hljs-comment">// standalone bundle, does not depend on `is.js`</span>
    <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bundle</span>(<span class="hljs-params"> util , is </span>) </span>{
-     util.addPredicate( <span class="hljs-string">'eq'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> value , other </span>) </span>{
-       <span class="hljs-keyword">if</span> ( is.not.object( value ) || is.not.object( other ) ) {
-         <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-       }
-       <span class="hljs-keyword">return</span> value.uuid = other.uuid
-     } )
+       util.addPredicate( <span class="hljs-string">'eq'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> value , other </span>) </span>{
+           <span class="hljs-keyword">if</span> ( is.not.object( value ) || is.not.object( other ) ) {
+               <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+           }
+           <span class="hljs-keyword">return</span> value.uuid = other.uuid
+       } )
    }
 </code></pre>
 <p>To import the bundle:</p>
@@ -327,11 +327,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-      bundle( util , is )
+            bundle( util , is )
 
-    }
+        }
 
-  }</pre></div></div>
+    }</pre></div></div>
             
         </li>
         
@@ -361,7 +361,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nilBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
+    is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nilBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
             
         </li>
         
@@ -378,9 +378,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'null'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNull</span>(<span class="hljs-params"> value </span>) </span>{
-      <span class="hljs-keyword">return</span> value === <span class="hljs-literal">null</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'null'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNull</span>(<span class="hljs-params"> value </span>) </span>{
+            <span class="hljs-keyword">return</span> value === <span class="hljs-literal">null</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -397,9 +397,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'undefined'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isUndefined</span>(<span class="hljs-params"> value </span>) </span>{
-      <span class="hljs-keyword">return</span> value === <span class="hljs-keyword">void</span> <span class="hljs-number">0</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'undefined'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isUndefined</span>(<span class="hljs-params"> value </span>) </span>{
+            <span class="hljs-keyword">return</span> value === <span class="hljs-keyword">void</span> <span class="hljs-number">0</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -416,9 +416,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'exist'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isExist</span>(<span class="hljs-params"> value </span>) </span>{
-      <span class="hljs-keyword">return</span> value != <span class="hljs-literal">null</span> <span class="hljs-comment">// eslint-disable-line no-eq-null</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'exist'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isExist</span>(<span class="hljs-params"> value </span>) </span>{
+            <span class="hljs-keyword">return</span> value != <span class="hljs-literal">null</span> <span class="hljs-comment">// eslint-disable-line no-eq-null</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -435,11 +435,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'nil'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNil</span>(<span class="hljs-params"> value </span>) </span>{
-      <span class="hljs-keyword">return</span> value == <span class="hljs-literal">null</span> <span class="hljs-comment">// eslint-disable-line no-eq-null</span>
-    } )
+        util.addPredicate( <span class="hljs-string">'nil'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNil</span>(<span class="hljs-params"> value </span>) </span>{
+            <span class="hljs-keyword">return</span> value == <span class="hljs-literal">null</span> <span class="hljs-comment">// eslint-disable-line no-eq-null</span>
+        } )
 
-  } )</pre></div></div>
+    } )</pre></div></div>
             
         </li>
         
@@ -455,7 +455,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">numberBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
+    is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">numberBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
             
         </li>
         
@@ -472,9 +472,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'number'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNumber</span>(<span class="hljs-params"> value </span>) </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-string">'number'</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'number'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNumber</span>(<span class="hljs-params"> value </span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-string">'number'</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -495,26 +495,26 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'numeral'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNumeral</span>(<span class="hljs-params"> value </span>) </span>{
+        util.addPredicate( <span class="hljs-string">'numeral'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNumeral</span>(<span class="hljs-params"> value </span>) </span>{
 
-      <span class="hljs-keyword">var</span> tag = getTag( value )
-      <span class="hljs-keyword">if</span> ( tag !== <span class="hljs-string">'number'</span> &amp;&amp; tag !== <span class="hljs-string">'string'</span> ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      }
+            <span class="hljs-keyword">var</span> tag = getTag( value )
+            <span class="hljs-keyword">if</span> ( tag !== <span class="hljs-string">'number'</span> &amp;&amp; tag !== <span class="hljs-string">'string'</span> ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
 
-      <span class="hljs-keyword">if</span> ( is.emptyString( value ) ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      }
+            <span class="hljs-keyword">if</span> ( is.emptyString( value ) ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
 
-      <span class="hljs-keyword">try</span> {
-        value = <span class="hljs-built_in">Number</span>( value )
-      } <span class="hljs-keyword">catch</span> ( error ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      }
+            <span class="hljs-keyword">try</span> {
+                value = <span class="hljs-built_in">Number</span>( value )
+            } <span class="hljs-keyword">catch</span> ( error ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
 
-      <span class="hljs-keyword">return</span> is.finite( value )
+            <span class="hljs-keyword">return</span> is.finite( value )
 
-    } )</pre></div></div>
+        } )</pre></div></div>
             
         </li>
         
@@ -531,9 +531,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'nan'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNaN</span>(<span class="hljs-params"> value </span>) </span>{
-      <span class="hljs-keyword">return</span> value !== value <span class="hljs-comment">// eslint-disable-line no-self-compare</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'nan'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isNaN</span>(<span class="hljs-params"> value </span>) </span>{
+            <span class="hljs-keyword">return</span> value !== value <span class="hljs-comment">// eslint-disable-line no-self-compare</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -550,9 +550,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'odd'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isOdd</span>(<span class="hljs-params"> number </span>) </span>{
-      <span class="hljs-keyword">return</span> is.integer( number ) &amp;&amp; number % <span class="hljs-number">2</span> === <span class="hljs-number">1</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'odd'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isOdd</span>(<span class="hljs-params"> number </span>) </span>{
+            <span class="hljs-keyword">return</span> is.integer( number ) &amp;&amp; number % <span class="hljs-number">2</span> === <span class="hljs-number">1</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -569,9 +569,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'even'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEven</span>(<span class="hljs-params"> number </span>) </span>{
-      <span class="hljs-keyword">return</span> is.integer( number ) &amp;&amp; number % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'even'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEven</span>(<span class="hljs-params"> number </span>) </span>{
+            <span class="hljs-keyword">return</span> is.integer( number ) &amp;&amp; number % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -588,13 +588,13 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">Number</span>.isFinite ) {
-      util.addPredicate( <span class="hljs-string">'finite'</span> , <span class="hljs-built_in">Number</span>.isFinite )
-    } <span class="hljs-keyword">else</span> {
-      util.addPredicate( <span class="hljs-string">'finite'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isFiniteNumber</span>(<span class="hljs-params"> number </span>) </span>{
-        <span class="hljs-keyword">return</span> is.number( number ) &amp;&amp; <span class="hljs-built_in">isFinite</span>( number )
-      } )
-    }</pre></div></div>
+        <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">Number</span>.isFinite ) {
+            util.addPredicate( <span class="hljs-string">'finite'</span> , <span class="hljs-built_in">Number</span>.isFinite )
+        } <span class="hljs-keyword">else</span> {
+            util.addPredicate( <span class="hljs-string">'finite'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isFiniteNumber</span>(<span class="hljs-params"> number </span>) </span>{
+                <span class="hljs-keyword">return</span> is.number( number ) &amp;&amp; <span class="hljs-built_in">isFinite</span>( number )
+            } )
+        }</pre></div></div>
             
         </li>
         
@@ -611,9 +611,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'infinite'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isInfinite</span>(<span class="hljs-params"> number </span>) </span>{
-      <span class="hljs-keyword">return</span> number === +<span class="hljs-number">1</span> / <span class="hljs-number">0</span> || number === <span class="hljs-number">-1</span> / <span class="hljs-number">0</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'infinite'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isInfinite</span>(<span class="hljs-params"> number </span>) </span>{
+            <span class="hljs-keyword">return</span> number === +<span class="hljs-number">1</span> / <span class="hljs-number">0</span> || number === <span class="hljs-number">-1</span> / <span class="hljs-number">0</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -630,13 +630,13 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">Number</span>.isInteger ) {
-      util.addPredicate( <span class="hljs-string">'integer'</span> , <span class="hljs-built_in">Number</span>.isInteger )
-    } <span class="hljs-keyword">else</span> {
-      util.addPredicate( <span class="hljs-string">'integer'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isInteger</span>(<span class="hljs-params"> number </span>) </span>{
-        <span class="hljs-keyword">return</span> is.finite( number ) &amp;&amp; <span class="hljs-built_in">Math</span>.floor( number ) === number
-      } )
-    }</pre></div></div>
+        <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">Number</span>.isInteger ) {
+            util.addPredicate( <span class="hljs-string">'integer'</span> , <span class="hljs-built_in">Number</span>.isInteger )
+        } <span class="hljs-keyword">else</span> {
+            util.addPredicate( <span class="hljs-string">'integer'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isInteger</span>(<span class="hljs-params"> number </span>) </span>{
+                <span class="hljs-keyword">return</span> is.finite( number ) &amp;&amp; <span class="hljs-built_in">Math</span>.floor( number ) === number
+            } )
+        }</pre></div></div>
             
         </li>
         
@@ -653,22 +653,22 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">Number</span>.isSafeInteger ) {
-      util.addPredicate( <span class="hljs-string">'safeInteger'</span> , <span class="hljs-built_in">Number</span>.isSafeInteger )
-    } <span class="hljs-keyword">else</span> {
-      ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">Number</span>.isSafeInteger ) {
+            util.addPredicate( <span class="hljs-string">'safeInteger'</span> , <span class="hljs-built_in">Number</span>.isSafeInteger )
+        } <span class="hljs-keyword">else</span> {
+            ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
 
-        <span class="hljs-keyword">var</span> MAX = <span class="hljs-built_in">Number</span>.MAX_SAFE_INTEGER || <span class="hljs-built_in">Math</span>.pow( <span class="hljs-number">2</span> , <span class="hljs-number">53</span> ) - <span class="hljs-number">1</span>
-        <span class="hljs-keyword">var</span> MIN = <span class="hljs-built_in">Number</span>.MIN_SAFE_INTEGER || -MAX
+                <span class="hljs-keyword">var</span> MAX = <span class="hljs-built_in">Number</span>.MAX_SAFE_INTEGER || <span class="hljs-built_in">Math</span>.pow( <span class="hljs-number">2</span> , <span class="hljs-number">53</span> ) - <span class="hljs-number">1</span>
+                <span class="hljs-keyword">var</span> MIN = <span class="hljs-built_in">Number</span>.MIN_SAFE_INTEGER || -MAX
 
-        util.addPredicate( <span class="hljs-string">'safeInteger'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSafeInteger</span>(<span class="hljs-params"> number </span>) </span>{
-          <span class="hljs-keyword">return</span> is.integer( number ) &amp;&amp; ( number &gt;= MIN &amp;&amp; number &lt;= MAX )
-        } )
+                util.addPredicate( <span class="hljs-string">'safeInteger'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSafeInteger</span>(<span class="hljs-params"> number </span>) </span>{
+                    <span class="hljs-keyword">return</span> is.integer( number ) &amp;&amp; ( number &gt;= MIN &amp;&amp; number &lt;= MAX )
+                } )
 
-      } )()
-    }
+            } )()
+        }
 
-  } )</pre></div></div>
+    } )</pre></div></div>
             
         </li>
         
@@ -684,7 +684,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">stringBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
+    is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">stringBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
             
         </li>
         
@@ -701,9 +701,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'string'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isString</span>(<span class="hljs-params"> value </span>) </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-string">'string'</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'string'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isString</span>(<span class="hljs-params"> value </span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-string">'string'</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -715,14 +715,15 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
                 <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <p><strong>is.emptyString( string )</strong></p>
-<p>Checks whether given value is an empty string, i.e, a string with whitespace characters only.</p>
+<p>Checks whether given value is an empty string, i.e, a string with
+whitespace characters only.</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'emptyString'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEmptyString</span>(<span class="hljs-params"> string </span>) </span>{
-      <span class="hljs-keyword">return</span> is.string( string ) &amp;&amp; <span class="hljs-regexp">/^\s*$/</span>.test( string )
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'emptyString'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEmptyString</span>(<span class="hljs-params"> string </span>) </span>{
+            <span class="hljs-keyword">return</span> is.string( string ) &amp;&amp; <span class="hljs-regexp">/^\s*$/</span>.test( string )
+        } )</pre></div></div>
             
         </li>
         
@@ -739,16 +740,16 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'substring'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSubstring</span>(<span class="hljs-params"> substring , string , offset </span>) </span>{
+        util.addPredicate( <span class="hljs-string">'substring'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSubstring</span>(<span class="hljs-params"> substring , string , offset </span>) </span>{
 
-      <span class="hljs-keyword">var</span> length
+            <span class="hljs-keyword">var</span> length
 
-      <span class="hljs-keyword">if</span> ( getTag( string ) !== <span class="hljs-string">'string'</span> ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      }
+            <span class="hljs-keyword">if</span> ( getTag( string ) !== <span class="hljs-string">'string'</span> ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
 
-      length = string.length
-      offset = is.integer( offset ) ? offset : <span class="hljs-number">0</span></pre></div></div>
+            length = string.length
+            offset = is.integer( offset ) ? offset : <span class="hljs-number">0</span></pre></div></div>
             
         </li>
         
@@ -763,20 +764,20 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> ( offset &lt; <span class="hljs-number">0</span> ) {
-        offset = length + offset
-      }
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">if</span> ( offset &lt; <span class="hljs-number">0</span> ) {
+                offset = length + offset
+            }
 
-      <span class="hljs-keyword">if</span> ( offset &lt; <span class="hljs-number">0</span> || offset &gt;= length ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      }
+            <span class="hljs-keyword">if</span> ( offset &lt; <span class="hljs-number">0</span> || offset &gt;= length ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
 
-      <span class="hljs-keyword">return</span> string.indexOf( substring , offset ) !== <span class="hljs-number">-1</span>
+            <span class="hljs-keyword">return</span> string.indexOf( substring , offset ) !== <span class="hljs-number">-1</span>
 
-    } )
+        } )
 
 
-    <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">String</span>.prototype.startsWith &amp;&amp; <span class="hljs-built_in">String</span>.prototype.endsWith ) {</pre></div></div>
+        <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">String</span>.prototype.startsWith &amp;&amp; <span class="hljs-built_in">String</span>.prototype.endsWith ) {</pre></div></div>
             
         </li>
         
@@ -793,9 +794,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-      util.addPredicate( <span class="hljs-string">'prefix'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPrefix</span>(<span class="hljs-params"> prefix , string </span>) </span>{
-        <span class="hljs-keyword">return</span> getTag( string ) === <span class="hljs-string">'string'</span> &amp;&amp; string.startsWith( prefix )
-      } )</pre></div></div>
+            util.addPredicate( <span class="hljs-string">'prefix'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPrefix</span>(<span class="hljs-params"> prefix , string </span>) </span>{
+                <span class="hljs-keyword">return</span> getTag( string ) === <span class="hljs-string">'string'</span> &amp;&amp; string.startsWith( prefix )
+            } )</pre></div></div>
             
         </li>
         
@@ -812,56 +813,56 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-      util.addPredicate( <span class="hljs-string">'suffix'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSuffix</span>(<span class="hljs-params"> suffix , string </span>) </span>{
-        <span class="hljs-keyword">return</span> getTag( string ) === <span class="hljs-string">'string'</span> &amp;&amp; string.endsWith( suffix )
-      } )
+            util.addPredicate( <span class="hljs-string">'suffix'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSuffix</span>(<span class="hljs-params"> suffix , string </span>) </span>{
+                <span class="hljs-keyword">return</span> getTag( string ) === <span class="hljs-string">'string'</span> &amp;&amp; string.endsWith( suffix )
+            } )
 
-    } <span class="hljs-keyword">else</span> {
+        } <span class="hljs-keyword">else</span> {
 
-      ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> makePredicate </span>) </span>{
+            ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> makePredicate </span>) </span>{
 
-        util.addPredicate( <span class="hljs-string">'prefix'</span> , makePredicate() )
-        util.addPredicate( <span class="hljs-string">'suffix'</span> , makePredicate( <span class="hljs-literal">true</span> ) )
+                util.addPredicate( <span class="hljs-string">'prefix'</span> , makePredicate() )
+                util.addPredicate( <span class="hljs-string">'suffix'</span> , makePredicate( <span class="hljs-literal">true</span> ) )
 
-      } )( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makePredicate</span>(<span class="hljs-params"> suffix </span>) </span>{
+            } )( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makePredicate</span>(<span class="hljs-params"> suffix </span>) </span>{
 
-        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">predicate</span>(<span class="hljs-params"> affix , string </span>) </span>{
+                <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">predicate</span>(<span class="hljs-params"> affix , string </span>) </span>{
 
-          <span class="hljs-keyword">var</span> index
-          <span class="hljs-keyword">var</span> offset
-          <span class="hljs-keyword">var</span> affixLength
-          <span class="hljs-keyword">var</span> stringLength
+                    <span class="hljs-keyword">var</span> index
+                    <span class="hljs-keyword">var</span> offset
+                    <span class="hljs-keyword">var</span> affixLength
+                    <span class="hljs-keyword">var</span> stringLength
 
-          <span class="hljs-keyword">if</span> ( getTag( string ) !== <span class="hljs-string">'string'</span> ) {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-          }
+                    <span class="hljs-keyword">if</span> ( getTag( string ) !== <span class="hljs-string">'string'</span> ) {
+                        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+                    }
 
-          affix = <span class="hljs-built_in">String</span>( affix )
+                    affix = <span class="hljs-built_in">String</span>( affix )
 
-          affixLength = affix.length
-          stringLength = string.length
+                    affixLength = affix.length
+                    stringLength = string.length
 
-          <span class="hljs-keyword">if</span> ( affixLength &gt; stringLength ) {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-          }
+                    <span class="hljs-keyword">if</span> ( affixLength &gt; stringLength ) {
+                        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+                    }
 
-          offset = suffix ? stringLength - affixLength : <span class="hljs-number">0</span>
+                    offset = suffix ? stringLength - affixLength : <span class="hljs-number">0</span>
 
-          <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> ; index &lt; affixLength ; index += <span class="hljs-number">1</span> ) {
-            <span class="hljs-keyword">if</span> ( string.charCodeAt( offset + index ) !== affix.charCodeAt( index ) ) {
-              <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-            }
-          }
+                    <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> ; index &lt; affixLength ; index += <span class="hljs-number">1</span> ) {
+                        <span class="hljs-keyword">if</span> ( string.charCodeAt( offset + index ) !== affix.charCodeAt( index ) ) {
+                            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+                        }
+                    }
 
-          <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+
+                }
+
+            } )
 
         }
 
-      } )
-
-    }
-
-  } )</pre></div></div>
+    } )</pre></div></div>
             
         </li>
         
@@ -877,7 +878,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">booleanBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
+    is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">booleanBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
             
         </li>
         
@@ -894,11 +895,11 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'boolean'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isBoolean</span>(<span class="hljs-params"> value </span>) </span>{
-      <span class="hljs-keyword">return</span> value === <span class="hljs-literal">true</span> || value === <span class="hljs-literal">false</span>
-    } )
+        util.addPredicate( <span class="hljs-string">'boolean'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isBoolean</span>(<span class="hljs-params"> value </span>) </span>{
+            <span class="hljs-keyword">return</span> value === <span class="hljs-literal">true</span> || value === <span class="hljs-literal">false</span>
+        } )
 
-  } )</pre></div></div>
+    } )</pre></div></div>
             
         </li>
         
@@ -914,7 +915,7 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">objectBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
+    is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">objectBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
             
         </li>
         
@@ -931,9 +932,9 @@ can write standalone bundles without referencing <code>is.js</code> first.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'object'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isObject</span>(<span class="hljs-params"> value </span>) </span>{
-      <span class="hljs-keyword">return</span> is.not.primitive( value )
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'object'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isObject</span>(<span class="hljs-params"> value </span>) </span>{
+            <span class="hljs-keyword">return</span> is.not.primitive( value )
+        } )</pre></div></div>
             
         </li>
         
@@ -951,9 +952,9 @@ any own, enumerable, string keyed properties.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'emptyObject'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEmptyObject</span>(<span class="hljs-params"> object </span>) </span>{
-      <span class="hljs-keyword">return</span> is.object( object ) &amp;&amp; ownKeys( object ).length === <span class="hljs-number">0</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'emptyObject'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEmptyObject</span>(<span class="hljs-params"> object </span>) </span>{
+            <span class="hljs-keyword">return</span> is.object( object ) &amp;&amp; ownKeys( object ).length === <span class="hljs-number">0</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -970,26 +971,26 @@ any own, enumerable, string keyed properties.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'propertyDefined'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPropertyDefined</span>(<span class="hljs-params"> object , path </span>) </span>{
+        util.addPredicate( <span class="hljs-string">'propertyDefined'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPropertyDefined</span>(<span class="hljs-params"> object , path </span>) </span>{
 
-      <span class="hljs-keyword">var</span> key
-      <span class="hljs-keyword">var</span> keys
-      <span class="hljs-keyword">var</span> context
+            <span class="hljs-keyword">var</span> key
+            <span class="hljs-keyword">var</span> keys
+            <span class="hljs-keyword">var</span> context
 
-      context = object
-      keys = <span class="hljs-built_in">String</span>( path ).split( <span class="hljs-string">'.'</span> )
+            context = object
+            keys = <span class="hljs-built_in">String</span>( path ).split( <span class="hljs-string">'.'</span> )
 
-      <span class="hljs-keyword">while</span> ( key = keys.shift() ) { <span class="hljs-comment">// eslint-disable-line no-cond-assign</span>
-        <span class="hljs-keyword">if</span> ( is.not.object( context ) || !( key <span class="hljs-keyword">in</span> context ) ) {
-          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-        } <span class="hljs-keyword">else</span> {
-          context = context[ key ]
-        }
-      }
+            <span class="hljs-keyword">while</span> ( key = keys.shift() ) { <span class="hljs-comment">// eslint-disable-line no-cond-assign</span>
+                <span class="hljs-keyword">if</span> ( is.not.object( context ) || !( key <span class="hljs-keyword">in</span> context ) ) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+                } <span class="hljs-keyword">else</span> {
+                    context = context[ key ]
+                }
+            }
 
-      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 
-    } )</pre></div></div>
+        } )</pre></div></div>
             
         </li>
         
@@ -1009,9 +1010,9 @@ these parameters(in order):</p>
 <li><strong>key:string</strong> - The corresponding key of current iteration.</li>
 <li><strong>context:object</strong> - The object in question.</li>
 </ul>
-<p>These functions, or <em>validators</em>, are called for each corresponding key
-in <code>object</code> to check whether object conforms to the schema. An object is
-said to be conforms to the schema if all validators passed.</p>
+<p>These functions, or <em>validators</em>, are called for each corresponding
+key in <code>object</code> to check whether object conforms to the schema. An
+object is said to be conforms to the schema if all validators passed.</p>
 <p>In strict mode(where <code>strict=true</code>), <code>is.conforms</code> also checks whether
 <code>object</code> and <code>schema</code> has the same set of own, enumerable, string-keyed
 properties, in addition to check whether all validators passed.</p>
@@ -1019,46 +1020,46 @@ properties, in addition to check whether all validators passed.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'conforms'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isConforms</span>(<span class="hljs-params"> object , schema , strict </span>) </span>{
+        util.addPredicate( <span class="hljs-string">'conforms'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isConforms</span>(<span class="hljs-params"> object , schema , strict </span>) </span>{
 
-      <span class="hljs-keyword">var</span> key
-      <span class="hljs-keyword">var</span> keys
-      <span class="hljs-keyword">var</span> index
-      <span class="hljs-keyword">var</span> length
-      <span class="hljs-keyword">var</span> validator
+            <span class="hljs-keyword">var</span> key
+            <span class="hljs-keyword">var</span> keys
+            <span class="hljs-keyword">var</span> index
+            <span class="hljs-keyword">var</span> length
+            <span class="hljs-keyword">var</span> validator
 
-      <span class="hljs-keyword">if</span> ( is.not.object( object ) || is.not.object( schema ) ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      }
+            <span class="hljs-keyword">if</span> ( is.not.object( object ) || is.not.object( schema ) ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
 
-      keys = ownKeys( schema )
-      length = keys.length
+            keys = ownKeys( schema )
+            length = keys.length
 
-      <span class="hljs-keyword">if</span> ( strict &amp;&amp; length !== ownKeys( object ).length ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      }
+            <span class="hljs-keyword">if</span> ( strict &amp;&amp; length !== ownKeys( object ).length ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
 
-      <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> ; index &lt; length ; index += <span class="hljs-number">1</span> ) {
+            <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> ; index &lt; length ; index += <span class="hljs-number">1</span> ) {
 
-        key = keys[ index ]
-        validator = schema[ key ]
+                key = keys[ index ]
+                validator = schema[ key ]
 
-        <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> validator !== <span class="hljs-string">'function'</span> ) {
-          <span class="hljs-keyword">continue</span>
-        }
+                <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> validator !== <span class="hljs-string">'function'</span> ) {
+                    <span class="hljs-keyword">continue</span>
+                }
 
-        <span class="hljs-keyword">if</span> ( !hasOwnProperty.call( object , key ) ||
-             !validator( object[ key ] , key , object ) ) {
-          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-        }
+                <span class="hljs-keyword">if</span> ( !hasOwnProperty.call( object , key ) ||
+                     !validator( object[ key ] , key , object ) ) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+                }
 
-      }
+            }
 
-      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 
-    } )
+        } )
 
-  } )</pre></div></div>
+    } )</pre></div></div>
             
         </li>
         
@@ -1074,7 +1075,7 @@ properties, in addition to check whether all validators passed.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrayBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
+    is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrayBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
             
         </li>
         
@@ -1091,13 +1092,13 @@ properties, in addition to check whether all validators passed.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">Array</span>.isArray ) {
-      util.addPredicate( <span class="hljs-string">'array'</span> , <span class="hljs-built_in">Array</span>.isArray )
-    } <span class="hljs-keyword">else</span> {
-      util.addPredicate( <span class="hljs-string">'array'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isArray</span>(<span class="hljs-params"> value </span>) </span>{
-        <span class="hljs-keyword">return</span> getTag( value ) === <span class="hljs-string">'array'</span>
-      } )
-    }</pre></div></div>
+        <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">Array</span>.isArray ) {
+            util.addPredicate( <span class="hljs-string">'array'</span> , <span class="hljs-built_in">Array</span>.isArray )
+        } <span class="hljs-keyword">else</span> {
+            util.addPredicate( <span class="hljs-string">'array'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isArray</span>(<span class="hljs-params"> value </span>) </span>{
+                <span class="hljs-keyword">return</span> getTag( value ) === <span class="hljs-string">'array'</span>
+            } )
+        }</pre></div></div>
             
         </li>
         
@@ -1117,18 +1118,18 @@ are never qualified as <em>array-like</em>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'arrayLikeObject'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isArrayLikeObject</span>(<span class="hljs-params"> value </span>) </span>{
+        util.addPredicate( <span class="hljs-string">'arrayLikeObject'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isArrayLikeObject</span>(<span class="hljs-params"> value </span>) </span>{
 
-      <span class="hljs-keyword">var</span> length
+            <span class="hljs-keyword">var</span> length
 
-      <span class="hljs-keyword">if</span> ( is.primitive( value ) || is[ <span class="hljs-string">'function'</span> ]( value ) ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      } <span class="hljs-keyword">else</span> {
-        length = value.length
-        <span class="hljs-keyword">return</span> is.integer( length ) &amp;&amp; length &gt;= <span class="hljs-number">0</span> &amp;&amp; length &lt;= <span class="hljs-number">0xFFFFFFFF</span> <span class="hljs-comment">// 32-bit unsigned int maximum</span>
-      }
+            <span class="hljs-keyword">if</span> ( is.primitive( value ) || is[ <span class="hljs-string">'function'</span> ]( value ) ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            } <span class="hljs-keyword">else</span> {
+                length = value.length
+                <span class="hljs-keyword">return</span> is.integer( length ) &amp;&amp; length &gt;= <span class="hljs-number">0</span> &amp;&amp; length &lt;= <span class="hljs-number">0xFFFFFFFF</span> <span class="hljs-comment">// 32-bit unsigned int maximum</span>
+            }
 
-    } )</pre></div></div>
+        } )</pre></div></div>
             
         </li>
         
@@ -1151,10 +1152,10 @@ are never qualified as <em>array-like</em>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'inArray'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isInArray</span>(<span class="hljs-params"> value , array , offset , comparator </span>) </span>{
+        util.addPredicate( <span class="hljs-string">'inArray'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isInArray</span>(<span class="hljs-params"> value , array , offset , comparator </span>) </span>{
 
-      <span class="hljs-keyword">var</span> index
-      <span class="hljs-keyword">var</span> length</pre></div></div>
+            <span class="hljs-keyword">var</span> index
+            <span class="hljs-keyword">var</span> length</pre></div></div>
             
         </li>
         
@@ -1169,19 +1170,19 @@ are never qualified as <em>array-like</em>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> ( is.not.arrayLikeObject( array ) ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      }
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">if</span> ( is.not.arrayLikeObject( array ) ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
 
-      <span class="hljs-keyword">if</span> ( is[ <span class="hljs-string">'function'</span> ]( offset ) ) {
-        comparator = offset
-        offset = <span class="hljs-number">0</span>
-      } <span class="hljs-keyword">else</span> {
-        offset = is.integer( offset ) ? offset : <span class="hljs-number">0</span>
-        comparator = is[ <span class="hljs-string">'function'</span> ]( comparator ) ? comparator : is.equal
-      }
+            <span class="hljs-keyword">if</span> ( is[ <span class="hljs-string">'function'</span> ]( offset ) ) {
+                comparator = offset
+                offset = <span class="hljs-number">0</span>
+            } <span class="hljs-keyword">else</span> {
+                offset = is.integer( offset ) ? offset : <span class="hljs-number">0</span>
+                comparator = is[ <span class="hljs-string">'function'</span> ]( comparator ) ? comparator : is.equal
+            }
 
-      length = array.length</pre></div></div>
+            length = array.length</pre></div></div>
             
         </li>
         
@@ -1196,15 +1197,15 @@ are never qualified as <em>array-like</em>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> ( offset &lt; <span class="hljs-number">0</span> ) {
-        offset = length + offset
-      }
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">if</span> ( offset &lt; <span class="hljs-number">0</span> ) {
+                offset = length + offset
+            }
 
-      <span class="hljs-keyword">if</span> ( offset &lt; <span class="hljs-number">0</span> || offset &gt;= length ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      }
+            <span class="hljs-keyword">if</span> ( offset &lt; <span class="hljs-number">0</span> || offset &gt;= length ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            }
 
-      <span class="hljs-keyword">for</span> ( index = offset ; index &lt; length ; index += <span class="hljs-number">1</span> ) {</pre></div></div>
+            <span class="hljs-keyword">for</span> ( index = offset ; index &lt; length ; index += <span class="hljs-number">1</span> ) {</pre></div></div>
             
         </li>
         
@@ -1219,21 +1220,21 @@ are never qualified as <em>array-like</em>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">if</span> ( !hasOwnProperty.call( array , index ) ) {
-          <span class="hljs-keyword">continue</span>
-        }
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">if</span> ( !hasOwnProperty.call( array , index ) ) {
+                    <span class="hljs-keyword">continue</span>
+                }
 
-        <span class="hljs-keyword">if</span> ( comparator( value , array[ index ] ) ) {
-          <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
-        }
+                <span class="hljs-keyword">if</span> ( comparator( value , array[ index ] ) ) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+                }
 
-      }
+            }
 
-      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
 
-    } )
+        } )
 
-  } )</pre></div></div>
+    } )</pre></div></div>
             
         </li>
         
@@ -1249,7 +1250,7 @@ are never qualified as <em>array-like</em>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">typeBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
+    is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">typeBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
             
         </li>
         
@@ -1266,9 +1267,9 @@ are never qualified as <em>array-like</em>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'sameType'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSameType</span>(<span class="hljs-params"> value , other </span>) </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-keyword">typeof</span> other &amp;&amp; getTag( value ) === getTag( other )
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'sameType'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isSameType</span>(<span class="hljs-params"> value , other </span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> value === <span class="hljs-keyword">typeof</span> other &amp;&amp; getTag( value ) === getTag( other )
+        } )</pre></div></div>
             
         </li>
         
@@ -1285,13 +1286,13 @@ are never qualified as <em>array-like</em>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'primitive'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPrimitive</span>(<span class="hljs-params"> value </span>) </span>{
-      <span class="hljs-keyword">return</span> is.nil( value ) ||
-             is.number( value ) ||
-             is.string( value ) ||
-             is.boolean( value ) ||
-             is.symbol( value )
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'primitive'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isPrimitive</span>(<span class="hljs-params"> value </span>) </span>{
+            <span class="hljs-keyword">return</span> is.nil( value ) ||
+                   is.number( value ) ||
+                   is.string( value ) ||
+                   is.boolean( value ) ||
+                   is.symbol( value )
+        } )</pre></div></div>
             
         </li>
         
@@ -1307,26 +1308,26 @@ are never qualified as <em>array-like</em>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    ; ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> makePredicate , tags </span>) </span>{ <span class="hljs-comment">// eslint-disable-line semi-spacing</span>
+        ; ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"> makePredicate , tags </span>) </span>{ <span class="hljs-comment">// eslint-disable-line semi-spacing</span>
 
-      <span class="hljs-keyword">var</span> tag
-      <span class="hljs-keyword">var</span> index
-      <span class="hljs-keyword">var</span> length = tags.length
+            <span class="hljs-keyword">var</span> tag
+            <span class="hljs-keyword">var</span> index
+            <span class="hljs-keyword">var</span> length = tags.length
 
-      <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> ; index &lt; length ; index += <span class="hljs-number">1</span> ) {
-        tag = tags[ index ]
-        util.addPredicate( tag , makePredicate( tag.toLowerCase() ) )
-      }
+            <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> ; index &lt; length ; index += <span class="hljs-number">1</span> ) {
+                tag = tags[ index ]
+                util.addPredicate( tag , makePredicate( tag.toLowerCase() ) )
+            }
 
-    } )( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makePredicate</span>(<span class="hljs-params"> tag </span>) </span>{
+        } )( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makePredicate</span>(<span class="hljs-params"> tag </span>) </span>{
 
-      <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">predicate</span>(<span class="hljs-params"> value </span>) </span>{
-        <span class="hljs-keyword">return</span> getTag( value ) === tag
-      }
+            <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">predicate</span>(<span class="hljs-params"> value </span>) </span>{
+                <span class="hljs-keyword">return</span> getTag( value ) === tag
+            }
 
-    } , [ <span class="hljs-string">'date'</span> , <span class="hljs-string">'error'</span> , <span class="hljs-string">'function'</span> , <span class="hljs-string">'map'</span> , <span class="hljs-string">'regexp'</span> , <span class="hljs-string">'set'</span> , <span class="hljs-string">'symbol'</span> ] )
+        } , [ <span class="hljs-string">'date'</span> , <span class="hljs-string">'error'</span> , <span class="hljs-string">'function'</span> , <span class="hljs-string">'map'</span> , <span class="hljs-string">'regexp'</span> , <span class="hljs-string">'set'</span> , <span class="hljs-string">'symbol'</span> ] )
 
-  } )</pre></div></div>
+    } )</pre></div></div>
             
         </li>
         
@@ -1342,7 +1343,7 @@ are never qualified as <em>array-like</em>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-  is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">equalityBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
+    is.use( <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">equalityBundle</span>(<span class="hljs-params"> util </span>) </span>{</pre></div></div>
             
         </li>
         
@@ -1359,9 +1360,9 @@ are never qualified as <em>array-like</em>.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'equal'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEqual</span>(<span class="hljs-params"> value , other </span>) </span>{
-      <span class="hljs-keyword">return</span> value === other || ( value !== value &amp;&amp; other !== other ) <span class="hljs-comment">// eslint-disable-line no-self-compare</span>
-    } )</pre></div></div>
+        util.addPredicate( <span class="hljs-string">'equal'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEqual</span>(<span class="hljs-params"> value , other </span>) </span>{
+            <span class="hljs-keyword">return</span> value === other || ( value !== value &amp;&amp; other !== other ) <span class="hljs-comment">// eslint-disable-line no-self-compare</span>
+        } )</pre></div></div>
             
         </li>
         
@@ -1379,78 +1380,78 @@ are never qualified as <em>array-like</em>.</p>
 <li>For primitives, checks whether they are equal using <em>SameValueZero</em>.</li>
 <li>For arrays, checks whether they have same set of members, all of
 which are deeply equal.</li>
-<li>Otherwise, checks whether they have same set of own, enumerable, string
-keyed properties, all of which are deeply equal.</li>
+<li>Otherwise, checks whether they have same set of own, enumerable,
+string keyed properties, all of which are deeply equal.</li>
 </ul>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>
-    util.addPredicate( <span class="hljs-string">'deepEqual'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isDeepEqual</span>(<span class="hljs-params"> value , other </span>) </span>{
+        util.addPredicate( <span class="hljs-string">'deepEqual'</span> , <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isDeepEqual</span>(<span class="hljs-params"> value , other </span>) </span>{
 
-      <span class="hljs-keyword">if</span> ( is.not.sameType( value , other ) ) {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-      }
-
-      <span class="hljs-keyword">if</span> ( is.primitive( value ) ) {
-        <span class="hljs-keyword">return</span> is.equal( value , other )
-      }
-
-      <span class="hljs-keyword">if</span> ( is.array( value ) ) {
-
-        <span class="hljs-keyword">if</span> ( value.length !== other.length ) {
-          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-        }
-
-        <span class="hljs-keyword">return</span> ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-
-          <span class="hljs-keyword">var</span> index
-          <span class="hljs-keyword">var</span> length
-
-          <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> , length = value.length ; index &lt; length ; index += <span class="hljs-number">1</span> ) {
-            <span class="hljs-keyword">if</span> ( is.not.deepEqual( value[ index ] , other[ index ] ) ) {
-              <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+            <span class="hljs-keyword">if</span> ( is.not.sameType( value , other ) ) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
             }
-          }
 
-          <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+            <span class="hljs-keyword">if</span> ( is.primitive( value ) ) {
+                <span class="hljs-keyword">return</span> is.equal( value , other )
+            }
 
-        } )()
+            <span class="hljs-keyword">if</span> ( is.array( value ) ) {
 
-      }
+                <span class="hljs-keyword">if</span> ( value.length !== other.length ) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+                }
 
-      <span class="hljs-keyword">return</span> ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+                <span class="hljs-keyword">return</span> ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
 
-        <span class="hljs-keyword">var</span> key
-        <span class="hljs-keyword">var</span> keys
-        <span class="hljs-keyword">var</span> index
-        <span class="hljs-keyword">var</span> length
+                    <span class="hljs-keyword">var</span> index
+                    <span class="hljs-keyword">var</span> length
 
-        keys = ownKeys( value )
-        length = keys.length
+                    <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> , length = value.length ; index &lt; length ; index += <span class="hljs-number">1</span> ) {
+                        <span class="hljs-keyword">if</span> ( is.not.deepEqual( value[ index ] , other[ index ] ) ) {
+                            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+                        }
+                    }
 
-        <span class="hljs-keyword">if</span> ( length !== ownKeys( other ).length ) {
-          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-        }
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 
-        <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> ; index &lt; length ; index += <span class="hljs-number">1</span> ) {
-          key = keys[ index ]
-          <span class="hljs-keyword">if</span> ( !hasOwnProperty.call( other , key ) ||
-               is.not.deepEqual( value[ key ] , other[ key ] ) ) {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-          }
-        }
+                } )()
 
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+            }
 
-      } )()
+            <span class="hljs-keyword">return</span> ( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+
+                <span class="hljs-keyword">var</span> key
+                <span class="hljs-keyword">var</span> keys
+                <span class="hljs-keyword">var</span> index
+                <span class="hljs-keyword">var</span> length
+
+                keys = ownKeys( value )
+                length = keys.length
+
+                <span class="hljs-keyword">if</span> ( length !== ownKeys( other ).length ) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+                }
+
+                <span class="hljs-keyword">for</span> ( index = <span class="hljs-number">0</span> ; index &lt; length ; index += <span class="hljs-number">1</span> ) {
+                    key = keys[ index ]
+                    <span class="hljs-keyword">if</span> ( !hasOwnProperty.call( other , key ) ||
+                         is.not.deepEqual( value[ key ] , other[ key ] ) ) {
+                        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+                    }
+                }
+
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+
+            } )()
+
+        } )
 
     } )
 
-  } )
 
-
-  <span class="hljs-keyword">return</span> is
+    <span class="hljs-keyword">return</span> is
 
 } )</pre></div></div>
             
