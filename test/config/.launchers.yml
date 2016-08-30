@@ -65,14 +65,6 @@ Safari_8:
     base: SauceLabs
     browserName: Safari
     version: '8'
-Safari_7:
-    base: SauceLabs
-    browserName: Safari
-    version: '7'
-Safari_6:
-    base: SauceLabs
-    browserName: Safari
-    version: '6'
 
 
 iOS_9_0:
