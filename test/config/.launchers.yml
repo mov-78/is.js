@@ -71,10 +71,6 @@ iOS_9_0:
     base: SauceLabs
     browserName: iPhone
     version: '9.0'
-iOS_8_0:
-    base: SauceLabs
-    browserName: iPhone
-    version: '8.0'
 
 
 Android_5_0:
